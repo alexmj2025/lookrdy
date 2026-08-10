@@ -5,6 +5,13 @@ import { useRouter } from "next/navigation";
 import { SiteHeader } from "@/components/Wordmark";
 import { track } from "@/lib/analytics/client";
 import { setRequest, clearResult } from "@/lib/flowStore";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const OCCASIONS = [
   "Company dinner",
@@ -126,7 +133,7 @@ export default function RequestPage() {
           {/* Desired look */}
           <fieldset>
             <legend className="label-ink">How do you want to look?</legend>
-            <p className="mt-2 text-sm text-[var(--color-muted)]">
+            <p className="mt-2 text-sm text-[var(--color-meta)]">
               We&rsquo;ve suggested a starting point — edit it however you like.
             </p>
             <textarea
@@ -154,7 +161,7 @@ export default function RequestPage() {
           <div className="grid gap-8 sm:grid-cols-2">
             <fieldset>
               <legend className="label-ink">Total budget</legend>
-              <p className="mt-2 text-sm text-[var(--color-muted)]">
+              <p className="mt-2 text-sm text-[var(--color-meta)]">
                 For the whole outfit, not per item.
               </p>
               <div className="mt-4 flex gap-2">
@@ -167,24 +174,30 @@ export default function RequestPage() {
                   onChange={(e) => setBudget(e.target.value)}
                   aria-label="Budget amount"
                 />
-                <select
-                  className="field w-28"
+                <Select
                   value={currency}
-                  onChange={(e) => setCurrency(e.target.value)}
-                  aria-label="Currency"
+                  onValueChange={(value) => setCurrency(value ?? "CAD")}
                 >
-                  {CURRENCIES.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger
+                    aria-label="Currency"
+                    className="field w-28 justify-between rounded-none focus-visible:ring-0"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-none">
+                    {CURRENCIES.map((c) => (
+                      <SelectItem key={c} value={c} className="rounded-none">
+                        {c}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </fieldset>
 
             <fieldset>
               <legend className="label-ink">Location</legend>
-              <p className="mt-2 text-sm text-[var(--color-muted)]">
+              <p className="mt-2 text-sm text-[var(--color-meta)]">
                 Sets currency, climate, and which retailers can reach you.
               </p>
               <input

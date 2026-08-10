@@ -86,7 +86,7 @@ export default function ResultsPage() {
                 <span className="font-medium">
                   {money(look.total, request.currency)}
                 </span>{" "}
-                <span className="text-[var(--color-muted)]">
+                <span className="text-[var(--color-meta)]">
                   of {money(request.budget, request.currency)} · {look.items.length}{" "}
                   pieces
                 </span>
@@ -109,7 +109,7 @@ export default function ResultsPage() {
 
         <div className="mt-16 border-t hairline pt-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-[0.9375rem] text-[var(--color-muted)]">
+            <p className="text-[0.9375rem] text-[var(--color-meta)]">
               {remaining > 0
                 ? `${remaining} of ${generationsAllowed} free looks left in this session.`
                 : `You've used all ${generationsAllowed} free looks in this session.`}

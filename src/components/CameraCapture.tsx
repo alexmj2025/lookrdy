@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 /**
  * Live camera capture.
@@ -106,17 +107,6 @@ export function CameraCapture({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        stop();
-        onCancel();
-      }
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [onCancel, stop]);
-
   function flip() {
     const next = facingMode === "user" ? "environment" : "user";
     setFacingMode(next);
@@ -156,13 +146,26 @@ export function CameraCapture({
   }
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Take a photo"
-      className="fixed inset-0 z-50 flex flex-col bg-black"
+    // shadcn Dialog gives us the focus trap, scroll lock, Escape handling, and
+    // aria wiring for free — the parts of a modal that are easy to get subtly
+    // wrong by hand.
+    <Dialog
+      open
+      onOpenChange={(next) => {
+        if (!next) {
+          stop();
+          onCancel();
+        }
+      }}
     >
-      <div className="flex items-center justify-between px-5 py-4">
+      <DialogContent
+        showCloseButton={false}
+        className="flex h-dvh w-screen max-w-none translate-x-0 translate-y-0 flex-col gap-0 rounded-none border-0 bg-black p-0 text-white sm:max-w-none"
+        style={{ top: 0, left: 0 }}
+      >
+        <DialogTitle className="sr-only">Take a photo</DialogTitle>
+
+        <div className="flex items-center justify-between px-5 py-4">
         <span className="label" style={{ color: "#bdbbb6" }}>
           {status === "live" ? "Camera ready" : "Camera"}
         </span>
@@ -213,47 +216,48 @@ export function CameraCapture({
         )}
       </div>
 
-      <div className="flex items-center justify-center gap-8 px-5 pb-10 pt-6">
-        {status === "live" && hasMultipleCameras ? (
-          <button
-            type="button"
-            onClick={flip}
-            className="min-h-11 text-xs uppercase tracking-[0.16em] text-white"
-          >
-            Flip
-          </button>
-        ) : (
+        <div className="flex items-center justify-center gap-8 px-5 pb-10 pt-6">
+          {status === "live" && hasMultipleCameras ? (
+            <button
+              type="button"
+              onClick={flip}
+              className="min-h-11 text-xs uppercase tracking-[0.16em] text-white"
+            >
+              Flip
+            </button>
+          ) : (
+            <span className="w-12" />
+          )}
+
+          {status === "live" ? (
+            <button
+              type="button"
+              onClick={shoot}
+              aria-label="Take the photo"
+              className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-4 border-white"
+            >
+              <span className="block h-14 w-14 rounded-full bg-white" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => void start(facingMode)}
+              className="min-h-12 border border-white px-6 text-xs uppercase tracking-[0.16em] text-white"
+            >
+              Try again
+            </button>
+          )}
+
           <span className="w-12" />
-        )}
+        </div>
 
-        {status === "live" ? (
-          <button
-            type="button"
-            onClick={shoot}
-            aria-label="Take the photo"
-            className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-4 border-white"
-          >
-            <span className="block h-14 w-14 rounded-full bg-white" />
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => void start(facingMode)}
-            className="min-h-12 border border-white px-6 text-xs uppercase tracking-[0.16em] text-white"
-          >
-            Try again
-          </button>
-        )}
-
-        <span className="w-12" />
-      </div>
-
-      <p
-        className="px-8 pb-8 text-center text-[0.8125rem] leading-relaxed"
-        style={{ color: "#bdbbb6" }}
-      >
-        Stand back so your whole body fits inside the frame.
-      </p>
-    </div>
+        <p
+          className="px-8 pb-8 text-center text-[0.8125rem] leading-relaxed"
+          style={{ color: "#bdbbb6" }}
+        >
+          Stand back so your whole body fits inside the frame.
+        </p>
+      </DialogContent>
+    </Dialog>
   );
 }

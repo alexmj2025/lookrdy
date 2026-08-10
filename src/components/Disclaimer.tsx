@@ -8,7 +8,7 @@ export function AiLabel({ className = "" }: { className?: string }) {
 
 export function Disclaimer() {
   return (
-    <p className="prose-measure text-sm leading-relaxed text-[var(--color-muted)]">
+    <p className="prose-measure text-sm leading-relaxed text-[var(--color-meta)]">
       Images are AI visualizations, not photographs of the actual garments. Fit
       is not guaranteed. Price and stock are confirmed on the retailer&rsquo;s
       site.

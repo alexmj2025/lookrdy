@@ -91,7 +91,7 @@ export default function GeneratingPage() {
         <main className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center px-5 py-16 md:px-10">
           <p className="label">Lookrdy</p>
           <h1 className="display mt-3 text-3xl md:text-4xl">{failure.title}</h1>
-          <p className="prose-measure mt-5 text-lg leading-relaxed text-[var(--color-muted)]">
+          <p className="prose-measure mt-5 text-lg leading-relaxed text-[var(--color-meta)]">
             {failure.message}
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -128,7 +128,7 @@ export default function GeneratingPage() {
                       ? "border-[var(--color-ink)] bg-[var(--color-ink)] text-white"
                       : state === "active"
                         ? "border-[var(--color-ink)]"
-                        : "hairline text-[var(--color-muted)]"
+                        : "hairline text-[var(--color-meta)]"
                   }`}
                 >
                   {state === "done" ? "✓" : i + 1}
@@ -136,7 +136,7 @@ export default function GeneratingPage() {
                 <span
                   className={`text-lg ${
                     state === "waiting"
-                      ? "text-[var(--color-muted)]"
+                      ? "text-[var(--color-meta)]"
                       : state === "active"
                         ? "pulsing"
                         : ""
@@ -149,7 +149,7 @@ export default function GeneratingPage() {
           })}
         </ol>
 
-        <p className="mt-12 text-sm text-[var(--color-muted)]">
+        <p className="mt-12 text-sm text-[var(--color-meta)]">
           We search real products first, compose the outfits from what we
           actually found, and only then generate the image. This usually takes
           under a minute.

@@ -234,7 +234,7 @@ function ProductCard({
         type="button"
         onClick={onClose}
         aria-label="Close"
-        className="absolute right-1 top-1 flex h-8 w-8 items-center justify-center text-lg leading-none text-[var(--color-muted)] hover:text-[var(--color-ink)]"
+        className="absolute right-1 top-1 flex h-8 w-8 items-center justify-center text-lg leading-none text-[var(--color-meta)] hover:text-[var(--color-ink)]"
       >
         ×
       </button>

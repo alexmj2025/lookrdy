@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SiteHeader } from "@/components/Wordmark";
 import { CameraCapture } from "@/components/CameraCapture";
+import { Checkbox } from "@/components/ui/checkbox";
 import { track } from "@/lib/analytics/client";
 import { clearPhoto, getPhoto, setPhoto } from "@/lib/flowStore";
 
@@ -91,7 +92,7 @@ export default function PhotoPage() {
           </svg>
           <div>
             <p className="label-ink">A good photo</p>
-            <ul className="mt-3 space-y-1.5 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+            <ul className="mt-3 space-y-1.5 text-[0.9375rem] leading-relaxed text-[var(--color-meta)]">
               <li>Whole body visible, head to shoes</li>
               <li>Standing straight, facing the camera</li>
               <li>Plain background, even lighting</li>
@@ -150,22 +151,26 @@ export default function PhotoPage() {
         {/* Storage + consent */}
         <div className="mt-10 border-t hairline pt-8">
           <p className="label-ink">How your photo is handled</p>
-          <p className="prose-measure mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+          <p className="prose-measure mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-meta)]">
             Your photo stays in this browser tab. It&rsquo;s sent to our server
             once, used only to generate your visualization, and is never saved
             to a database, written to disk, or shared. Remove it at any time
             with the button above, or close this tab and it&rsquo;s gone.
           </p>
 
-          <label className="mt-6 flex cursor-pointer items-start gap-3">
-            <input
-              type="checkbox"
+          <label
+            htmlFor="photo-consent"
+            className="mt-6 flex cursor-pointer items-start gap-3"
+          >
+            <Checkbox
+              id="photo-consent"
               checked={consent}
-              onChange={(e) => {
-                setConsent(e.target.checked);
-                if (e.target.checked) setError(null);
+              onCheckedChange={(value) => {
+                const next = value === true;
+                setConsent(next);
+                if (next) setError(null);
               }}
-              className="mt-1 h-5 w-5 shrink-0 accent-[var(--color-ink)]"
+              className="mt-1 shrink-0 rounded-none border-[var(--color-ink)] data-[state=checked]:bg-[var(--color-ink)] data-[state=checked]:text-white"
             />
             <span className="text-[0.9375rem] leading-relaxed">
               I&rsquo;m happy for Lookrdy to use this photo to generate my
@@ -200,7 +205,7 @@ export default function PhotoPage() {
             Skip — no photo
           </button>
         </div>
-        <p className="mt-3 text-sm text-[var(--color-muted)]">
+        <p className="mt-3 text-sm text-[var(--color-meta)]">
           Without a photo you still get all three outfits; the visualization
           uses a neutral figure instead of you.
         </p>

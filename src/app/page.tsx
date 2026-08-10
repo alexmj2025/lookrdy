@@ -45,21 +45,21 @@ export default function LandingPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3 md:gap-12 md:px-10 md:py-20">
           <div>
             <p className="label-ink">01 — Your photo</p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-meta)]">
               Upload or take a full-body photo. It stays in your browser, is
               used once to build your visualization, and is never stored.
             </p>
           </div>
           <div>
             <p className="label-ink">02 — Real products first</p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-meta)]">
               We search the catalog for pieces that fit your occasion, budget,
               and location — then compose the outfits from what actually exists.
             </p>
           </div>
           <div>
             <p className="label-ink">03 — Tap to shop</p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--color-meta)]">
               Every garment in the image is tappable. See the brand, the price,
               and go straight to the retailer.
             </p>
@@ -68,7 +68,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="mx-auto max-w-6xl px-5 py-12 md:px-10">
-        <p className="text-sm text-[var(--color-muted)]">
+        <p className="text-sm text-[var(--color-meta)]">
           Images are AI visualizations. Fit is not guaranteed; price and stock
           are confirmed on the retailer&rsquo;s site.
         </p>

@@ -71,7 +71,7 @@ export default function LookDetailPage() {
                   <span className="font-medium">
                     {money(look.total, currency)}
                   </span>
-                  <span className="text-[var(--color-muted)]">
+                  <span className="text-[var(--color-meta)]">
                     {" "}
                     of {money(budget, currency)}
                   </span>
@@ -105,7 +105,7 @@ export default function LookDetailPage() {
                     <p className="mt-1 text-[0.9375rem] leading-snug">
                       {product.name}
                     </p>
-                    <p className="mt-1 text-sm text-[var(--color-muted)]">
+                    <p className="mt-1 text-sm text-[var(--color-meta)]">
                       {product.retailer} · {product.color}
                     </p>
                     <p className="mt-1.5 text-[0.9375rem] font-medium">
