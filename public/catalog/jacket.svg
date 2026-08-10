@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320">
+  <rect width="240" height="320" fill="#f4f3f1"/>
+  <g fill="none" stroke="#0a0a0a" stroke-width="1.4">
+    <path d="M92 62 L66 78 L50 172 L72 177 L77 136 L77 268 L120 272 L163 268 L163 136 L168 177 L190 172 L174 78 L148 62 L120 74 Z"/>
+    <path d="M120 74 L110 268 M120 74 L130 268"/>
+    <circle cx="116" cy="122" r="1.8"/>
+    <circle cx="116" cy="156" r="1.8"/>
+    <circle cx="116" cy="190" r="1.8"/>
+  </g>
+  <text x="120" y="302" text-anchor="middle" font-family="Times New Roman, serif" font-size="9" letter-spacing="3" fill="#8d8a85">JACKET</text>
+</svg>

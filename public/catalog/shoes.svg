@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320">
+  <rect width="240" height="320" fill="#f4f3f1"/>
+  <g fill="none" stroke="#0a0a0a" stroke-width="1.4">
+    <path d="M40 196 Q40 166 62 162 L104 157 Q132 152 146 139 Q160 127 174 133 Q193 142 196 166 L198 188 Q198 199 184 199 L51 199 Q40 199 40 196 Z"/>
+    <path d="M40 191 L198 191" stroke-width="0.7"/>
+    <path d="M112 157 Q122 169 139 171" stroke-width="0.7"/>
+    <path d="M150 143 L161 154 M158 137 L169 148" stroke-width="0.7"/>
+  </g>
+  <text x="120" y="302" text-anchor="middle" font-family="Times New Roman, serif" font-size="9" letter-spacing="3" fill="#8d8a85">SHOES</text>
+</svg>

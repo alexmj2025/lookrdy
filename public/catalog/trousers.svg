@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320">
+  <rect width="240" height="320" fill="#f4f3f1"/>
+  <g fill="none" stroke="#0a0a0a" stroke-width="1.4">
+    <path d="M84 44 L156 44 L160 76 L168 274 L128 274 L122 112 L118 112 L112 274 L72 274 L80 76 Z"/>
+    <path d="M84 56 L156 56" stroke-width="0.7"/>
+    <path d="M120 44 L120 56" stroke-width="0.7"/>
+  </g>
+  <text x="120" y="302" text-anchor="middle" font-family="Times New Roman, serif" font-size="9" letter-spacing="3" fill="#8d8a85">TROUSERS</text>
+</svg>

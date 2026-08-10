@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Lookrdy design system — strict black-and-white editorial.
+
+   Readability rules (the fix over the previous build):
+   - Body copy is 16–18px with a comfortable line-height and a max measure of
+     ~68 characters. Never smaller than 15px.
+   - Uppercase + wide letter-spacing is for LABELS ONLY (max ~3 words).
+     Sentences are always sentence case.
+   - Meta text uses a mid grey with enough contrast to pass AA (#61605c on
+     paper = 5.9:1), not a washed-out light grey.
+   - Clear hierarchy: display serif for headlines, sans for everything else.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-paper: #ffffff;
+  --color-ink: #0a0a0a;
+  --color-muted: #61605c;
+  --color-line: #dedcd8;
+  --color-wash: #f4f3f1;
+
+  --font-display: "Times New Roman", Times, Georgia, serif;
+  --font-sans:
+    ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Typography ---------------------------------------------------------- */
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: lowercase;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+/* Label only — never for sentences. */
+.label {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.label-ink {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.lede {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 34rem;
+}
+
+.prose-measure {
+  max-width: 36rem;
+}
+
+/* --- Controls ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+.btn:hover:not(:disabled) {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.btn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn-outline:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.field:focus {
+  border-color: var(--color-ink);
+}
+.field::placeholder {
+  color: #9a9893;
+}
+
+/* Visible focus for keyboard users — required for the hotspot buttons. */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.chip:hover {
+  border-color: var(--color-ink);
+}
+.chip[aria-pressed="true"] {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.hairline {
+  border-color: var(--color-line);
+}
+
+/* --- Motion -------------------------------------------------------------- */
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.pulsing {
+  animation: pulse-soft 1.8s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulsing,
+  .fade-up {
+    animation: none;
+  }
+}

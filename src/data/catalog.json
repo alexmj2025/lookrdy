@@ -1,0 +1,4848 @@
+{
+  "_comment": "PLACEHOLDER CATALOG — realistic but invented products attributed to real retailers; productUrl points at each retailer's real category page, not a specific item. Replace with a real sourced list, or swap the whole data layer for a live affiliate feed (Rakuten / Awin / Skimlinks) — see src/lib/catalog/source.ts. Regenerate with `npx tsx supabase/buildCatalog.ts`, or just edit this file directly.",
+  "generatedAt": "2026-08-10",
+  "count": 158,
+  "products": [
+    {
+      "id": "uniqlo-ultra-light-down-jacket",
+      "retailer": "Uniqlo",
+      "name": "Ultra Light Down Jacket",
+      "category": "jacket",
+      "color": "navy",
+      "styleTags": [
+        "minimal",
+        "practical",
+        "lightweight"
+      ],
+      "formality": 2,
+      "price": 79.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/outerwear",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-wool-blend-chesterfield-coat",
+      "retailer": "Uniqlo",
+      "name": "Wool-Blend Chesterfield Coat",
+      "category": "jacket",
+      "color": "charcoal",
+      "styleTags": [
+        "tailored",
+        "classic",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 149.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/outerwear",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-blocktech-hooded-parka",
+      "retailer": "Uniqlo",
+      "name": "Blocktech Hooded Parka",
+      "category": "jacket",
+      "color": "black",
+      "styleTags": [
+        "technical",
+        "utility",
+        "monochrome"
+      ],
+      "formality": 2,
+      "price": 99.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/outerwear",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-single-breasted-comfort-jacket",
+      "retailer": "Uniqlo",
+      "name": "Single-Breasted Comfort Jacket",
+      "category": "jacket",
+      "color": "stone",
+      "styleTags": [
+        "tailored",
+        "soft",
+        "neutral"
+      ],
+      "formality": 4,
+      "price": 129.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/outerwear",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-extra-fine-merino-crew-neck-sweater",
+      "retailer": "Uniqlo",
+      "name": "Extra Fine Merino Crew Neck Sweater",
+      "category": "top",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "monochrome",
+        "layering"
+      ],
+      "formality": 3,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-lambswool-turtleneck-sweater",
+      "retailer": "Uniqlo",
+      "name": "Lambswool Turtleneck Sweater",
+      "category": "top",
+      "color": "cream",
+      "styleTags": [
+        "minimal",
+        "warm",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 59.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-easy-care-stretch-slim-fit-shirt",
+      "retailer": "Uniqlo",
+      "name": "Easy Care Stretch Slim-Fit Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "classic",
+        "crisp",
+        "tailored"
+      ],
+      "formality": 4,
+      "price": 39.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-flannel-checked-shirt",
+      "retailer": "Uniqlo",
+      "name": "Flannel Checked Shirt",
+      "category": "top",
+      "color": "grey check",
+      "styleTags": [
+        "casual",
+        "textured",
+        "relaxed"
+      ],
+      "formality": 2,
+      "price": 39.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-supima-cotton-crew-neck-t-shirt",
+      "retailer": "Uniqlo",
+      "name": "Supima Cotton Crew Neck T-Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "essential",
+        "clean"
+      ],
+      "formality": 2,
+      "price": 19.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-airism-cotton-oversized-t-shirt",
+      "retailer": "Uniqlo",
+      "name": "Airism Cotton Oversized T-Shirt",
+      "category": "top",
+      "color": "black",
+      "styleTags": [
+        "relaxed",
+        "monochrome",
+        "streetwear"
+      ],
+      "formality": 1,
+      "price": 24.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-linen-blend-open-collar-shirt",
+      "retailer": "Uniqlo",
+      "name": "Linen-Blend Open-Collar Shirt",
+      "category": "top",
+      "color": "sage",
+      "styleTags": [
+        "relaxed",
+        "summer",
+        "soft"
+      ],
+      "formality": 2,
+      "price": 44.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-3d-knit-cotton-crew-sweater",
+      "retailer": "Uniqlo",
+      "name": "3D Knit Cotton Crew Sweater",
+      "category": "top",
+      "color": "brick",
+      "styleTags": [
+        "textured",
+        "casual",
+        "warm"
+      ],
+      "formality": 2,
+      "price": 59.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-smart-ankle-pants",
+      "retailer": "Uniqlo",
+      "name": "Smart Ankle Pants",
+      "category": "trousers",
+      "color": "charcoal",
+      "styleTags": [
+        "tailored",
+        "versatile",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-pleated-wide-chino-pants",
+      "retailer": "Uniqlo",
+      "name": "Pleated Wide Chino Pants",
+      "category": "trousers",
+      "color": "beige",
+      "styleTags": [
+        "relaxed",
+        "neutral",
+        "modern"
+      ],
+      "formality": 3,
+      "price": 59.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-slim-fit-stretch-selvedge-jeans",
+      "retailer": "Uniqlo",
+      "name": "Slim-Fit Stretch Selvedge Jeans",
+      "category": "trousers",
+      "color": "indigo",
+      "styleTags": [
+        "denim",
+        "classic",
+        "casual"
+      ],
+      "formality": 2,
+      "price": 59.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-ultra-stretch-jogger-pants",
+      "retailer": "Uniqlo",
+      "name": "Ultra Stretch Jogger Pants",
+      "category": "trousers",
+      "color": "black",
+      "styleTags": [
+        "casual",
+        "comfort",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-wide-fit-wool-blend-trousers",
+      "retailer": "Uniqlo",
+      "name": "Wide-Fit Wool-Blend Trousers",
+      "category": "trousers",
+      "color": "mid grey",
+      "styleTags": [
+        "tailored",
+        "relaxed",
+        "neutral"
+      ],
+      "formality": 4,
+      "price": 69.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-comfort-sole-canvas-sneaker",
+      "retailer": "Uniqlo",
+      "name": "Comfort-Sole Canvas Sneaker",
+      "category": "shoes",
+      "color": "white",
+      "styleTags": [
+        "casual",
+        "clean",
+        "minimal"
+      ],
+      "formality": 1,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/accessories-and-shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-leather-look-derby-shoe",
+      "retailer": "Uniqlo",
+      "name": "Leather-Look Derby Shoe",
+      "category": "shoes",
+      "color": "black",
+      "styleTags": [
+        "classic",
+        "smart",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 69.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/accessories-and-shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-suede-touch-chelsea-boot",
+      "retailer": "Uniqlo",
+      "name": "Suede-Touch Chelsea Boot",
+      "category": "shoes",
+      "color": "dark taupe",
+      "styleTags": [
+        "sleek",
+        "textured",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 89.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/accessories-and-shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-slim-fit-chino-trousers",
+      "retailer": "Uniqlo",
+      "name": "Slim-Fit Chino Trousers",
+      "category": "trousers",
+      "color": "navy",
+      "styleTags": [
+        "classic",
+        "versatile",
+        "clean"
+      ],
+      "formality": 3,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-heattech-fine-rib-turtleneck",
+      "retailer": "Uniqlo",
+      "name": "Heattech Fine-Rib Turtleneck",
+      "category": "top",
+      "color": "dark grey",
+      "styleTags": [
+        "minimal",
+        "layering",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 29.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/tops",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-cotton-canvas-shoulder-bag",
+      "retailer": "Uniqlo",
+      "name": "Cotton Canvas Shoulder Bag",
+      "category": "bag",
+      "color": "natural",
+      "styleTags": [
+        "casual",
+        "utility",
+        "neutral"
+      ],
+      "formality": 1,
+      "price": 29.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/accessories",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-italian-leather-belt",
+      "retailer": "Uniqlo",
+      "name": "Italian Leather Belt",
+      "category": "accessory",
+      "color": "black",
+      "styleTags": [
+        "classic",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 39.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/accessories",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "uniqlo-cashmere-blend-scarf",
+      "retailer": "Uniqlo",
+      "name": "Cashmere-Blend Scarf",
+      "category": "accessory",
+      "color": "camel",
+      "styleTags": [
+        "warm",
+        "neutral",
+        "soft"
+      ],
+      "formality": 3,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.uniqlo.com/ca/en/men/accessories",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-oversized-ma-1-bomber-jacket",
+      "retailer": "GU",
+      "name": "Oversized MA-1 Bomber Jacket",
+      "category": "jacket",
+      "color": "olive",
+      "styleTags": [
+        "streetwear",
+        "relaxed",
+        "casual"
+      ],
+      "formality": 1,
+      "price": 69.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-faux-suede-blouson",
+      "retailer": "GU",
+      "name": "Faux-Suede Blouson",
+      "category": "jacket",
+      "color": "tan",
+      "styleTags": [
+        "retro",
+        "casual",
+        "textured"
+      ],
+      "formality": 2,
+      "price": 79.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-soft-knit-cardigan",
+      "retailer": "GU",
+      "name": "Soft Knit Cardigan",
+      "category": "top",
+      "color": "light grey",
+      "styleTags": [
+        "relaxed",
+        "soft",
+        "layering"
+      ],
+      "formality": 2,
+      "price": 39.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-relaxed-oxford-band-collar-shirt",
+      "retailer": "GU",
+      "name": "Relaxed Oxford Band-Collar Shirt",
+      "category": "top",
+      "color": "light blue",
+      "styleTags": [
+        "modern",
+        "relaxed",
+        "clean"
+      ],
+      "formality": 3,
+      "price": 34.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-heavyweight-boxy-t-shirt",
+      "retailer": "GU",
+      "name": "Heavyweight Boxy T-Shirt",
+      "category": "top",
+      "color": "off-white",
+      "styleTags": [
+        "streetwear",
+        "relaxed",
+        "essential"
+      ],
+      "formality": 1,
+      "price": 17.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-waffle-long-sleeve-crew-tee",
+      "retailer": "GU",
+      "name": "Waffle Long-Sleeve Crew Tee",
+      "category": "top",
+      "color": "mocha",
+      "styleTags": [
+        "textured",
+        "casual",
+        "warm"
+      ],
+      "formality": 1,
+      "price": 24.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-wide-tapered-easy-trousers",
+      "retailer": "GU",
+      "name": "Wide Tapered Easy Trousers",
+      "category": "trousers",
+      "color": "black",
+      "styleTags": [
+        "relaxed",
+        "monochrome",
+        "modern"
+      ],
+      "formality": 2,
+      "price": 44.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-loose-straight-jeans",
+      "retailer": "GU",
+      "name": "Loose Straight Jeans",
+      "category": "trousers",
+      "color": "washed blue",
+      "styleTags": [
+        "denim",
+        "relaxed",
+        "casual"
+      ],
+      "formality": 1,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-round-toe-faux-leather-loafer",
+      "retailer": "GU",
+      "name": "Round-Toe Faux-Leather Loafer",
+      "category": "shoes",
+      "color": "black",
+      "styleTags": [
+        "smart",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 59.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-chunky-sole-sneaker",
+      "retailer": "GU",
+      "name": "Chunky Sole Sneaker",
+      "category": "shoes",
+      "color": "off-white",
+      "styleTags": [
+        "streetwear",
+        "bold",
+        "casual"
+      ],
+      "formality": 1,
+      "price": 64.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-minimal-nylon-crossbody-bag",
+      "retailer": "GU",
+      "name": "Minimal Nylon Crossbody Bag",
+      "category": "bag",
+      "color": "black",
+      "styleTags": [
+        "utility",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 29.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "gu-ribbed-knit-beanie",
+      "retailer": "GU",
+      "name": "Ribbed Knit Beanie",
+      "category": "accessory",
+      "color": "charcoal",
+      "styleTags": [
+        "casual",
+        "warm",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 19.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.gu-global.com/",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-recycled-wool-melton-work-jacket",
+      "retailer": "Muji",
+      "name": "Recycled Wool Melton Work Jacket",
+      "category": "jacket",
+      "color": "dark brown",
+      "styleTags": [
+        "minimal",
+        "utility",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 129.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-water-repellent-hooded-jacket",
+      "retailer": "Muji",
+      "name": "Water-Repellent Hooded Jacket",
+      "category": "jacket",
+      "color": "navy",
+      "styleTags": [
+        "technical",
+        "minimal",
+        "practical"
+      ],
+      "formality": 2,
+      "price": 109.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-organic-cotton-waffle-knit-pullover",
+      "retailer": "Muji",
+      "name": "Organic Cotton Waffle Knit Pullover",
+      "category": "top",
+      "color": "oatmeal",
+      "styleTags": [
+        "minimal",
+        "textured",
+        "neutral"
+      ],
+      "formality": 2,
+      "price": 59.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-washed-broad-cloth-regular-collar-shirt",
+      "retailer": "Muji",
+      "name": "Washed Broad Cloth Regular-Collar Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "crisp",
+        "clean"
+      ],
+      "formality": 3,
+      "price": 49.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-jersey-stitch-crew-neck-t-shirt",
+      "retailer": "Muji",
+      "name": "Jersey Stitch Crew Neck T-Shirt",
+      "category": "top",
+      "color": "heather grey",
+      "styleTags": [
+        "minimal",
+        "essential",
+        "soft"
+      ],
+      "formality": 2,
+      "price": 24.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-silk-cotton-fine-gauge-sweater",
+      "retailer": "Muji",
+      "name": "Silk-Cotton Fine-Gauge Sweater",
+      "category": "top",
+      "color": "off-black",
+      "styleTags": [
+        "minimal",
+        "refined",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 69.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-water-repellent-stretch-chino-trousers",
+      "retailer": "Muji",
+      "name": "Water-Repellent Stretch Chino Trousers",
+      "category": "trousers",
+      "color": "dark navy",
+      "styleTags": [
+        "practical",
+        "minimal",
+        "versatile"
+      ],
+      "formality": 3,
+      "price": 69.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-organic-cotton-wide-trousers",
+      "retailer": "Muji",
+      "name": "Organic Cotton Wide Trousers",
+      "category": "trousers",
+      "color": "ecru",
+      "styleTags": [
+        "relaxed",
+        "neutral",
+        "minimal"
+      ],
+      "formality": 2,
+      "price": 64.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-water-repellent-cotton-sneaker",
+      "retailer": "Muji",
+      "name": "Water-Repellent Cotton Sneaker",
+      "category": "shoes",
+      "color": "ecru",
+      "styleTags": [
+        "minimal",
+        "clean",
+        "neutral"
+      ],
+      "formality": 2,
+      "price": 54.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-nylon-shoulder-bag",
+      "retailer": "Muji",
+      "name": "Nylon Shoulder Bag",
+      "category": "bag",
+      "color": "black",
+      "styleTags": [
+        "utility",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 34.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.muji.ca/collections/bags",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-cotton-canvas-tote-bag",
+      "retailer": "Muji",
+      "name": "Cotton Canvas Tote Bag",
+      "category": "bag",
+      "color": "natural",
+      "styleTags": [
+        "casual",
+        "minimal",
+        "neutral"
+      ],
+      "formality": 1,
+      "price": 29.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.muji.ca/collections/bags",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "muji-wool-blend-ribbed-beanie",
+      "retailer": "Muji",
+      "name": "Wool-Blend Ribbed Beanie",
+      "category": "accessory",
+      "color": "charcoal",
+      "styleTags": [
+        "minimal",
+        "warm",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 24.9,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.muji.ca/collections/men",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "value"
+    },
+    {
+      "id": "simons-le-31-wool-overcoat",
+      "retailer": "Simons",
+      "name": "Le 31 Wool Overcoat",
+      "category": "jacket",
+      "color": "camel",
+      "styleTags": [
+        "tailored",
+        "classic",
+        "warm"
+      ],
+      "formality": 4,
+      "price": 295,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/coats-outerwear--20104",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-water-repellent-mac-coat",
+      "retailer": "Simons",
+      "name": "Le 31 Water-Repellent Mac Coat",
+      "category": "jacket",
+      "color": "stone",
+      "styleTags": [
+        "minimal",
+        "modern",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 195,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/coats-outerwear--20104",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-unstructured-wool-blazer",
+      "retailer": "Simons",
+      "name": "Le 31 Unstructured Wool Blazer",
+      "category": "jacket",
+      "color": "navy",
+      "styleTags": [
+        "tailored",
+        "smart",
+        "classic"
+      ],
+      "formality": 4,
+      "price": 250,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/coats-outerwear--20104",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-merino-quarter-zip-sweater",
+      "retailer": "Simons",
+      "name": "Le 31 Merino Quarter-Zip Sweater",
+      "category": "top",
+      "color": "forest green",
+      "styleTags": [
+        "smart",
+        "layering",
+        "textured"
+      ],
+      "formality": 3,
+      "price": 89,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/sweaters-cardigans--20106",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-textured-piqu-dress-shirt",
+      "retailer": "Simons",
+      "name": "Le 31 Textured Piqué Dress Shirt",
+      "category": "top",
+      "color": "sky blue",
+      "styleTags": [
+        "crisp",
+        "tailored",
+        "classic"
+      ],
+      "formality": 4,
+      "price": 69,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/sweaters-cardigans--20106",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-mercerized-cotton-t-shirt",
+      "retailer": "Simons",
+      "name": "Le 31 Mercerized Cotton T-Shirt",
+      "category": "top",
+      "color": "ivory",
+      "styleTags": [
+        "minimal",
+        "refined",
+        "essential"
+      ],
+      "formality": 2,
+      "price": 39,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/sweaters-cardigans--20106",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-shawl-collar-cardigan",
+      "retailer": "Simons",
+      "name": "Le 31 Shawl-Collar Cardigan",
+      "category": "top",
+      "color": "oat melange",
+      "styleTags": [
+        "relaxed",
+        "warm",
+        "textured"
+      ],
+      "formality": 3,
+      "price": 125,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/sweaters-cardigans--20106",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-slim-fit-flannel-dress-pant",
+      "retailer": "Simons",
+      "name": "Le 31 Slim-Fit Flannel Dress Pant",
+      "category": "trousers",
+      "color": "mid grey",
+      "styleTags": [
+        "tailored",
+        "classic",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 110,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/pants--20107",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-stockholm-slim-raw-denim",
+      "retailer": "Simons",
+      "name": "Le 31 Stockholm Slim Raw Denim",
+      "category": "trousers",
+      "color": "raw indigo",
+      "styleTags": [
+        "denim",
+        "modern",
+        "clean"
+      ],
+      "formality": 2,
+      "price": 98,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/pants--20107",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-pleated-wide-trouser",
+      "retailer": "Simons",
+      "name": "Le 31 Pleated Wide Trouser",
+      "category": "trousers",
+      "color": "black",
+      "styleTags": [
+        "tailored",
+        "relaxed",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 120,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/pants--20107",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-leather-penny-loafer",
+      "retailer": "Simons",
+      "name": "Le 31 Leather Penny Loafer",
+      "category": "shoes",
+      "color": "burgundy",
+      "styleTags": [
+        "classic",
+        "smart",
+        "refined"
+      ],
+      "formality": 4,
+      "price": 165,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.simons.ca/en/men-shoes--20110",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-minimal-leather-sneaker",
+      "retailer": "Simons",
+      "name": "Le 31 Minimal Leather Sneaker",
+      "category": "shoes",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "clean",
+        "modern"
+      ],
+      "formality": 2,
+      "price": 140,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.simons.ca/en/men-shoes--20110",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-suede-desert-boot",
+      "retailer": "Simons",
+      "name": "Le 31 Suede Desert Boot",
+      "category": "shoes",
+      "color": "sand",
+      "styleTags": [
+        "casual",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 155,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.simons.ca/en/men-shoes--20110",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-tapered-cotton-chino",
+      "retailer": "Simons",
+      "name": "Le 31 Tapered Cotton Chino",
+      "category": "trousers",
+      "color": "olive",
+      "styleTags": [
+        "versatile",
+        "casual",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 85,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/pants--20107",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-fine-gauge-merino-crewneck",
+      "retailer": "Simons",
+      "name": "Le 31 Fine-Gauge Merino Crewneck",
+      "category": "top",
+      "color": "charcoal",
+      "styleTags": [
+        "minimal",
+        "soft",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 79,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.simons.ca/en/men-clothing/sweaters-cardigans--20106",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-leather-weekender-bag",
+      "retailer": "Simons",
+      "name": "Le 31 Leather Weekender Bag",
+      "category": "bag",
+      "color": "cognac",
+      "styleTags": [
+        "classic",
+        "refined",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 210,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.simons.ca/en/men-accessories--20111",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "simons-le-31-braided-leather-belt",
+      "retailer": "Simons",
+      "name": "Le 31 Braided Leather Belt",
+      "category": "accessory",
+      "color": "cognac",
+      "styleTags": [
+        "classic",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 45,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.simons.ca/en/men-accessories--20111",
+      "countries": [
+        "CA"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-relaxed-wool-overshirt",
+      "retailer": "COS",
+      "name": "Relaxed Wool Overshirt",
+      "category": "jacket",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "monochrome",
+        "architectural"
+      ],
+      "formality": 3,
+      "price": 225,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/jackets-coats.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-double-faced-wool-coat",
+      "retailer": "COS",
+      "name": "Double-Faced Wool Coat",
+      "category": "jacket",
+      "color": "off-white",
+      "styleTags": [
+        "minimal",
+        "architectural",
+        "neutral"
+      ],
+      "formality": 4,
+      "price": 350,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/jackets-coats.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-boxy-technical-blouson",
+      "retailer": "COS",
+      "name": "Boxy Technical Blouson",
+      "category": "jacket",
+      "color": "slate",
+      "styleTags": [
+        "minimal",
+        "modern",
+        "technical"
+      ],
+      "formality": 2,
+      "price": 195,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/jackets-coats.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-pure-cashmere-crew-neck-jumper",
+      "retailer": "COS",
+      "name": "Pure Cashmere Crew-Neck Jumper",
+      "category": "top",
+      "color": "stone grey",
+      "styleTags": [
+        "minimal",
+        "luxe",
+        "soft"
+      ],
+      "formality": 3,
+      "price": 250,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/knitwear.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-heavyweight-roll-neck-wool-jumper",
+      "retailer": "COS",
+      "name": "Heavyweight Roll-Neck Wool Jumper",
+      "category": "top",
+      "color": "off-black",
+      "styleTags": [
+        "minimal",
+        "monochrome",
+        "architectural"
+      ],
+      "formality": 3,
+      "price": 175,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/knitwear.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-tailored-poplin-shirt",
+      "retailer": "COS",
+      "name": "Tailored Poplin Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "crisp",
+        "architectural"
+      ],
+      "formality": 4,
+      "price": 99,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/knitwear.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-brushed-cotton-mock-neck-t-shirt",
+      "retailer": "COS",
+      "name": "Brushed-Cotton Mock-Neck T-Shirt",
+      "category": "top",
+      "color": "graphite",
+      "styleTags": [
+        "minimal",
+        "monochrome",
+        "soft"
+      ],
+      "formality": 2,
+      "price": 59,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/knitwear.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-wide-leg-tailored-wool-trousers",
+      "retailer": "COS",
+      "name": "Wide-Leg Tailored Wool Trousers",
+      "category": "trousers",
+      "color": "black",
+      "styleTags": [
+        "architectural",
+        "monochrome",
+        "tailored"
+      ],
+      "formality": 4,
+      "price": 175,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/trousers.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-elasticated-twill-drawstring-trousers",
+      "retailer": "COS",
+      "name": "Elasticated Twill Drawstring Trousers",
+      "category": "trousers",
+      "color": "taupe",
+      "styleTags": [
+        "relaxed",
+        "minimal",
+        "neutral"
+      ],
+      "formality": 2,
+      "price": 119,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/trousers.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-straight-leg-rigid-jeans",
+      "retailer": "COS",
+      "name": "Straight-Leg Rigid Jeans",
+      "category": "trousers",
+      "color": "black rinse",
+      "styleTags": [
+        "denim",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 2,
+      "price": 135,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/trousers.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-leather-square-toe-loafer",
+      "retailer": "COS",
+      "name": "Leather Square-Toe Loafer",
+      "category": "shoes",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "architectural",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 250,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/shoes.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-chunky-leather-derby",
+      "retailer": "COS",
+      "name": "Chunky Leather Derby",
+      "category": "shoes",
+      "color": "dark brown",
+      "styleTags": [
+        "architectural",
+        "bold",
+        "refined"
+      ],
+      "formality": 3,
+      "price": 275,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/shoes.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-minimal-leather-sneaker",
+      "retailer": "COS",
+      "name": "Minimal Leather Sneaker",
+      "category": "shoes",
+      "color": "off-white",
+      "styleTags": [
+        "minimal",
+        "clean",
+        "architectural"
+      ],
+      "formality": 2,
+      "price": 190,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/shoes.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-tapered-wool-trousers",
+      "retailer": "COS",
+      "name": "Tapered Wool Trousers",
+      "category": "trousers",
+      "color": "charcoal",
+      "styleTags": [
+        "tailored",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 155,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/trousers.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-structured-leather-tote",
+      "retailer": "COS",
+      "name": "Structured Leather Tote",
+      "category": "bag",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "architectural",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 290,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/accessories.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "cos-grained-leather-slim-belt",
+      "retailer": "COS",
+      "name": "Grained-Leather Slim Belt",
+      "category": "accessory",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "monochrome",
+        "refined"
+      ],
+      "formality": 4,
+      "price": 99,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.cos.com/en_cad/men/accessories.html",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-quilted-liner-field-jacket",
+      "retailer": "Nordstrom",
+      "name": "Quilted Liner Field Jacket",
+      "category": "jacket",
+      "color": "dark olive",
+      "styleTags": [
+        "utility",
+        "casual",
+        "textured"
+      ],
+      "formality": 2,
+      "price": 229,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/coats-jackets",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-wool-cashmere-topcoat",
+      "retailer": "Nordstrom",
+      "name": "Wool-Cashmere Topcoat",
+      "category": "jacket",
+      "color": "charcoal",
+      "styleTags": [
+        "tailored",
+        "formal",
+        "monochrome"
+      ],
+      "formality": 5,
+      "price": 395,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/coats-jackets",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-nordstrom-signature-cashmere-v-neck",
+      "retailer": "Nordstrom",
+      "name": "Nordstrom Signature Cashmere V-Neck",
+      "category": "top",
+      "color": "heather navy",
+      "styleTags": [
+        "refined",
+        "soft",
+        "classic"
+      ],
+      "formality": 3,
+      "price": 189,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/sweaters",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-trim-fit-non-iron-dress-shirt",
+      "retailer": "Nordstrom",
+      "name": "Trim Fit Non-Iron Dress Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "formal",
+        "crisp",
+        "classic"
+      ],
+      "formality": 5,
+      "price": 89,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/sweaters",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-pima-cotton-long-sleeve-henley",
+      "retailer": "Nordstrom",
+      "name": "Pima Cotton Long-Sleeve Henley",
+      "category": "top",
+      "color": "olive heather",
+      "styleTags": [
+        "casual",
+        "soft",
+        "textured"
+      ],
+      "formality": 2,
+      "price": 69,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/sweaters",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-merino-half-zip-pullover",
+      "retailer": "Nordstrom",
+      "name": "Merino Half-Zip Pullover",
+      "category": "top",
+      "color": "black",
+      "styleTags": [
+        "smart",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 129,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/sweaters",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-slim-fit-performance-dress-trousers",
+      "retailer": "Nordstrom",
+      "name": "Slim-Fit Performance Dress Trousers",
+      "category": "trousers",
+      "color": "navy",
+      "styleTags": [
+        "formal",
+        "tailored",
+        "classic"
+      ],
+      "formality": 5,
+      "price": 129,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-athletic-slim-stretch-jeans",
+      "retailer": "Nordstrom",
+      "name": "Athletic Slim Stretch Jeans",
+      "category": "trousers",
+      "color": "dark rinse",
+      "styleTags": [
+        "denim",
+        "modern",
+        "clean"
+      ],
+      "formality": 2,
+      "price": 110,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-cap-toe-leather-oxford",
+      "retailer": "Nordstrom",
+      "name": "Cap-Toe Leather Oxford",
+      "category": "shoes",
+      "color": "black",
+      "styleTags": [
+        "formal",
+        "classic",
+        "monochrome"
+      ],
+      "formality": 5,
+      "price": 199,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-suede-chukka-boot",
+      "retailer": "Nordstrom",
+      "name": "Suede Chukka Boot",
+      "category": "shoes",
+      "color": "sand suede",
+      "styleTags": [
+        "casual",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 179,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-wool-flannel-trouser",
+      "retailer": "Nordstrom",
+      "name": "Wool Flannel Trouser",
+      "category": "trousers",
+      "color": "light grey",
+      "styleTags": [
+        "tailored",
+        "soft",
+        "classic"
+      ],
+      "formality": 4,
+      "price": 145,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/pants",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-minimalist-leather-sneaker",
+      "retailer": "Nordstrom",
+      "name": "Minimalist Leather Sneaker",
+      "category": "shoes",
+      "color": "white",
+      "styleTags": [
+        "clean",
+        "minimal",
+        "modern"
+      ],
+      "formality": 2,
+      "price": 150,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-washed-linen-camp-collar-shirt",
+      "retailer": "Nordstrom",
+      "name": "Washed Linen Camp-Collar Shirt",
+      "category": "top",
+      "color": "terracotta",
+      "styleTags": [
+        "relaxed",
+        "summer",
+        "warm"
+      ],
+      "formality": 2,
+      "price": 95,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/clothing/sweaters",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-leather-briefcase",
+      "retailer": "Nordstrom",
+      "name": "Leather Briefcase",
+      "category": "bag",
+      "color": "brown",
+      "styleTags": [
+        "classic",
+        "professional",
+        "warm"
+      ],
+      "formality": 4,
+      "price": 295,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/accessories/bags",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "nordstrom-reversible-leather-dress-belt",
+      "retailer": "Nordstrom",
+      "name": "Reversible Leather Dress Belt",
+      "category": "accessory",
+      "color": "black/brown",
+      "styleTags": [
+        "formal",
+        "classic",
+        "versatile"
+      ],
+      "formality": 5,
+      "price": 79,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.nordstrom.ca/browse/men/accessories",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-oversized-wool-mix-overcoat",
+      "retailer": "ASOS",
+      "name": "ASOS Design Oversized Wool-Mix Overcoat",
+      "category": "jacket",
+      "color": "dark grey",
+      "styleTags": [
+        "relaxed",
+        "modern",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 135,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.asos.com/men/jackets-coats/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-faux-suede-trucker-jacket",
+      "retailer": "ASOS",
+      "name": "ASOS Design Faux-Suede Trucker Jacket",
+      "category": "jacket",
+      "color": "tan",
+      "styleTags": [
+        "retro",
+        "casual",
+        "textured"
+      ],
+      "formality": 2,
+      "price": 95,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.asos.com/men/jackets-coats/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-boxy-leather-look-jacket",
+      "retailer": "ASOS",
+      "name": "ASOS Design Boxy Leather-Look Jacket",
+      "category": "jacket",
+      "color": "black",
+      "styleTags": [
+        "streetwear",
+        "bold",
+        "monochrome"
+      ],
+      "formality": 2,
+      "price": 120,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.asos.com/men/jackets-coats/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-regular-sateen-shirt",
+      "retailer": "ASOS",
+      "name": "ASOS Design Regular Sateen Shirt",
+      "category": "top",
+      "color": "ecru",
+      "styleTags": [
+        "modern",
+        "soft",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 55,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.asos.com/men/t-shirts-vests/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-relaxed-heavyweight-t-shirt",
+      "retailer": "ASOS",
+      "name": "ASOS Design Relaxed Heavyweight T-Shirt",
+      "category": "top",
+      "color": "washed black",
+      "styleTags": [
+        "streetwear",
+        "relaxed",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 32,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.asos.com/men/t-shirts-vests/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-chunky-ribbed-sweater",
+      "retailer": "ASOS",
+      "name": "ASOS Design Chunky Ribbed Sweater",
+      "category": "top",
+      "color": "rust",
+      "styleTags": [
+        "textured",
+        "warm",
+        "casual"
+      ],
+      "formality": 2,
+      "price": 58,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.asos.com/men/t-shirts-vests/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-knitted-polo-shirt",
+      "retailer": "ASOS",
+      "name": "ASOS Design Knitted Polo Shirt",
+      "category": "top",
+      "color": "black",
+      "styleTags": [
+        "retro",
+        "smart",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 45,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.asos.com/men/t-shirts-vests/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-smart-tapered-trousers",
+      "retailer": "ASOS",
+      "name": "ASOS Design Smart Tapered Trousers",
+      "category": "trousers",
+      "color": "charcoal check",
+      "styleTags": [
+        "tailored",
+        "patterned",
+        "smart"
+      ],
+      "formality": 4,
+      "price": 64,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.asos.com/men/trousers-chinos/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-baggy-jeans",
+      "retailer": "ASOS",
+      "name": "ASOS Design Baggy Jeans",
+      "category": "trousers",
+      "color": "mid-wash blue",
+      "styleTags": [
+        "denim",
+        "streetwear",
+        "relaxed"
+      ],
+      "formality": 1,
+      "price": 70,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.asos.com/men/trousers-chinos/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-wide-pleated-trousers",
+      "retailer": "ASOS",
+      "name": "ASOS Design Wide Pleated Trousers",
+      "category": "trousers",
+      "color": "stone",
+      "styleTags": [
+        "relaxed",
+        "modern",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 68,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.asos.com/men/trousers-chinos/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-chunky-derby-shoe",
+      "retailer": "ASOS",
+      "name": "ASOS Design Chunky Derby Shoe",
+      "category": "shoes",
+      "color": "black",
+      "styleTags": [
+        "bold",
+        "modern",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 85,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.asos.com/men/shoes-boots-trainers/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-minimal-court-sneaker",
+      "retailer": "ASOS",
+      "name": "ASOS Design Minimal Court Sneaker",
+      "category": "shoes",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "clean",
+        "casual"
+      ],
+      "formality": 2,
+      "price": 60,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.asos.com/men/shoes-boots-trainers/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-chelsea-boot",
+      "retailer": "ASOS",
+      "name": "ASOS Design Chelsea Boot",
+      "category": "shoes",
+      "color": "dark brown",
+      "styleTags": [
+        "sleek",
+        "casual",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 78,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.asos.com/men/shoes-boots-trainers/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-slim-suit-trousers",
+      "retailer": "ASOS",
+      "name": "ASOS Design Slim Suit Trousers",
+      "category": "trousers",
+      "color": "black",
+      "styleTags": [
+        "formal",
+        "tailored",
+        "monochrome"
+      ],
+      "formality": 5,
+      "price": 62,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.asos.com/men/trousers-chinos/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-oversized-sweatshirt",
+      "retailer": "ASOS",
+      "name": "ASOS Design Oversized Sweatshirt",
+      "category": "top",
+      "color": "grey marl",
+      "styleTags": [
+        "streetwear",
+        "relaxed",
+        "casual"
+      ],
+      "formality": 1,
+      "price": 40,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.asos.com/men/t-shirts-vests/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-nylon-weekend-bag",
+      "retailer": "ASOS",
+      "name": "ASOS Design Nylon Weekend Bag",
+      "category": "bag",
+      "color": "black",
+      "styleTags": [
+        "utility",
+        "casual",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 55,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.asos.com/men/bags/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "asos-asos-design-slim-woven-tie",
+      "retailer": "ASOS",
+      "name": "ASOS Design Slim Woven Tie",
+      "category": "accessory",
+      "color": "deep green",
+      "styleTags": [
+        "formal",
+        "classic",
+        "refined"
+      ],
+      "formality": 5,
+      "price": 22,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.asos.com/men/accessories/",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-miraylle-leather-derby-shoe",
+      "retailer": "Aldo",
+      "name": "Miraylle Leather Derby Shoe",
+      "category": "shoes",
+      "color": "dark brown",
+      "styleTags": [
+        "classic",
+        "smart",
+        "warm"
+      ],
+      "formality": 4,
+      "price": 150,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-clean-cupsole-leather-sneaker",
+      "retailer": "Aldo",
+      "name": "Clean Cupsole Leather Sneaker",
+      "category": "shoes",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "clean",
+        "modern"
+      ],
+      "formality": 2,
+      "price": 120,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-gwiralian-chelsea-boot",
+      "retailer": "Aldo",
+      "name": "Gwiralian Chelsea Boot",
+      "category": "shoes",
+      "color": "black leather",
+      "styleTags": [
+        "sleek",
+        "classic",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 170,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-retro-runner-suede-sneaker",
+      "retailer": "Aldo",
+      "name": "Retro Runner Suede Sneaker",
+      "category": "shoes",
+      "color": "grey/navy",
+      "styleTags": [
+        "retro",
+        "casual",
+        "textured"
+      ],
+      "formality": 1,
+      "price": 110,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-legaon-leather-loafer",
+      "retailer": "Aldo",
+      "name": "Legaon Leather Loafer",
+      "category": "shoes",
+      "color": "cognac",
+      "styleTags": [
+        "classic",
+        "refined",
+        "warm"
+      ],
+      "formality": 4,
+      "price": 140,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-vaneli-lace-up-boot",
+      "retailer": "Aldo",
+      "name": "Vaneli Lace-Up Boot",
+      "category": "shoes",
+      "color": "chocolate suede",
+      "styleTags": [
+        "rugged",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 160,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/shoes",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-structured-nylon-backpack",
+      "retailer": "Aldo",
+      "name": "Structured Nylon Backpack",
+      "category": "bag",
+      "color": "black",
+      "styleTags": [
+        "utility",
+        "casual",
+        "monochrome"
+      ],
+      "formality": 1,
+      "price": 90,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/bags",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-saffiano-leather-card-holder",
+      "retailer": "Aldo",
+      "name": "Saffiano Leather Card Holder",
+      "category": "accessory",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "refined",
+        "monochrome"
+      ],
+      "formality": 3,
+      "price": 45,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/wallets",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "aldo-textured-leather-belt",
+      "retailer": "Aldo",
+      "name": "Textured Leather Belt",
+      "category": "accessory",
+      "color": "dark brown",
+      "styleTags": [
+        "classic",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 55,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.aldoshoes.com/ca/en_CA/men/wallets",
+      "countries": [
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "mid"
+    },
+    {
+      "id": "mr-porter-officine-g-n-rale-wool-flannel-chore-jacke",
+      "retailer": "Mr Porter",
+      "name": "Officine Générale Wool-Flannel Chore Jacket",
+      "category": "jacket",
+      "color": "anthracite",
+      "styleTags": [
+        "refined",
+        "textured",
+        "minimal"
+      ],
+      "formality": 3,
+      "price": 620,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/coats-and-jackets",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-nn07-wool-blend-double-breasted-coat",
+      "retailer": "Mr Porter",
+      "name": "NN07 Wool-Blend Double-Breasted Coat",
+      "category": "jacket",
+      "color": "dark navy",
+      "styleTags": [
+        "tailored",
+        "classic",
+        "refined"
+      ],
+      "formality": 4,
+      "price": 780,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/coats-and-jackets",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-brunello-cucinelli-suede-bomber",
+      "retailer": "Mr Porter",
+      "name": "Brunello Cucinelli Suede Bomber",
+      "category": "jacket",
+      "color": "taupe",
+      "styleTags": [
+        "luxe",
+        "soft",
+        "refined"
+      ],
+      "formality": 3,
+      "price": 1450,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/coats-and-jackets",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-sunspel-merino-wool-crew-sweater",
+      "retailer": "Mr Porter",
+      "name": "Sunspel Merino Wool Crew Sweater",
+      "category": "top",
+      "color": "charcoal melange",
+      "styleTags": [
+        "minimal",
+        "luxe",
+        "soft"
+      ],
+      "formality": 3,
+      "price": 340,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/knitwear",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-drake-s-cotton-oxford-button-down-shirt",
+      "retailer": "Mr Porter",
+      "name": "Drake's Cotton-Oxford Button-Down Shirt",
+      "category": "top",
+      "color": "pale blue",
+      "styleTags": [
+        "classic",
+        "crisp",
+        "refined"
+      ],
+      "formality": 4,
+      "price": 295,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/knitwear",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-sunspel-riviera-supima-cotton-t-shirt",
+      "retailer": "Mr Porter",
+      "name": "Sunspel Riviera Supima Cotton T-Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "minimal",
+        "luxe",
+        "essential"
+      ],
+      "formality": 2,
+      "price": 135,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/knitwear",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-john-smedley-sea-island-cotton-polo",
+      "retailer": "Mr Porter",
+      "name": "John Smedley Sea Island Cotton Polo",
+      "category": "top",
+      "color": "black",
+      "styleTags": [
+        "refined",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 390,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/knitwear",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-incotex-slim-wool-flannel-trousers",
+      "retailer": "Mr Porter",
+      "name": "Incotex Slim Wool-Flannel Trousers",
+      "category": "trousers",
+      "color": "mid grey",
+      "styleTags": [
+        "formal",
+        "tailored",
+        "refined"
+      ],
+      "formality": 5,
+      "price": 480,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/trousers",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-orslow-107-slim-selvedge-jeans",
+      "retailer": "Mr Porter",
+      "name": "Orslow 107 Slim Selvedge Jeans",
+      "category": "trousers",
+      "color": "one-wash indigo",
+      "styleTags": [
+        "denim",
+        "heritage",
+        "refined"
+      ],
+      "formality": 2,
+      "price": 385,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/trousers",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-common-projects-achilles-low-sneaker",
+      "retailer": "Mr Porter",
+      "name": "Common Projects Achilles Low Sneaker",
+      "category": "shoes",
+      "color": "white leather",
+      "styleTags": [
+        "minimal",
+        "luxe",
+        "clean"
+      ],
+      "formality": 3,
+      "price": 570,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/shoes",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-edward-green-chelsea-cap-toe-oxford",
+      "retailer": "Mr Porter",
+      "name": "Edward Green Chelsea Cap-Toe Oxford",
+      "category": "shoes",
+      "color": "dark oak",
+      "styleTags": [
+        "formal",
+        "heritage",
+        "luxe"
+      ],
+      "formality": 5,
+      "price": 1650,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/shoes",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-officine-g-n-rale-pleated-wool-trouser",
+      "retailer": "Mr Porter",
+      "name": "Officine Générale Pleated Wool Trouser",
+      "category": "trousers",
+      "color": "ink",
+      "styleTags": [
+        "tailored",
+        "refined",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 420,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/clothing/trousers",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-grenson-suede-chukka-boot",
+      "retailer": "Mr Porter",
+      "name": "Grenson Suede Chukka Boot",
+      "category": "shoes",
+      "color": "tobacco",
+      "styleTags": [
+        "heritage",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 520,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/shoes",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-bleu-de-chauffe-leather-satchel",
+      "retailer": "Mr Porter",
+      "name": "Bleu de Chauffe Leather Satchel",
+      "category": "bag",
+      "color": "natural leather",
+      "styleTags": [
+        "heritage",
+        "refined",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 690,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/bags",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-anderson-s-suede-belt",
+      "retailer": "Mr Porter",
+      "name": "Anderson's Suede Belt",
+      "category": "accessory",
+      "color": "chocolate suede",
+      "styleTags": [
+        "refined",
+        "textured",
+        "warm"
+      ],
+      "formality": 3,
+      "price": 210,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/accessories",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "mr-porter-drake-s-wool-silk-pocket-square",
+      "retailer": "Mr Porter",
+      "name": "Drake's Wool-Silk Pocket Square",
+      "category": "accessory",
+      "color": "navy paisley",
+      "styleTags": [
+        "formal",
+        "patterned",
+        "refined"
+      ],
+      "formality": 5,
+      "price": 115,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.mrporter.com/en-ca/mens/accessories",
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "JP",
+        "DE",
+        "FR"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-3b-wool-blazer",
+      "retailer": "Beams",
+      "name": "Beams Plus 3B Wool Blazer",
+      "category": "jacket",
+      "color": "navy",
+      "styleTags": [
+        "ivy",
+        "tailored",
+        "heritage"
+      ],
+      "formality": 4,
+      "price": 540,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-cotton-chore-coat",
+      "retailer": "Beams",
+      "name": "Beams Plus Cotton Chore Coat",
+      "category": "jacket",
+      "color": "ecru",
+      "styleTags": [
+        "workwear",
+        "textured",
+        "neutral"
+      ],
+      "formality": 2,
+      "price": 380,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-shaggy-dog-shetland-sweater",
+      "retailer": "Beams",
+      "name": "Beams Plus Shaggy Dog Shetland Sweater",
+      "category": "top",
+      "color": "moss green",
+      "styleTags": [
+        "ivy",
+        "textured",
+        "heritage"
+      ],
+      "formality": 2,
+      "price": 260,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-oxford-pullover-shirt",
+      "retailer": "Beams",
+      "name": "Beams Plus Oxford Pullover Shirt",
+      "category": "top",
+      "color": "university stripe",
+      "styleTags": [
+        "ivy",
+        "classic",
+        "patterned"
+      ],
+      "formality": 3,
+      "price": 195,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-ivy-chino-trousers",
+      "retailer": "Beams",
+      "name": "Beams Plus Ivy Chino Trousers",
+      "category": "trousers",
+      "color": "khaki",
+      "styleTags": [
+        "ivy",
+        "heritage",
+        "neutral"
+      ],
+      "formality": 3,
+      "price": 230,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-5-pocket-selvedge-denim",
+      "retailer": "Beams",
+      "name": "Beams Plus 5-Pocket Selvedge Denim",
+      "category": "trousers",
+      "color": "dark indigo",
+      "styleTags": [
+        "denim",
+        "heritage",
+        "refined"
+      ],
+      "formality": 2,
+      "price": 285,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-paraboot-michael-derby",
+      "retailer": "Beams",
+      "name": "Beams Plus Paraboot Michael Derby",
+      "category": "shoes",
+      "color": "café brown",
+      "styleTags": [
+        "heritage",
+        "rugged",
+        "refined"
+      ],
+      "formality": 3,
+      "price": 640,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-canvas-rucksack",
+      "retailer": "Beams",
+      "name": "Beams Plus Canvas Rucksack",
+      "category": "bag",
+      "color": "olive",
+      "styleTags": [
+        "utility",
+        "heritage",
+        "casual"
+      ],
+      "formality": 1,
+      "price": 240,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "beams-beams-plus-regimental-stripe-tie",
+      "retailer": "Beams",
+      "name": "Beams Plus Regimental Stripe Tie",
+      "category": "accessory",
+      "color": "navy/gold stripe",
+      "styleTags": [
+        "formal",
+        "ivy",
+        "patterned"
+      ],
+      "formality": 5,
+      "price": 160,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://www.beams.co.jp/global/",
+      "countries": [
+        "JP",
+        "CA",
+        "US",
+        "GB"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-balmacaan-coat",
+      "retailer": "United Arrows",
+      "name": "United Arrows Balmacaan Coat",
+      "category": "jacket",
+      "color": "greige",
+      "styleTags": [
+        "refined",
+        "minimal",
+        "neutral"
+      ],
+      "formality": 4,
+      "price": 720,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-soft-tailored-jacket",
+      "retailer": "United Arrows",
+      "name": "United Arrows Soft Tailored Jacket",
+      "category": "jacket",
+      "color": "charcoal",
+      "styleTags": [
+        "tailored",
+        "refined",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 650,
+      "currency": "CAD",
+      "imageUrl": "/catalog/jacket.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-semi-wide-collar-shirt",
+      "retailer": "United Arrows",
+      "name": "United Arrows Semi-Wide Collar Shirt",
+      "category": "top",
+      "color": "white",
+      "styleTags": [
+        "formal",
+        "crisp",
+        "refined"
+      ],
+      "formality": 5,
+      "price": 220,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-12g-silk-cotton-cardigan",
+      "retailer": "United Arrows",
+      "name": "United Arrows 12G Silk-Cotton Cardigan",
+      "category": "top",
+      "color": "midnight",
+      "styleTags": [
+        "refined",
+        "soft",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 280,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-heavy-jersey-pocket-tee",
+      "retailer": "United Arrows",
+      "name": "United Arrows Heavy Jersey Pocket Tee",
+      "category": "top",
+      "color": "slate",
+      "styleTags": [
+        "minimal",
+        "refined",
+        "monochrome"
+      ],
+      "formality": 2,
+      "price": 120,
+      "currency": "CAD",
+      "imageUrl": "/catalog/top.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-pleated-wool-slacks",
+      "retailer": "United Arrows",
+      "name": "United Arrows Pleated Wool Slacks",
+      "category": "trousers",
+      "color": "dark charcoal",
+      "styleTags": [
+        "formal",
+        "tailored",
+        "monochrome"
+      ],
+      "formality": 5,
+      "price": 310,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-tapered-cotton-trousers",
+      "retailer": "United Arrows",
+      "name": "United Arrows Tapered Cotton Trousers",
+      "category": "trousers",
+      "color": "ink navy",
+      "styleTags": [
+        "refined",
+        "minimal",
+        "versatile"
+      ],
+      "formality": 3,
+      "price": 260,
+      "currency": "CAD",
+      "imageUrl": "/catalog/trousers.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-plain-toe-leather-derby",
+      "retailer": "United Arrows",
+      "name": "United Arrows Plain-Toe Leather Derby",
+      "category": "shoes",
+      "color": "black",
+      "styleTags": [
+        "formal",
+        "minimal",
+        "monochrome"
+      ],
+      "formality": 5,
+      "price": 480,
+      "currency": "CAD",
+      "imageUrl": "/catalog/shoes.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-leather-tote",
+      "retailer": "United Arrows",
+      "name": "United Arrows Leather Tote",
+      "category": "bag",
+      "color": "black",
+      "styleTags": [
+        "minimal",
+        "refined",
+        "monochrome"
+      ],
+      "formality": 4,
+      "price": 420,
+      "currency": "CAD",
+      "imageUrl": "/catalog/bag.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    },
+    {
+      "id": "united-arrows-united-arrows-silk-knit-tie",
+      "retailer": "United Arrows",
+      "name": "United Arrows Silk Knit Tie",
+      "category": "accessory",
+      "color": "burgundy",
+      "styleTags": [
+        "formal",
+        "textured",
+        "refined"
+      ],
+      "formality": 5,
+      "price": 145,
+      "currency": "CAD",
+      "imageUrl": "/catalog/accessory.svg",
+      "productUrl": "https://store.united-arrows.co.jp/",
+      "countries": [
+        "JP",
+        "CA",
+        "US"
+      ],
+      "sizes": [
+        "One Size"
+      ],
+      "lastChecked": "2026-08-10",
+      "tier": "premium"
+    }
+  ]
+}

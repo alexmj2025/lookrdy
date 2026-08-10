@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320">
+  <rect width="240" height="320" fill="#f4f3f1"/>
+  <g fill="none" stroke="#0a0a0a" stroke-width="1.4">
+    <path d="M96 68 Q120 84 144 68 L182 84 L194 140 L166 149 L166 262 L74 262 L74 149 L46 140 L58 84 Z"/>
+    <path d="M96 68 Q120 94 144 68"/>
+    <path d="M74 244 L166 244" stroke-width="0.7"/>
+  </g>
+  <text x="120" y="302" text-anchor="middle" font-family="Times New Roman, serif" font-size="9" letter-spacing="3" fill="#8d8a85">TOP</text>
+</svg>
