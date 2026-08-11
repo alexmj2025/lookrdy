@@ -21,14 +21,42 @@ const localProducts = catalogJson.products as Product[];
 let memo: { at: number; products: Product[] } | null = null;
 const TTL_MS = 60_000;
 
+/**
+ * Which backend actually served the catalog on the last read.
+ *
+ * The fallback to local JSON is deliberately silent so a Supabase outage can
+ * never break the user flow — but that means a misconfigured deployment looks
+ * identical to a working one. This flag is what /api/health reports, so the
+ * difference is observable.
+ */
+export type CatalogSource = "supabase" | "local-json";
+
+let lastSource: CatalogSource = "local-json";
+let lastError: string | null = null;
+
+export function getCatalogStatus(): {
+  source: CatalogSource;
+  error: string | null;
+} {
+  return { source: lastSource, error: lastError };
+}
+
 async function fetchAll(): Promise<Product[]> {
   const supabase = getSupabase();
-  if (!supabase) return localProducts;
+  if (!supabase) {
+    lastSource = "local-json";
+    lastError = "Supabase credentials not configured";
+    return localProducts;
+  }
 
   const { data, error } = await supabase.from("products").select("*");
   if (error || !data || data.length === 0) {
     // Table missing, empty, or unreachable — fall back rather than break the
     // flow. Run `npm run seed` to populate it.
+    lastSource = "local-json";
+    lastError = error
+      ? error.message
+      : "products table is empty — run `npm run seed`";
     if (error) {
       console.warn(
         `[catalog] Supabase read failed (${error.message}); using local catalog.`,
@@ -37,6 +65,8 @@ async function fetchAll(): Promise<Product[]> {
     return localProducts;
   }
 
+  lastSource = "supabase";
+  lastError = null;
   return data.map(rowToProduct);
 }
 

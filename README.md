@@ -45,10 +45,35 @@ reaches the browser.
 
 ### Current status of this checkout
 
-`MOCK_AI=1` is set because the OpenAI account attached to the key in
+Supabase is **live**: the schema is applied and all 158 products are seeded.
+Catalog reads, funnel events, and generation counts all go to Postgres.
+
+`MOCK_AI=1` is still set because the OpenAI account attached to the key in
 `.env.local` returns `429 insufficient_quota`. Add billing at
 platform.openai.com, set `MOCK_AI=0`, restart, and the live pipeline runs.
-The key in `.env.local` was shared in a chat transcript — **rotate it**.
+
+> **Rotate both secrets.** The `OPENAI_API_KEY` and the
+> `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` were shared in a chat
+> transcript. The service-role key in particular bypasses row-level security
+> entirely — it is full read/write access to the database. Roll it at
+> Supabase → Project Settings → API Keys once testing settles.
+
+### Health check
+
+`GET /api/health` reports which backends are actually live — the catalog
+falls back to local JSON silently by design, so a misconfigured deploy
+otherwise looks identical to a working one. Hit it right after deploying:
+
+```jsonc
+{
+  "catalog": { "source": "supabase", "productCount": 158, "error": null },
+  "supabase": { "configured": true, "tables": { "products": "ok", ... } },
+  "ai": { "engine": "mock", "apiKeyPresent": true }
+}
+```
+
+If `catalog.source` is `"local-json"`, the env vars didn't take or the seed
+never ran. It reports whether keys are *present*, never their values.
 
 ---
 
