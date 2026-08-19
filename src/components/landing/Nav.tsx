@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics/client";
+import { Logo } from "@/components/Logo";
 
 const LINKS = [
   { href: "/#how-it-works", label: "How it works" },
@@ -26,8 +27,8 @@ export function Nav() {
     <header className="lnd-nav" data-scrolled={scrolled}>
       <div className="lnd-container">
         <div className="lnd-nav__inner">
-          <Link href="/" className="lnd-nav__mark">
-            Lookrdy
+          <Link href="/" className="lnd-nav__mark" aria-label="Lookrdy home">
+            <Logo height={20} priority />
           </Link>
 
           <nav className="lnd-nav__links" aria-label="Primary">

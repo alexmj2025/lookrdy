@@ -272,11 +272,14 @@
   box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.4);
 }
 .lnd-nav__mark {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+.lnd-nav__mark img {
+  display: block;
+  height: 20px;
+  width: auto;
 }
 .lnd-nav__links {
   display: flex;
@@ -1015,6 +1018,11 @@
 .lnd-cta__panel > * {
   position: relative;
 }
+.lnd-cta__mark {
+  height: 24px;
+  width: auto;
+  margin-bottom: 0.25rem;
+}
 .lnd-cta__panel .lnd-eyebrow {
   color: rgba(255, 255, 255, 0.62);
 }
@@ -1134,9 +1142,9 @@
   align-content: start;
 }
 .lnd-foot__mark {
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  display: block;
+  height: 26px;
+  width: auto;
 }
 .lnd-foot__col h3 {
   margin: 0 0 0.875rem;

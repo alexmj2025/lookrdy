@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 
 const COLUMNS = [
   {
@@ -47,7 +48,7 @@ export function Footer() {
       <div className="lnd-container">
         <div className="lnd-foot__grid">
           <div className="lnd-foot__brand">
-            <span className="lnd-foot__mark">Lookrdy</span>
+            <Logo height={26} className="lnd-foot__mark" />
             <p className="lnd-body">
               Your personal stylist. One photo in, three complete looks out
               &mdash; built from products you can actually buy.
