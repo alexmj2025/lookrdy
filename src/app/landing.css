@@ -1,0 +1,1339 @@
+/* ---------------------------------------------------------------------------
+   Lookrdy marketing landing page.
+
+   Everything here is scoped under `.lnd` on purpose. The app flow pages
+   (/photo, /request, /results) use the strict black-and-white serif system in
+   globals.css; the landing uses a warmer sans-serif system with pills and
+   rounded cards. Scoping keeps the two from colliding.
+--------------------------------------------------------------------------- */
+
+.lnd {
+  --paper: #ffffff;
+  --wash: #f5f3ef;
+  --plate: #efeae2;
+  --ink: #111111;
+  --muted: #6b6a66;
+  --hair: #e6e3de;
+  --green: #6fae4e;
+  --green-soft: #dff2c8;
+  --green-ink: #3f6b28;
+
+  --r-card: 14px;
+  --r-lg: 22px;
+  --gutter: 24px;
+  --measure: 1180px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+.lnd *,
+.lnd *::before,
+.lnd *::after {
+  box-sizing: border-box;
+}
+
+.lnd-container {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* --- Type ---------------------------------------------------------------- */
+
+.lnd-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+.lnd-h1 {
+  font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.032em;
+  margin: 0;
+}
+
+.lnd-h2 {
+  font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.lnd-h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.028em;
+  margin: 0;
+}
+
+.lnd-body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+  max-width: 42ch;
+}
+
+.lnd-body--wide {
+  max-width: 52ch;
+}
+
+.lnd-fine {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.lnd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.875rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.lnd-btn--dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+.lnd-btn--dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.55);
+}
+
+.lnd-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hair);
+}
+.lnd-btn--ghost:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.lnd-btn--light {
+  background: var(--paper);
+  color: var(--ink);
+}
+.lnd-btn--light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.6);
+}
+
+.lnd-btn--sm {
+  min-height: 2.25rem;
+  padding: 0 1.125rem;
+  font-size: 0.8125rem;
+}
+
+.lnd-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+.lnd-link svg {
+  transition: transform 0.3s var(--ease);
+}
+.lnd-link:hover svg {
+  transform: translateX(4px);
+}
+
+.lnd :focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Reveal -------------------------------------------------------------- */
+
+.lnd [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.lnd [data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Photo placeholder --------------------------------------------------- */
+
+.lnd-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: var(--plate);
+}
+.lnd-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.lnd-photo__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  text-align: center;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--plate),
+    var(--plate) 10px,
+    #e8e2d9 10px,
+    #e8e2d9 20px
+  );
+  color: #8b8579;
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  word-break: break-all;
+}
+.lnd-photo__ph strong {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6f6a60;
+}
+
+/* --- Nav ----------------------------------------------------------------- */
+
+.lnd-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  padding: 1rem 0;
+  transition: padding 0.3s var(--ease);
+}
+.lnd-nav[data-scrolled="true"] {
+  padding: 0.5rem 0;
+}
+.lnd-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 3.5rem;
+  padding: 0 0.5rem 0 1.5rem;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  transition: box-shadow 0.3s var(--ease);
+}
+.lnd-nav[data-scrolled="true"] .lnd-nav__inner {
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.4);
+}
+.lnd-nav__mark {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.lnd-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.lnd-nav__links a {
+  position: relative;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+.lnd-nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.lnd-nav__links a:hover {
+  color: var(--ink);
+}
+.lnd-nav__links a:hover::after {
+  transform: scaleX(1);
+}
+.lnd-nav__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+}
+.lnd-nav__burger span {
+  display: block;
+  width: 17px;
+  height: 1.5px;
+  background: var(--ink);
+  transition:
+    transform 0.3s var(--ease),
+    opacity 0.2s var(--ease);
+}
+.lnd-nav__burger span + span {
+  margin-top: 5px;
+}
+.lnd-nav__burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.lnd-nav__burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.lnd-nav__burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+.lnd-nav__sheet {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem 1.25rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.5);
+  animation: lnd-sheet 0.3s var(--ease) both;
+}
+.lnd-nav__sheet a {
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hair);
+}
+.lnd-nav__sheet .lnd-btn {
+  margin-top: 1rem;
+}
+@keyframes lnd-sheet {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.lnd-hero {
+  padding: clamp(2rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.lnd-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.55fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.lnd-hero__copy > * + * {
+  margin-top: 1.5rem;
+}
+.lnd-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.lnd-hero__rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+.lnd-shot {
+  position: relative;
+}
+.lnd-shot__frame {
+  position: relative;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+.lnd-shot:hover .lnd-shot__frame {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 44px -26px rgba(0, 0, 0, 0.45);
+}
+.lnd-shot:hover .lnd-photo img {
+  transform: scale(1.05);
+}
+.lnd-shot__tag {
+  position: absolute;
+  left: 0.625rem;
+  bottom: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: 0 4px 14px -8px rgba(0, 0, 0, 0.5);
+}
+.lnd-shot__caption {
+  margin-top: 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.lnd-shot__brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.375rem;
+}
+.lnd-brand {
+  display: inline-flex;
+  align-items: center;
+  height: 1.125rem;
+  padding: 0 0.375rem;
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: var(--paper);
+}
+.lnd-shot__more {
+  font-size: 0.5625rem;
+  color: var(--muted);
+  align-self: center;
+}
+.lnd-nudge {
+  position: absolute;
+  z-index: 2;
+  top: 42%;
+  left: calc(25% - 1.125rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 8px 22px -12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.3s var(--ease),
+    background 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+.lnd-nudge:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: scale(1.1);
+}
+
+/* --- Still you, just styled ---------------------------------------------- */
+
+.lnd-styled {
+  background: var(--wash);
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+}
+.lnd-styled__head {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.lnd-styled__head .lnd-body {
+  max-width: 46ch;
+  text-align: center;
+}
+.lnd-strip {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  height: clamp(26rem, 46vw, 40rem);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--plate);
+}
+.lnd-strip__panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  transition: flex-grow 0.7s var(--ease);
+}
+.lnd-strip__panel:hover,
+.lnd-strip__panel:focus-visible {
+  flex-grow: 1.7;
+}
+.lnd-strip__panel .lnd-photo,
+.lnd-strip__panel .lnd-photo img {
+  height: 100%;
+}
+/* These panels are a fixed height so the accordion can animate width, which
+   means the tall source shots get cropped. Bias the crop upward so faces
+   survive and the trim comes off the legs, as in the comp. */
+.lnd-strip__panel .lnd-photo img {
+  object-position: 50% 18%;
+}
+.lnd-strip__chip {
+  position: absolute;
+  left: 0.875rem;
+  top: 0.875rem;
+  display: grid;
+  gap: 1px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  text-align: left;
+  box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.45s var(--ease);
+}
+.lnd-strip__panel:hover .lnd-strip__chip,
+.lnd-strip__panel:focus-visible .lnd-strip__chip {
+  opacity: 1;
+  transform: none;
+}
+.lnd-strip__chip em {
+  font-style: normal;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lnd-strip__chip span {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.lnd-strip__chip--low {
+  top: auto;
+  bottom: 0.875rem;
+}
+
+/* --- How it works -------------------------------------------------------- */
+
+.lnd-steps {
+  padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+}
+.lnd-steps__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+.lnd-steps__aside {
+  position: sticky;
+  top: 6.5rem;
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+.lnd-steps__list {
+  display: grid;
+  gap: 1.25rem;
+}
+.lnd-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  transition:
+    box-shadow 0.45s var(--ease),
+    transform 0.45s var(--ease),
+    border-color 0.45s var(--ease);
+}
+.lnd-step:hover {
+  transform: translateY(-4px);
+  border-color: #d8d4cc;
+  box-shadow: 0 30px 60px -42px rgba(0, 0, 0, 0.5);
+}
+.lnd-step__copy {
+  display: grid;
+  gap: 0.875rem;
+  align-content: start;
+}
+.lnd-step__num {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+/* mock: upload panel */
+.lnd-mock {
+  border: 1px solid var(--hair);
+  border-radius: var(--r-card);
+  background: var(--paper);
+  box-shadow: 0 24px 44px -34px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.lnd-mock__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--hair);
+  font-size: 0.625rem;
+  color: var(--muted);
+}
+.lnd-mock__body {
+  padding: 0.875rem;
+}
+.lnd-drop {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding: 1.75rem 1rem;
+  border-radius: 10px;
+  background: var(--wash);
+  text-align: center;
+}
+.lnd-drop__icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.lnd-drop strong {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.lnd-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+}
+.lnd-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75rem;
+  padding: 0 0.6875rem;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    background 0.2s var(--ease);
+}
+.lnd-chip:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.lnd-chip[data-on="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* mock: look cluster */
+/* The container owns the proportions and all three shots stretch to fill it.
+   Letting the individual images size the rows instead leaves the tall lead
+   shot short of the column it spans. */
+.lnd-cluster {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  aspect-ratio: 8 / 9;
+}
+.lnd-cluster > .lnd-photo {
+  height: 100%;
+  border-radius: 10px;
+}
+.lnd-cluster > .lnd-photo:first-child {
+  grid-row: span 2;
+}
+.lnd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.6875rem;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-ink);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+/* mock: product rows */
+.lnd-rows {
+  display: grid;
+  gap: 0.5rem;
+}
+.lnd-row {
+  display: grid;
+  /* Product tiles are landscape, not square — a wide, short thumb cell. */
+  grid-template-columns: 3.75rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.625rem;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  background: var(--paper);
+  transition:
+    border-color 0.25s var(--ease),
+    background 0.25s var(--ease);
+}
+.lnd-row:hover {
+  border-color: #d3cfc6;
+  background: #fcfbfa;
+}
+.lnd-row .lnd-photo {
+  border-radius: 6px;
+}
+.lnd-row__name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.lnd-row__meta {
+  font-size: 0.625rem;
+  color: var(--muted);
+}
+.lnd-row__price {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: right;
+}
+.lnd-row__side {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* --- Complete look ------------------------------------------------------- */
+
+.lnd-complete {
+  background: var(--wash);
+  padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+}
+.lnd-complete__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.lnd-complete__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: start;
+}
+.lnd-complete__photo {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.lnd-complete__photo:hover .lnd-photo img {
+  transform: scale(1.04);
+}
+.lnd-bill {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: 0 30px 60px -46px rgba(0, 0, 0, 0.5);
+}
+.lnd-bill__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.875rem 0 1.125rem;
+}
+.lnd-bill__total {
+  display: grid;
+  justify-items: end;
+}
+.lnd-bill__total em {
+  font-style: normal;
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lnd-bill__total strong {
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.lnd-meter {
+  margin-top: 1.125rem;
+  padding-top: 1.125rem;
+  border-top: 1px solid var(--hair);
+}
+.lnd-meter__label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.lnd-meter__track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--wash);
+  overflow: hidden;
+}
+.lnd-meter__fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--green);
+  transition: width 1.1s var(--ease) 0.15s;
+}
+[data-revealed="true"] .lnd-meter__fill {
+  width: var(--w, 60%);
+}
+
+/* --- Occasions ----------------------------------------------------------- */
+
+.lnd-occ {
+  padding: clamp(3.5rem, 7vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+}
+.lnd-occ__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.lnd-occ__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.lnd-occ__rail {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* Left edge lines up with the container so the first card sits under the
+     heading; the right runs off the viewport, so the rail reads as continuing
+     rather than ending in dead space on wide screens. */
+  padding-inline-start: max(
+    var(--gutter),
+    calc(50% - (var(--measure) / 2) + var(--gutter))
+  );
+  padding-inline-end: var(--gutter);
+  scroll-padding-inline-start: max(
+    var(--gutter),
+    calc(50% - (var(--measure) / 2) + var(--gutter))
+  );
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.lnd-occ__rail::-webkit-scrollbar {
+  display: none;
+}
+.lnd-occ__rail[data-dragging="true"] {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+/* Wide enough that the five cards always overrun the viewport, so the rail
+   reads as continuing off the right rather than ending in dead space. */
+.lnd-occ__card {
+  flex: 0 0 clamp(13rem, 22vw, 22rem);
+  scroll-snap-align: start;
+}
+.lnd-occ__frame {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+.lnd-occ__card:hover .lnd-occ__frame {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 48px -30px rgba(0, 0, 0, 0.45);
+}
+.lnd-occ__card:hover .lnd-photo img {
+  transform: scale(1.06);
+}
+.lnd-occ__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 0.125rem 0;
+  border-top: 1px solid var(--hair);
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.lnd-occ__foot svg {
+  color: var(--muted);
+  transition:
+    transform 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+.lnd-occ__card:hover .lnd-occ__foot svg {
+  transform: translate(3px, -3px);
+  color: var(--ink);
+}
+.lnd-occ__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+.lnd-occ__nav button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    opacity 0.25s var(--ease);
+}
+.lnd-occ__nav button:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.lnd-occ__nav button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* --- CTA banner ---------------------------------------------------------- */
+
+.lnd-cta {
+  padding: clamp(1.5rem, 4vw, 3rem) 0 clamp(3rem, 6vw, 5rem);
+}
+.lnd-cta__panel {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 4rem);
+  border-radius: clamp(20px, 3vw, 32px);
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+.lnd-cta__panel::before {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto;
+  height: 120%;
+  background: radial-gradient(
+    60% 60% at 50% 0%,
+    rgba(255, 255, 255, 0.13),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.lnd-cta__panel > * {
+  position: relative;
+}
+.lnd-cta__panel .lnd-eyebrow {
+  color: rgba(255, 255, 255, 0.62);
+}
+.lnd-cta__panel .lnd-h2 {
+  max-width: 18ch;
+}
+.lnd-cta__panel .lnd-body {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 44ch;
+  text-align: center;
+}
+.lnd-cta__panel .lnd-fine {
+  color: rgba(255, 255, 255, 0.5);
+}
+.lnd-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.lnd-cta__panel .lnd-btn--ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.lnd-cta__panel .lnd-btn--ghost:hover {
+  border-color: #fff;
+}
+
+/* --- Content pages (About, Terms, Privacy, Cookies, AI) ------------------ */
+
+.lnd-page {
+  padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 6rem);
+}
+.lnd-page__head {
+  display: grid;
+  gap: 1rem;
+  max-width: 42rem;
+  padding-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  border-bottom: 1px solid var(--hair);
+}
+.lnd-page__intro {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+.lnd-prose {
+  max-width: 42rem;
+}
+.lnd-prose h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 2.5rem 0 0.875rem;
+}
+.lnd-prose h2:first-child {
+  margin-top: 0;
+}
+.lnd-prose h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1.75rem 0 0.5rem;
+}
+.lnd-prose p,
+.lnd-prose li {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.lnd-prose p {
+  margin: 0 0 1rem;
+}
+.lnd-prose ul {
+  margin: 0 0 1rem;
+  padding-left: 1.125rem;
+}
+.lnd-prose li {
+  margin-bottom: 0.5rem;
+}
+.lnd-prose strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.lnd-prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lnd-prose__note {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--r-card);
+  background: var(--wash);
+  margin: 0 0 1.5rem;
+}
+.lnd-prose__note p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.lnd-foot {
+  border-top: 1px solid var(--hair);
+  padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;
+}
+.lnd-foot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+}
+.lnd-foot__brand {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+.lnd-foot__mark {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.lnd-foot__col h3 {
+  margin: 0 0 0.875rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lnd-foot__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.625rem;
+}
+.lnd-foot__col a {
+  font-size: 0.875rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: opacity 0.2s var(--ease);
+}
+.lnd-foot__col a:hover {
+  opacity: 0.55;
+}
+.lnd-foot__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hair);
+}
+.lnd-foot__social {
+  display: flex;
+  gap: 0.5rem;
+}
+.lnd-foot__social a {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  color: var(--ink);
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+.lnd-foot__social a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-2px);
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+  .lnd-steps__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* The sticky left column only makes sense beside a scrolling column. */
+  .lnd-steps__aside {
+    position: static;
+    top: auto;
+  }
+  .lnd-complete__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lnd-complete__photo {
+    max-width: 26rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .lnd-nav__links,
+  .lnd-nav__inner > .lnd-btn {
+    display: none;
+  }
+  .lnd-nav__burger {
+    display: flex;
+  }
+  .lnd-nav__inner {
+    padding-right: 0.5rem;
+  }
+  .lnd-nav__sheet {
+    display: flex;
+  }
+  .lnd-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lnd-hero__rail {
+    display: flex;
+    gap: 0.625rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+  .lnd-hero__rail::-webkit-scrollbar {
+    display: none;
+  }
+  .lnd-shot {
+    flex: 0 0 60%;
+    max-width: 15rem;
+    scroll-snap-align: start;
+  }
+  .lnd-nudge {
+    display: none;
+  }
+  .lnd-step {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lnd-complete__head,
+  .lnd-occ__head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+  .lnd-foot__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .lnd-foot__brand {
+    grid-column: 1 / -1;
+  }
+  /* Touch territory: the hover accordion has no affordance, so show all four
+     panels and all four chips at once. */
+  .lnd-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: auto;
+    gap: 2px;
+  }
+  /* The sources are 0.35 — at full ratio a 2x2 grid runs past 1600px tall.
+     Crop to 2:3 and lean on object-position to keep heads in frame. */
+  .lnd-strip__panel {
+    aspect-ratio: 2 / 3;
+  }
+  .lnd-strip__chip {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .lnd {
+    --gutter: 16px;
+  }
+  .lnd-cluster {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    aspect-ratio: auto;
+  }
+  .lnd-cluster > .lnd-photo {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+  .lnd-cluster > .lnd-photo:first-child {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    aspect-ratio: 3 / 4;
+  }
+  .lnd-occ__card {
+    flex: 0 0 72%;
+  }
+  .lnd-occ__nav {
+    display: none;
+  }
+  .lnd-shot {
+    flex-basis: 68%;
+  }
+}
+
+@media (max-width: 519px) {
+  .lnd-hero__actions .lnd-btn {
+    width: 100%;
+  }
+  .lnd-foot__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lnd *,
+  .lnd *::before,
+  .lnd *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lnd [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

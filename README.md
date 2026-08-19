@@ -218,3 +218,35 @@ simulation.
 Push the repo, import it in Vercel, and add the same environment variables in
 Project Settings → Environment Variables. `SUPABASE_SERVICE_ROLE_KEY` and
 `OPENAI_API_KEY` must **not** be prefixed with `NEXT_PUBLIC_`.
+
+## Landing page images
+
+The landing page at `/` renders every photo through
+`src/components/landing/Photo.tsx`, which falls back to a labelled placeholder
+when a file is absent. The 24 photos live in `public/landing/` and are built
+from the Figma exports in the repo root's `public/img/`:
+
+```bash
+node scripts/ingest-landing-photos.mjs
+```
+
+The script holds the source-to-slot mapping. The exports have meaningless
+names (`image 29.png`, `Frame 1000004959.png`), so the mapping was made by
+looking at each file, and the script's comments record what each one is.
+
+Nothing is cropped — the comp's own proportions are kept (hero cards are tall
+and narrow at 0.45, product tiles are landscape), and the `ratio` prop at each
+`<Photo>` call site matches its source. Alpha is flattened onto each tile's own
+background colour, sampled from its top-left pixel, so the rounded-corner
+product tiles keep their tint. Output is progressive mozjpeg at q82, capped at
+1400px on the long edge for portraits and 800px for product tiles: 32 MB of PNG
+in, ~1.2 MB of JPG out.
+
+Two notes for anyone swapping photography:
+
+- `complete/hero.jpg` has the "Save look" chip and the "Look 01 · Modern
+  neutral" caption baked into the pixels. `CompleteLook.tsx` therefore renders
+  no overlays of its own. A replacement photo without those chips needs them
+  added back in that component.
+- Step 03 of "How it works" uses `steps/item-1..3.jpg`, which are a different
+  set of products from the shopping list's `complete/item-1..4.jpg`.

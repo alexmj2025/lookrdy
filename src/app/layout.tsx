@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  title: "lookrdy",
+  title: "Lookrdy — Know what to wear, every time",
   description:
-    "Tell us the occasion. Get three complete outfits built from real products you can buy — visualized on you.",
+    "Upload one photo and tell us where you're going. Lookrdy creates three personalized outfit directions and finds the pieces you can actually buy.",
 };
 
 export const viewport: Viewport = {
@@ -22,7 +22,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="min-h-dvh">{children}</body>
+      {/* Browser extensions (Grammarly and friends) inject attributes onto
+          <body> before React hydrates, which React reports as a hydration
+          mismatch. Suppressing here covers only this element's attributes. */}
+      <body className="min-h-dvh" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
