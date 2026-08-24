@@ -26,6 +26,13 @@ const COLUMNS = [
 
 const SOCIAL = [
   {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/lookrdy",
+    // The "in" mark reads as a solid glyph rather than an outline.
+    filled: true,
+    path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.75 23 11 23 14.4V21h-4v-5.9c0-1.4-.03-3.2-2-3.2s-2.3 1.5-2.3 3.1V21h-4V9Z",
+  },
+  {
     label: "Instagram",
     href: "#",
     path: "M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm5.6-1.1h.01",
@@ -87,23 +94,33 @@ export function Footer() {
             retailer&rsquo;s site.
           </p>
           <div className="lnd-foot__social">
-            {SOCIAL.map((item) => (
-              <a key={item.label} href={item.href} aria-label={item.label}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
+            {SOCIAL.map((item) => {
+              const external = item.href.startsWith("http");
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  aria-label={item.label}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                 >
-                  <path d={item.path} />
-                </svg>
-              </a>
-            ))}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill={item.filled ? "currentColor" : "none"}
+                    stroke={item.filled ? "none" : "currentColor"}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={item.path} />
+                  </svg>
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
