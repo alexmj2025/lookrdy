@@ -1,0 +1,349 @@
+/* ---------------------------------------------------------------------------
+   Cookie consent bar and settings dialog.
+
+   Scoped under .ck- and deliberately self-contained: this appears on the
+   landing page (.lnd design system) and on the app flow pages (the serif
+   system in globals.css), so it can borrow tokens from neither.
+--------------------------------------------------------------------------- */
+
+.ck {
+  --ck-paper: #ffffff;
+  --ck-ink: #111111;
+  --ck-muted: #6b6a66;
+  --ck-hair: #e6e3de;
+  --ck-wash: #f5f3ef;
+  --ck-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  pointer-events: none;
+}
+
+.ck *,
+.ck *::before,
+.ck *::after {
+  box-sizing: border-box;
+}
+
+.ck__bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 60rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ck-hair);
+  border-radius: 16px;
+  background: var(--ck-paper);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.45);
+  animation: ck-rise 0.45s var(--ck-ease) both;
+}
+
+@keyframes ck-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.ck__text {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ck-muted);
+}
+.ck__text a {
+  color: var(--ck-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ck__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
+  margin-left: auto;
+}
+
+.ck__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0 1.125rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ck-ink);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ck-ease),
+    border-color 0.2s var(--ck-ease),
+    color 0.2s var(--ck-ease);
+}
+.ck__btn--primary {
+  background: var(--ck-ink);
+  color: var(--ck-paper);
+}
+.ck__btn--primary:hover {
+  background: #2c2c2c;
+}
+.ck__btn--outline {
+  border-color: var(--ck-hair);
+}
+.ck__btn--outline:hover {
+  border-color: var(--ck-ink);
+}
+.ck__btn--quiet {
+  color: var(--ck-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0 0.5rem;
+}
+.ck__btn--quiet:hover {
+  color: var(--ck-ink);
+}
+
+.ck :focus-visible {
+  outline: 2px solid var(--ck-ink);
+  outline-offset: 2px;
+}
+
+/* --- Settings dialog ----------------------------------------------------- */
+
+.ck-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  background: rgba(17, 17, 17, 0.4);
+  backdrop-filter: blur(2px);
+  opacity: 1;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base UI holds the element mounted until the exit animation finishes, so the
+   closed states must be declared or the dialog never unmounts. */
+.ck-backdrop[data-starting-style],
+.ck-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+/* Safety net: a closing overlay must never intercept clicks, even if it
+   lingers a frame longer than expected. */
+.ck-backdrop[data-ending-style],
+.ck-dialog[data-ending-style] {
+  pointer-events: none;
+}
+
+.ck-dialog {
+  --ck-paper: #ffffff;
+  --ck-ink: #111111;
+  --ck-muted: #6b6a66;
+  --ck-hair: #e6e3de;
+  --ck-wash: #f5f3ef;
+  --ck-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  position: fixed;
+  z-index: 220;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 2rem);
+  max-width: 34rem;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: 1.5rem;
+  border: 1px solid var(--ck-hair);
+  border-radius: 18px;
+  background: var(--ck-paper);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.55);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  color: var(--ck-ink);
+  opacity: 1;
+  transition:
+    opacity 0.3s var(--ck-ease),
+    transform 0.3s var(--ck-ease);
+}
+
+.ck-dialog[data-starting-style],
+.ck-dialog[data-ending-style] {
+  opacity: 0;
+  transform: translate(-50%, -46%);
+}
+
+.ck-dialog *,
+.ck-dialog *::before,
+.ck-dialog *::after {
+  box-sizing: border-box;
+}
+
+.ck-dialog__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.ck-dialog__intro {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ck-muted);
+}
+.ck-dialog__intro a {
+  color: var(--ck-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ck-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--ck-hair);
+}
+.ck-row__copy {
+  flex: 1;
+  min-width: 0;
+}
+.ck-row__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+.ck-row__desc {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--ck-muted);
+}
+.ck-row__locked {
+  flex: none;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ck-muted);
+  padding-top: 0.25rem;
+}
+
+/* Switch */
+.ck-switch {
+  flex: none;
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--ck-hair);
+  background: var(--ck-wash);
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ck-ease),
+    border-color 0.25s var(--ck-ease);
+}
+.ck-switch::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 999px;
+  background: var(--ck-paper);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transform: translate(0, -50%);
+  transition: transform 0.25s var(--ck-ease);
+}
+.ck-switch[aria-checked="true"] {
+  background: var(--ck-ink);
+  border-color: var(--ck-ink);
+}
+.ck-switch[aria-checked="true"]::after {
+  transform: translate(1.19rem, -50%);
+}
+
+.ck-dialog__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ck-hair);
+}
+.ck-dialog__foot .ck__btn {
+  flex: 1 1 auto;
+}
+
+.ck-note {
+  margin: 1rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--ck-muted);
+}
+
+/* --- Footer trigger ------------------------------------------------------ */
+
+.ck-trigger {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .ck {
+    padding: 0.75rem;
+  }
+  .ck__bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.875rem;
+    padding: 1rem;
+  }
+  .ck__actions {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+  .ck__actions .ck__btn--primary,
+  .ck__actions .ck__btn--outline {
+    flex: 1 1 auto;
+  }
+  .ck-dialog {
+    padding: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck__bar {
+    animation: none;
+  }
+  .ck-dialog,
+  .ck-backdrop {
+    transition-duration: 0.001ms;
+  }
+  .ck-switch,
+  .ck-switch::after,
+  .ck__btn {
+    transition: none;
+  }
+}

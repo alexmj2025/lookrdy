@@ -57,7 +57,7 @@ export default function AboutPage() {
         <li>
           <strong>Retailer matches are examples, not placements.</strong> We
           don’t take payment to put a brand in your results. See our{" "}
-          <Link href="/legal/ai">AI Disclosure</Link> for how looks are
+          <Link href="/legal/ai-disclosure">AI Disclosure</Link> for how looks are
           generated.
         </li>
         <li>
@@ -78,7 +78,7 @@ export default function AboutPage() {
       <h2>Get in touch</h2>
       <p>
         Questions, press, partnerships or bug reports:{" "}
-        <a href="mailto:hello@lookrdy.com">hello@lookrdy.com</a>.
+        <a href="mailto:marketing@lookrdy.com">marketing@lookrdy.com</a>.
       </p>
     </PageShell>
   );

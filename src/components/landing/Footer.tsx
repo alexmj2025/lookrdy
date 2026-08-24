@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { CookieSettingsLink } from "@/components/consent/CookieSettingsLink";
 
 const COLUMNS = [
   {
@@ -14,10 +15,11 @@ const COLUMNS = [
   {
     title: "Legal",
     links: [
-      { href: "/legal/terms", label: "Terms of Use" },
+      { href: "/legal/terms", label: "Terms of Service" },
       { href: "/legal/privacy", label: "Privacy Policy" },
-      { href: "/legal/cookies", label: "Cookie Policy" },
-      { href: "/legal/ai", label: "AI Disclosure" },
+      { href: "/legal/cookie", label: "Cookie Policy" },
+      { href: "/legal/ai-disclosure", label: "AI Disclosure" },
+      { href: "/legal/affiliate-disclosure", label: "Affiliate Disclosure" },
     ],
   },
 ];
@@ -68,6 +70,11 @@ export function Footer() {
                     )}
                   </li>
                 ))}
+                {col.title === "Legal" && (
+                  <li>
+                    <CookieSettingsLink />
+                  </li>
+                )}
               </ul>
             </div>
           ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import type { FunnelEvent } from "@/lib/types";
+import { isAllowed } from "@/components/consent/consent-store";
 
 /**
  * Client-side funnel emitter. Fire-and-forget — a failed analytics call must
@@ -10,6 +11,11 @@ export function track(
   event: FunnelEvent,
   properties: Record<string, unknown> = {},
 ): void {
+  // Funnel events are analytics, and the Cookie Policy commits to keeping
+  // optional analytics disabled until the user allows them. No consent, no
+  // event — this is the enforcement point for all ~15 call sites.
+  if (!isAllowed("analytics")) return;
+
   try {
     const body = JSON.stringify({ event, properties });
 

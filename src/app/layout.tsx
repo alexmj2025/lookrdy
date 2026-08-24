@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { CookieConsent } from "@/components/consent/CookieConsent";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           mismatch. Suppressing here covers only this element's attributes. */}
       <body className="min-h-dvh" suppressHydrationWarning>
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

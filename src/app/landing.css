@@ -1114,16 +1114,6 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.lnd-prose__note {
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--hair);
-  border-radius: var(--r-card);
-  background: var(--wash);
-  margin: 0 0 1.5rem;
-}
-.lnd-prose__note p:last-child {
-  margin-bottom: 0;
-}
 
 /* --- Footer -------------------------------------------------------------- */
 
