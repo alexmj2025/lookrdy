@@ -3,6 +3,7 @@ import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { CookieConsent } from "@/components/consent/CookieConsent";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className="min-h-dvh" suppressHydrationWarning>
         {children}
         <CookieConsent />
+        <GoogleTagManager />
       </body>
     </html>
   );
