@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lookrdy.example/schemas/product-v1.json",
+  "title": "Lookrdy Pilot Product",
+  "type": "object",
+  "required": [
+    "product_id",
+    "retailer",
+    "title",
+    "brand",
+    "url",
+    "current_price",
+    "currency",
+    "canonical_category",
+    "required_slot",
+    "source_checked_at",
+    "rights"
+  ],
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "pattern": "^SIM-[0-9]{3}$"
+    },
+    "retailer": {
+      "const": "Simons"
+    },
+    "title": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "regular_price": {
+      "type": "number",
+      "minimum": 0
+    },
+    "current_price": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "const": "CAD"
+    },
+    "sale_status": {
+      "enum": [
+        "regular",
+        "sale",
+        "unknown"
+      ]
+    },
+    "availability_status": {
+      "enum": [
+        "indexed_current",
+        "live_verified",
+        "unavailable",
+        "discontinued",
+        "unknown"
+      ]
+    },
+    "source_checked_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_review_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "listed_color": {
+      "type": "string"
+    },
+    "canonical_category": {
+      "enum": [
+        "shirt",
+        "pants",
+        "footwear",
+        "knit_layer",
+        "blazer",
+        "jacket",
+        "coat"
+      ]
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "required_slot": {
+      "enum": [
+        "top",
+        "bottom",
+        "shoes",
+        "optional_layer"
+      ]
+    },
+    "labels": {
+      "type": "object",
+      "required": [
+        "preferred_color_family",
+        "pattern",
+        "fit",
+        "formality",
+        "warmth",
+        "season_tags",
+        "occasion_tags",
+        "look_roles",
+        "budget_role"
+      ],
+      "properties": {
+        "preferred_color_family": {
+          "type": "string"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "fit": {
+          "type": "string"
+        },
+        "formality": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "warmth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "season_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "occasion_tags": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "company_dinner",
+              "date_upscale_dinner",
+              "everyday_upgrade"
+            ]
+          }
+        },
+        "look_roles": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Safe",
+              "Polished",
+              "Bold"
+            ]
+          }
+        },
+        "style_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "budget_role": {
+          "enum": [
+            "value",
+            "core",
+            "stretch",
+            "optional",
+            "backup_sale"
+          ]
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "confidence",
+        "needs_review",
+        "review_reasons"
+      ],
+      "properties": {
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "needs_review": {
+          "type": "boolean"
+        },
+        "review_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "image_use_authorized",
+        "affiliate_approved",
+        "public_display_allowed",
+        "link_out_only"
+      ],
+      "properties": {
+        "image_use_authorized": {
+          "type": "boolean"
+        },
+        "affiliate_approved": {
+          "type": "boolean"
+        },
+        "public_display_allowed": {
+          "type": "boolean"
+        },
+        "link_out_only": {
+          "type": "boolean"
+        }
+      }
+    },
+    "active_for_pilot": {
+      "type": "boolean"
+    }
+  }
+}

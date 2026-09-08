@@ -1,0 +1,2897 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-08-29",
+  "count": 50,
+  "products": [
+    {
+      "product_id": "SIM-001",
+      "retailer": "Simons",
+      "title": "Minimalist Oxford shirt, Boxy fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/solid/minimalist-oxford-shirt-boxy-fit--6736-230950",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "boxy",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "minimal",
+          "modern"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-002",
+      "retailer": "Simons",
+      "title": "Soft stretch shirt, Modern fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/solid/soft-stretch-shirt-modern-fit--6736-220438",
+      "regular_price": 59,
+      "current_price": 59,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "collared_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "modern",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "clean",
+          "business_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-003",
+      "retailer": "Simons",
+      "title": "Colourful Oxford shirt, Modern fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/solid/colourful-oxford-shirt-modern-fit--6736-227064",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "expanded",
+        "pattern": "solid",
+        "fit": "modern",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "smart_casual",
+          "colour"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-004",
+      "retailer": "Simons",
+      "title": "Heritage Oxford shirt, Modern fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/long-sleeves/heritage-oxford-shirt-modern-fit--6736-214733",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "modern",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "heritage",
+          "business_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-005",
+      "retailer": "Simons",
+      "title": "Striped Oxford shirt, Modern fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/patterns/striped-oxford-shirt-modern-fit--6736-214736",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "stripe",
+        "fit": "modern",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "classic",
+          "pattern"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-006",
+      "retailer": "Simons",
+      "title": "Gingham check Oxford shirt, Comfort fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/patterns/gingham-check-oxford-shirt-comfort-fit--6736-231308",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "gingham",
+        "fit": "comfort",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "classic",
+          "approachable"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-007",
+      "retailer": "Simons",
+      "title": "Oxford shirt, Comfort fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/solid/oxford-shirt-comfort-fit--6736-227063",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "comfort",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "classic",
+          "versatile"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-008",
+      "retailer": "Simons",
+      "title": "Multi-dot shirt, Modern fit",
+      "brand": "Le 31",
+      "url": "https://m.simons.ca/en/men-clothing/shirts-overshirts/patterns/multi-dot-shirt-modern-fit--5103-1102",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "patterned_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "expanded",
+        "pattern": "micro_dot",
+        "fit": "modern",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "playful",
+          "smart_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-009",
+      "retailer": "Simons",
+      "title": "Tone-on-tone jacquard shirt, Modern fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/solid/tone-on-tone-jacquard-shirt-modern-fit--14819-2401",
+      "regular_price": 79,
+      "current_price": 79,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "jacquard_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "tonal_jacquard",
+        "fit": "modern",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "textured",
+          "evening"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-010",
+      "retailer": "Simons",
+      "title": "Solid poplin shirt, Comfort fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/solid/solid-poplin-shirt-comfort-fit--6736-222913",
+      "regular_price": 59,
+      "current_price": 59,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "poplin_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "comfort",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "clean",
+          "business_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-011",
+      "retailer": "Simons",
+      "title": "Two-tone stripe Oxford shirt, Comfort fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/patterns/two-tone-stripe-oxford-shirt-comfort-fit--6736-231606",
+      "regular_price": 69,
+      "current_price": 69,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "oxford_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "expanded",
+        "pattern": "stripe",
+        "fit": "comfort",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "preppy",
+          "pattern"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-012",
+      "retailer": "Simons",
+      "title": "Check flannel shirt, Comfort fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/shirts/patterns/check-flannel-shirt-comfort-fit--13915-230320",
+      "regular_price": 59,
+      "current_price": 59,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "shirt",
+      "subcategory": "flannel_shirt",
+      "required_slot": "top",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "check",
+        "fit": "comfort",
+        "formality": 2,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "everyday_upgrade",
+          "date_upscale_dinner"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "casual",
+          "seasonal"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-013",
+      "retailer": "Simons",
+      "title": "Brushed finish banker-stripe pant, Barrel fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/loose-baggy/brushed-finish-banker-stripe-pant-barrel-fit-imported-from-seoul--23553-26301",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "tailored_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "banker_stripe",
+        "fit": "barrel",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Bold"
+        ],
+        "style_tags": [
+          "fashion_forward",
+          "tailored"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-014",
+      "retailer": "Simons",
+      "title": "Pleated high-rise pant",
+      "brand": "Le 31",
+      "url": "https://m.simons.ca/en/men-clothing/pants/tailored/pleated-high-rise-pant-imported-from-seoul--21741-26304",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "tailored_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "relaxed_high_rise",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "tailored",
+          "modern"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-015",
+      "retailer": "Simons",
+      "title": "Washable solid twill pant, Stockholm fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/tailored/washable-solid-twill-pant-stockholm-fit-slim--6772-219157",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "tailored_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "slim",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "business_casual",
+          "easy_care"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-016",
+      "retailer": "Simons",
+      "title": "Loose pleated comfort-waist pant",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/loose-baggy/loose-pleated-comfort-waist-pant-imported-from-seoul--14882-25301",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "pleated_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "loose",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "relaxed_tailoring",
+          "comfort"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-017",
+      "retailer": "Simons",
+      "title": "Banker stripe wide-leg pant",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/loose-baggy/banker-stripe-wide-leg-pant-loose-fit-imported-from-seoul--21740-26200",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "tailored_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "banker_stripe",
+        "fit": "wide_leg",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Bold"
+        ],
+        "style_tags": [
+          "statement",
+          "tailored"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-018",
+      "retailer": "Simons",
+      "title": "Belted pleated pant",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/loose-baggy/belted-pleated-pant-imported-from-seoul-loose-fit--22542-25200",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "pleated_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "loose",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "modern",
+          "belted"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-019",
+      "retailer": "Simons",
+      "title": "Pleated belted pant, Antwerp fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/loose-baggy/pleated-belted-pant-antwerp-fit-straight-loose--12016-226515",
+      "regular_price": 150,
+      "current_price": 150,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "pleated_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "straight_loose",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "refined",
+          "relaxed_tailoring"
+        ],
+        "budget_role": "stretch"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-020",
+      "retailer": "Simons",
+      "title": "Minimalist washable pant, Berlin fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/tailored/minimalist-washable-pant-berlin-fit-straight--12016-222963",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "tailored_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "straight",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "minimal",
+          "business_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-021",
+      "retailer": "Simons",
+      "title": "Stretch corduroy pant, Stockholm fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/skinny-slim/stretch-corduroy-pant-stockholm-fit-slim--19645-231316",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "corduroy_pants",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "corduroy",
+        "fit": "slim",
+        "formality": 3,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "seasonal",
+          "textured"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-022",
+      "retailer": "Simons",
+      "title": "Stretch chinos, Stockholm fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/chinos/stretch-chinos-stockholm-fit-slim--19645-215612",
+      "regular_price": 89,
+      "current_price": 89,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "chinos",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "slim",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "versatile",
+          "classic"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-023",
+      "retailer": "Simons",
+      "title": "Stretch chinos, London fit",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/pants/chinos/stretch-chinos-london-fit-slim-straight--13169-214740",
+      "regular_price": 125,
+      "current_price": 125,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "chinos",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "slim_straight",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "versatile",
+          "refined"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-024",
+      "retailer": "Simons",
+      "title": "Bedford chinos, Straight fit",
+      "brand": "Polo Ralph Lauren",
+      "url": "https://www.simons.ca/en/men-clothing/pants/chinos/bedford-chinos-straight-fit--9659-26124",
+      "regular_price": 165,
+      "current_price": 165,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "pants",
+      "subcategory": "chinos",
+      "required_slot": "bottom",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "straight",
+        "formality": 3,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "preppy",
+          "classic"
+        ],
+        "budget_role": "stretch"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-025",
+      "retailer": "Simons",
+      "title": "Cigma derby shoes",
+      "brand": "Steve Madden",
+      "url": "https://www.simons.ca/en/men-footwear/dress/cigma-derby-shoes-men--10778-262106",
+      "regular_price": 120,
+      "current_price": 120,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "footwear",
+      "subcategory": "derby",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "dressy",
+          "versatile"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-026",
+      "retailer": "Simons",
+      "title": "Smooth leather penny loafers",
+      "brand": "Simons",
+      "url": "https://www.simons.ca/en/men-footwear/dress/smooth-leather-penny-loafers-men--21757-164160",
+      "regular_price": 225,
+      "current_price": 225,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "footwear",
+      "subcategory": "penny_loafer",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "classic",
+          "polished"
+        ],
+        "budget_role": "stretch"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-027",
+      "retailer": "Simons",
+      "title": "Black Venetian loafers",
+      "brand": "Simons",
+      "url": "https://www.simons.ca/en/men-footwear/dress/black-venetian-loafers-men--23197-266607",
+      "regular_price": 195,
+      "current_price": 195,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "black",
+      "canonical_category": "footwear",
+      "subcategory": "venetian_loafer",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "black",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "minimal",
+          "evening"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-028",
+      "retailer": "Simons",
+      "title": "Minimalist leather penny loafers",
+      "brand": "Simons",
+      "url": "https://www.simons.ca/en/men-footwear/dress/minimalist-leather-penny-loafers-men--21239-24301",
+      "regular_price": 195,
+      "current_price": 195,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "footwear",
+      "subcategory": "penny_loafer",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "minimal",
+          "polished"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-029",
+      "retailer": "Simons",
+      "title": "Parscal derby shoes",
+      "brand": "Steve Madden",
+      "url": "https://www.simons.ca/en/men-footwear/dress/parscal-derby-shoes-men--10778-262100",
+      "regular_price": 180,
+      "current_price": 180,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "footwear",
+      "subcategory": "derby",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "dressy",
+          "contemporary"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-030",
+      "retailer": "Simons",
+      "title": "Wallabee loafers",
+      "brand": "Clarks",
+      "url": "https://www.simons.ca/en/men-footwear/all-our-shoes/wallabee-loafers-men--20533-25101",
+      "regular_price": 190,
+      "current_price": 190,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "footwear",
+      "subcategory": "casual_loafer",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 2,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "heritage",
+          "casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-031",
+      "retailer": "Simons",
+      "title": "Nimbus Cloud 574 sneakers",
+      "brand": "New Balance",
+      "url": "https://www.simons.ca/en/men-footwear/sneakers/nimbus-cloud-574-sneakers-men--6404-230113",
+      "regular_price": 130,
+      "current_price": 130,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "nimbus_cloud",
+      "canonical_category": "footwear",
+      "subcategory": "sneaker",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "light_neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 1,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "everyday_upgrade",
+          "date_upscale_dinner"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "retro",
+          "casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-032",
+      "retailer": "Simons",
+      "title": "471 hazelnut sneakers",
+      "brand": "New Balance",
+      "url": "https://www.simons.ca/en/men-footwear/sneakers/471-hazelnut-sneakers-men--6404-264711",
+      "regular_price": 135,
+      "current_price": 135,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "hazelnut",
+      "canonical_category": "footwear",
+      "subcategory": "sneaker",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "brown",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 1,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "everyday_upgrade",
+          "date_upscale_dinner"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "retro",
+          "earth_tone"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-033",
+      "retailer": "Simons",
+      "title": "Heritage Court II white sneakers",
+      "brand": "Polo Ralph Lauren",
+      "url": "https://www.simons.ca/en/men-footwear/sneakers/heritage-court-ii-white-sneakers-men--9659-261311",
+      "regular_price": 150,
+      "current_price": 150,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "white",
+      "canonical_category": "footwear",
+      "subcategory": "leather_sneaker",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "white",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 2,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "clean",
+          "smart_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-034",
+      "retailer": "Simons",
+      "title": "Killshot 2 leather sneakers",
+      "brand": "Nike",
+      "url": "https://www.simons.ca/en/men-footwear/sneakers/killshot-2-leather-sneakers-men--5821-24202",
+      "regular_price": 125,
+      "current_price": 125,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "footwear",
+      "subcategory": "leather_sneaker",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 2,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "retro",
+          "smart_casual"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-035",
+      "retailer": "Simons",
+      "title": "BW Army brown sneakers",
+      "brand": "Adidas Originals",
+      "url": "https://m.simons.ca/en/men-footwear/sneakers/bw-army-brown-sneakers-men--2911-2665654",
+      "regular_price": 160,
+      "current_price": 160,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "brown",
+      "canonical_category": "footwear",
+      "subcategory": "suede_sneaker",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "brown",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 2,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "heritage",
+          "statement"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-036",
+      "retailer": "Simons",
+      "title": "Black GT-2160 sneakers",
+      "brand": "Asics",
+      "url": "https://m.simons.ca/en/men-footwear/sneakers/black-gt-2160-sneakers-men--12083-2621600",
+      "regular_price": 170,
+      "current_price": 170,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "black",
+      "canonical_category": "footwear",
+      "subcategory": "technical_sneaker",
+      "required_slot": "shoes",
+      "labels": {
+        "preferred_color_family": "black",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 1,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Bold"
+        ],
+        "style_tags": [
+          "technical",
+          "fashion_forward"
+        ],
+        "budget_role": "core"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-037",
+      "retailer": "Simons",
+      "title": "Fuzzy knit polo-collar cardigan",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/shawls-cardigans/fuzzy-knit-polo-collar-cardigan--16903-222556",
+      "regular_price": 89,
+      "current_price": 89,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "cardigan",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 3,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "textured",
+          "soft_tailoring"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-038",
+      "retailer": "Simons",
+      "title": "Cable-knit cardigan",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/shawls-cardigans/cable-knit-cardigan--12462-225827",
+      "regular_price": 89,
+      "current_price": 89,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "cardigan",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "cable_knit",
+        "fit": "unspecified",
+        "formality": 3,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "heritage",
+          "textured"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-039",
+      "retailer": "Simons",
+      "title": "Zipped polo-collar waffled jersey cardigan",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/shawls-cardigans/zipped-polo-collar-waffled-jersey-cardigan-standard-fit--4673-225885",
+      "regular_price": 89,
+      "current_price": 89,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "zip_cardigan",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "waffle",
+        "fit": "standard",
+        "formality": 3,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "sporty_refined",
+          "textured"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-040",
+      "retailer": "Simons",
+      "title": "Twisted cable buttoned jacket, Recycled lambswool",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/short-sleeves/twisted-cable-buttoned-jacket-recycled-lambswool--12462-232160",
+      "regular_price": 99,
+      "current_price": 99,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "knit_jacket",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "cable_knit",
+        "fit": "unspecified",
+        "formality": 3,
+        "warmth": 4,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "heritage",
+          "seasonal"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-041",
+      "retailer": "Simons",
+      "title": "Reprocessed-cotton zipped cardigan",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/shawls-cardigans/reprocessed-cotton-zipped-cardigan--15233-219409",
+      "regular_price": 89,
+      "current_price": 89,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "zip_cardigan",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 3,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "minimal",
+          "versatile"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-042",
+      "retailer": "Simons",
+      "title": "Minimalist V-neck cardigan",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/shawls-cardigans/minimalist-v-neck-cardigan--6867-233297",
+      "regular_price": 89,
+      "current_price": 89,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "cardigan",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 3,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "minimal",
+          "classic"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-043",
+      "retailer": "Simons",
+      "title": "Crew neck sweater, Recycled lambswool",
+      "brand": "Le 31",
+      "url": "https://www.simons.ca/en/men-clothing/sweaters/lambswool/crew-neck-sweater-recycled-lambswool--12462-232153",
+      "regular_price": 79,
+      "current_price": 79,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "crew_neck_sweater",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 3,
+        "warmth": 4,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "classic",
+          "seasonal"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-044",
+      "retailer": "Simons",
+      "title": "Cable-knit zip-neck sweater, Relaxed fit",
+      "brand": "Lindbergh",
+      "url": "https://m.simons.ca/en/men-clothing/sweaters/turtlenecks-mock-necks/cable-knit-zip-neck-sweater-relaxed-fit--20069-26328",
+      "regular_price": 79,
+      "current_price": 79,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "knit_layer",
+      "subcategory": "zip_neck_sweater",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "cable_knit",
+        "fit": "relaxed",
+        "formality": 3,
+        "warmth": 4,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "seasonal",
+          "sporty_refined"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-045",
+      "retailer": "Simons",
+      "title": "Stretch piqué blazer",
+      "brand": "Soul of London",
+      "url": "https://www.simons.ca/en/men-clothing/suit-jackets-blazers/stretch-pique-blazer--4242-26306",
+      "regular_price": 225,
+      "current_price": 225,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "blazer",
+      "subcategory": "unstructured_blazer",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "business_casual",
+          "versatile"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-046",
+      "retailer": "Simons",
+      "title": "Donegal herringbone blazer",
+      "brand": "Soul of London",
+      "url": "https://www.simons.ca/en/men-clothing/suit-jackets-blazers/donegal-herringbone-blazer--4242-26308",
+      "regular_price": 225,
+      "current_price": 225,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "blazer",
+      "subcategory": "textured_blazer",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "herringbone",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "heritage",
+          "seasonal"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-047",
+      "retailer": "Simons",
+      "title": "Ultra-soft flannel-like blazer",
+      "brand": "Soul of London",
+      "url": "https://www.simons.ca/en/men-clothing/suit-jackets-blazers/ultra-soft-flannel-like-blazer--4242-26310",
+      "regular_price": 225,
+      "current_price": 225,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "varies_by_variant",
+      "canonical_category": "blazer",
+      "subcategory": "soft_blazer",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "business_casual",
+          "soft_tailoring"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-048",
+      "retailer": "Simons",
+      "title": "Blue and brown micro-pattern blazer",
+      "brand": "Soul of London",
+      "url": "https://www.simons.ca/en/men-clothing/suit-jackets-blazers/long-version/blue-and-brown-micro-pattern-blazer--4242-26311",
+      "regular_price": 225,
+      "current_price": 225,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "blue_brown",
+      "canonical_category": "blazer",
+      "subcategory": "patterned_blazer",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "expanded",
+        "pattern": "micro_pattern",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 2,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "refined",
+          "pattern"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-049",
+      "retailer": "Simons",
+      "title": "Faux-suede biker jacket",
+      "brand": "Jack & Jones",
+      "url": "https://m.simons.ca/en/men-clothing/coats-outerwear/bombers-jackets/faux-suede-biker-jacket--6652-25110",
+      "regular_price": 110,
+      "current_price": 110,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "fawn_tobacco",
+      "canonical_category": "jacket",
+      "subcategory": "biker_jacket",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "brown",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 2,
+        "warmth": 3,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Polished",
+          "Bold"
+        ],
+        "style_tags": [
+          "rugged",
+          "date_night"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.88,
+        "needs_review": true,
+        "review_reasons": [
+          "Confirm selected colour, size availability and price immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    },
+    {
+      "product_id": "SIM-050",
+      "retailer": "Simons",
+      "title": "Harvey stand-collar coat",
+      "brand": "Matinique",
+      "url": "https://www.simons.ca/en/men-clothing/coats-jackets/overcoats/harvey-stand-collar-coat--1340-203845",
+      "regular_price": 449,
+      "current_price": 449,
+      "currency": "CAD",
+      "sale_status": "regular",
+      "availability_status": "indexed_current",
+      "source_checked_at": "2026-08-29",
+      "next_review_at": "2026-09-05",
+      "listed_color": "navy_or_black",
+      "canonical_category": "coat",
+      "subcategory": "wool_blend_overcoat",
+      "required_slot": "optional_layer",
+      "labels": {
+        "preferred_color_family": "dark_neutral",
+        "pattern": "solid",
+        "fit": "unspecified",
+        "formality": 4,
+        "warmth": 4,
+        "season_tags": [
+          "fall",
+          "early_winter"
+        ],
+        "occasion_tags": [
+          "company_dinner",
+          "date_upscale_dinner",
+          "everyday_upgrade"
+        ],
+        "look_roles": [
+          "Safe",
+          "Polished"
+        ],
+        "style_tags": [
+          "refined",
+          "cold_weather"
+        ],
+        "budget_role": "optional"
+      },
+      "quality": {
+        "confidence": 0.96,
+        "needs_review": true,
+        "review_reasons": [
+          "Low-stock message observed; confirm size availability immediately before display"
+        ],
+        "source_basis": "Official Simons product page or current official indexed category result"
+      },
+      "rights": {
+        "image_use_authorized": false,
+        "affiliate_approved": false,
+        "public_display_allowed": false,
+        "link_out_only": true
+      },
+      "active_for_pilot": true
+    }
+  ]
+}

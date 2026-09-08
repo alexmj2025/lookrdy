@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "canonical_category": [
+    "shirt",
+    "pants",
+    "footwear",
+    "knit_layer",
+    "blazer",
+    "jacket",
+    "coat"
+  ],
+  "required_slot": [
+    "top",
+    "bottom",
+    "shoes",
+    "optional_layer"
+  ],
+  "look_roles": [
+    "Safe",
+    "Polished",
+    "Bold"
+  ],
+  "occasions": [
+    "company_dinner",
+    "date_upscale_dinner",
+    "everyday_upgrade"
+  ],
+  "budget_role": [
+    "value",
+    "core",
+    "stretch",
+    "optional",
+    "backup_sale"
+  ],
+  "formality_scale": {
+    "1": "casual",
+    "2": "smart casual",
+    "3": "business casual",
+    "4": "polished business casual",
+    "5": "formal"
+  },
+  "warmth_scale": {
+    "1": "light",
+    "2": "mild",
+    "3": "fall layer",
+    "4": "early-winter warm",
+    "5": "deep-winter"
+  },
+  "availability_status": [
+    "indexed_current",
+    "live_verified",
+    "unavailable",
+    "discontinued",
+    "unknown"
+  ],
+  "sale_status": [
+    "regular",
+    "sale",
+    "unknown"
+  ]
+}
