@@ -142,7 +142,7 @@ export default function CreatePage() {
       });
       trackOnboarding("generation_completed", { looks: data.looks.length });
 
-      setResult(data);
+      await setResult(data);
       setDone(true);
       // Let the ring land on 100% before the route changes.
       setTimeout(() => router.push("/looks"), 700);

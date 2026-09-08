@@ -25,13 +25,19 @@ export default function LooksPage() {
   const [paywall, setPaywall] = useState(false);
 
   useEffect(() => {
-    const r = getResult();
-    if (!r) {
-      router.replace("/create");
-      return;
-    }
-    setResultState(r);
-    setFreeRemaining(getFreeRemaining());
+    let cancelled = false;
+    void getResult().then((r) => {
+      if (cancelled) return;
+      if (!r) {
+        router.replace("/create");
+        return;
+      }
+      setResultState(r);
+      setFreeRemaining(getFreeRemaining());
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [router]);
 
   if (!result) return <div className="onb" style={{ minHeight: "100dvh" }} />;

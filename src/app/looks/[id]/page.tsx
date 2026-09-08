@@ -19,18 +19,24 @@ export default function LookDetailPage() {
   const [look, setLook] = useState<Look | null>(null);
 
   useEffect(() => {
-    const r = getResult();
-    if (!r) {
-      router.replace("/create");
-      return;
-    }
-    const found = r.looks.find((l) => l.id === id);
-    if (!found) {
-      router.replace("/looks");
-      return;
-    }
-    setResult(r);
-    setLook(found);
+    let cancelled = false;
+    void getResult().then((r) => {
+      if (cancelled) return;
+      if (!r) {
+        router.replace("/create");
+        return;
+      }
+      const found = r.looks.find((l) => l.id === id);
+      if (!found) {
+        router.replace("/looks");
+        return;
+      }
+      setResult(r);
+      setLook(found);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [id, router]);
 
   if (!result || !look) return <div className="onb" style={{ minHeight: "100dvh" }} />;

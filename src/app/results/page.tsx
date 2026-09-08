@@ -15,12 +15,18 @@ export default function ResultsPage() {
   const [result, setResultState] = useState<GenerationResult | null>(null);
 
   useEffect(() => {
-    const r = getResult();
-    if (!r) {
-      router.replace("/request");
-      return;
-    }
-    setResultState(r);
+    let cancelled = false;
+    void getResult().then((r) => {
+      if (cancelled) return;
+      if (!r) {
+        router.replace("/request");
+        return;
+      }
+      setResultState(r);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [router]);
 
   if (!result) return null;
