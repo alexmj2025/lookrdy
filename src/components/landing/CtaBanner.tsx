@@ -21,7 +21,7 @@ export function CtaBanner() {
           </p>
           <div className="lnd-cta__actions">
             <Link
-              href="/photo"
+              href="/create"
               className="lnd-btn lnd-btn--light"
               onClick={() => track("started")}
             >

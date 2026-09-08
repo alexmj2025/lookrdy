@@ -69,7 +69,7 @@ export function Hero() {
 
             <div className="lnd-hero__actions">
               <Link
-                href="/photo"
+                href="/create"
                 className="lnd-btn lnd-btn--dark"
                 onClick={() => track("started")}
               >

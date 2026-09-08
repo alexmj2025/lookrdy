@@ -138,7 +138,7 @@ export function HowItWorks() {
                   budget and location.
                 </p>
                 <Link
-                  href="/photo"
+                  href="/create"
                   className="lnd-link"
                   onClick={() => track("started")}
                 >

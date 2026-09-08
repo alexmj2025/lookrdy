@@ -40,7 +40,7 @@ export function Nav() {
           </nav>
 
           <Link
-            href="/photo"
+            href="/create"
             className="lnd-btn lnd-btn--dark lnd-btn--sm"
             onClick={() => track("started")}
           >
@@ -69,7 +69,7 @@ export function Nav() {
               </a>
             ))}
             <Link
-              href="/photo"
+              href="/create"
               className="lnd-btn lnd-btn--dark"
               onClick={() => {
                 track("started");

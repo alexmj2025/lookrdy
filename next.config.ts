@@ -20,6 +20,14 @@ const nextConfig: NextConfig = {
       { source: "/legal/cookie-policy", destination: "/legal/cookie", permanent: true },
       { source: "/privacy", destination: "/legal/privacy", permanent: true },
       { source: "/terms", destination: "/legal/terms", permanent: true },
+      // The onboarding flow moved from four separate pages to one continuous
+      // shell at /create, with results at /looks. Redirect rather than delete
+      // the old paths so anything already linked or indexed still lands.
+      { source: "/photo", destination: "/create", permanent: true },
+      { source: "/request", destination: "/create", permanent: true },
+      { source: "/generating", destination: "/create", permanent: true },
+      { source: "/results", destination: "/looks", permanent: true },
+      { source: "/look/:id", destination: "/looks/:id", permanent: true },
       {
         source: "/affiliate-disclosure",
         destination: "/legal/affiliate-disclosure",
