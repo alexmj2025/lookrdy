@@ -13,20 +13,15 @@ import {
 } from "@/components/onboarding/PaywallModal";
 import { ArrowRight } from "@/components/onboarding/icons";
 import { getResult } from "@/lib/flowStore";
-import { readOnboarding } from "@/lib/onboarding/store";
-import {
-  canGenerate,
-  getCreditBalance,
-  getFreeRemaining,
-} from "@/lib/onboarding/credits";
-import { COUNTRIES } from "@/lib/onboarding/types";
+import { useAuth, signOut } from "@/lib/onboarding/auth";
+import { canGenerate, getFreeRemaining } from "@/lib/onboarding/credits";
 import type { GenerationResult } from "@/lib/types";
 
 export default function LooksPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [result, setResultState] = useState<GenerationResult | null>(null);
   const [freeRemaining, setFreeRemaining] = useState(0);
-  const [credits, setCredits] = useState(0);
   const [paywall, setPaywall] = useState(false);
 
   useEffect(() => {
@@ -37,14 +32,9 @@ export default function LooksPage() {
     }
     setResultState(r);
     setFreeRemaining(getFreeRemaining());
-    setCredits(getCreditBalance());
   }, [router]);
 
   if (!result) return <div className="onb" style={{ minHeight: "100dvh" }} />;
-
-  const onboarding = readOnboarding();
-  const country =
-    COUNTRIES.find((c) => c.code === onboarding.country)?.name ?? "Canada";
 
   return (
     <>
@@ -55,8 +45,20 @@ export default function LooksPage() {
               <Logo height={22} priority />
             </Link>
             <span />
-            <div className="onb-topbar__end">
-              <CreditCounter freeRemaining={freeRemaining} credits={credits} />
+            <div
+              className="onb-topbar__end"
+              style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}
+            >
+              <CreditCounter authenticated={!!user} freeRemaining={freeRemaining} />
+              {user && (
+                <button
+                  type="button"
+                  className="onb-btn onb-btn--quiet"
+                  onClick={() => void signOut()}
+                >
+                  Sign out
+                </button>
+              )}
             </div>
           </header>
 
@@ -75,7 +77,7 @@ export default function LooksPage() {
                 type="button"
                 className="onb-btn onb-btn--ghost"
                 onClick={() => {
-                  if (!canGenerate()) {
+                  if (!canGenerate(!!user)) {
                     setPaywall(true);
                     return;
                   }
@@ -94,7 +96,7 @@ export default function LooksPage() {
                   index={i}
                   budgetMax={result.request.budget}
                   currency={result.request.currency}
-                  country={country}
+                  country="Canada"
                 />
               ))}
             </div>
@@ -104,8 +106,9 @@ export default function LooksPage() {
               style={{ marginTop: "1.75rem", maxWidth: "60ch" }}
             >
               Images are AI visualizations, not photographs of the garments. Fit
-              isn&rsquo;t guaranteed, and price and stock are confirmed on the
-              retailer&rsquo;s own site.
+              isn&rsquo;t guaranteed. Lookrdy is not officially affiliated with
+              Simons — price, size and availability are confirmed on
+              Simons.ca before you buy.
             </p>
           </div>
         </div>
@@ -114,9 +117,8 @@ export default function LooksPage() {
       <PaywallModal
         open={paywall}
         onClose={() => setPaywall(false)}
-        onPurchased={() => {
+        onSignedIn={() => {
           setPaywall(false);
-          setCredits(getCreditBalance());
           router.push("/create");
         }}
       />

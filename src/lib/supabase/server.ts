@@ -1,4 +1,6 @@
 import "server-only";
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 /**
@@ -35,4 +37,39 @@ export function getSupabase(): SupabaseClient | null {
 
 export function isSupabaseConfigured(): boolean {
   return getSupabase() !== null;
+}
+
+/**
+ * A SEPARATE client from getSupabase() above: this one carries the calling
+ * user's own session (via the auth cookie), not the service-role key, and
+ * respects row-level security rather than bypassing it. Use this — never
+ * getSupabase() — anywhere you need to know who is actually signed in.
+ */
+export async function getSupabaseSession() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return null;
+
+  const jar = await cookies();
+  const client = createServerClient(url, key, {
+    cookies: {
+      getAll: () => jar.getAll(),
+      setAll: (list) => {
+        try {
+          for (const { name, value, options } of list) {
+            jar.set(name, value, options);
+          }
+        } catch {
+          // Cookies are read-only in some render contexts (e.g. a Server
+          // Component render) — middleware.ts is what actually refreshes the
+          // session cookie; a failure here just means this one call can't.
+        }
+      },
+    },
+  });
+
+  const {
+    data: { user },
+  } = await client.auth.getUser();
+  return user;
 }

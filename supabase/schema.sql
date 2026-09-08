@@ -50,6 +50,22 @@ create table if not exists public.generations (
 
 create index if not exists generations_session_idx on public.generations (session_id);
 
+-- Optional: links a generation to a real account once Supabase Auth is in
+-- use. NOT required for the "signed-in users are unlimited" rule itself —
+-- that's enforced in code by checking for an authenticated session, not by
+-- counting rows here. This is only the seed for a future "my looks" history.
+-- Run this block once, manually, in the Supabase SQL editor.
+alter table public.generations
+  add column if not exists user_id uuid references auth.users(id);
+
+create index if not exists generations_user_idx on public.generations (user_id);
+
+drop policy if exists "users read own generations" on public.generations;
+create policy "users read own generations"
+  on public.generations for select
+  to authenticated
+  using (user_id = auth.uid());
+
 -- Funnel events -------------------------------------------------------------
 create table if not exists public.events (
   id          bigserial primary key,

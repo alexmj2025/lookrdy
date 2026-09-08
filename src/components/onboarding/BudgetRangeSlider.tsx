@@ -4,13 +4,16 @@ import { Coins } from "./icons";
 import { BUDGET_CEILING, BUDGET_FLOOR } from "@/lib/onboarding/types";
 
 const STEP = 10;
-const GAP = 50; // keep the handles from crossing or collapsing
+const GAP = 25; // keep the handles from crossing or collapsing
 
+// The Simons pilot catalog's base-outfit band is fixed at $200-450, so every
+// preset lives inside it rather than the wider range a general budget slider
+// would offer.
 const PRESETS: { label: string; min: number; max: number }[] = [
-  { label: "Under $150", min: BUDGET_FLOOR, max: 150 },
-  { label: "$150 – $300", min: 150, max: 300 },
-  { label: "$300 – $500", min: 300, max: 500 },
-  { label: "$500+", min: 500, max: BUDGET_CEILING },
+  { label: "Full range", min: BUDGET_FLOOR, max: BUDGET_CEILING },
+  { label: "$200 – $300", min: 200, max: 300 },
+  { label: "$300 – $380", min: 300, max: 380 },
+  { label: "$380 – $450", min: 380, max: BUDGET_CEILING },
 ];
 
 const pct = (v: number) =>

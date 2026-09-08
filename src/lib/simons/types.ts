@@ -5,6 +5,12 @@
 // on purpose — see src/lib/simons/compose.ts for why the two catalogs aren't
 // merged into one model.
 
+// Deliberately NOT gated behind "server-only" — unlike compose.ts and
+// catalog.ts, these two constants are pure numbers that client components
+// (the budget slider, its validation) need to import directly.
+export const BASE_MIN = 200;
+export const BASE_MAX = 450;
+
 export type RequiredSlot = "top" | "bottom" | "shoes" | "optional_layer";
 
 export type CanonicalCategory =

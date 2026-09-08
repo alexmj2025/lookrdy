@@ -1,5 +1,6 @@
 import "server-only";
 import { getSimonsProductsForOccasion, needsRevalidation } from "./catalog";
+import { BASE_MAX, BASE_MIN } from "./types";
 import type { LookRole, Occasion, SimonsProduct } from "./types";
 
 // ============================================================================
@@ -23,8 +24,9 @@ import type { LookRole, Occasion, SimonsProduct } from "./types";
 //     trusts the label and combines it at the outfit level instead.
 // ============================================================================
 
-export const BASE_MIN = 200;
-export const BASE_MAX = 450;
+// BASE_MIN/BASE_MAX are re-exported here so existing importers of
+// simons/compose don't need to change.
+export { BASE_MIN, BASE_MAX };
 
 export interface SimonsOutfitItem {
   product: SimonsProduct;
@@ -64,14 +66,42 @@ function roleIntersection(items: SimonsProduct[]): LookRole[] {
 }
 
 /**
+ * True if the product matches any comma/and-separated term in the user's
+ * "anything to avoid" text — checked against title, pattern, colour family
+ * and style tags. Same idea as the generic engine's isExcluded() in
+ * catalog/retrieve.ts: a short substring match, not a semantic one, so it's
+ * predictable rather than surprising when it does or doesn't catch something.
+ */
+function isAvoided(product: SimonsProduct, avoidText: string): boolean {
+  const terms = avoidText
+    .split(/[,\n]| and /i)
+    .map((t) => t.trim().toLowerCase())
+    .filter((t) => t.length > 2);
+  if (terms.length === 0) return false;
+
+  const haystack = [
+    product.title,
+    product.labels.pattern,
+    product.labels.preferred_color_family,
+    product.listed_color ?? "",
+    ...(product.labels.style_tags ?? []),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return terms.some((t) => haystack.includes(t));
+}
+
+/**
  * Every distinct (top, bottom, shoes) combination whose base total lands in
- * the CAD 200-450 band, sorted so regular-price-heavy, cheaper combinations
- * are tried first when picking one per role.
+ * the given band (clamped to CAD 200-450), sorted so regular-price-heavy,
+ * cheaper combinations are tried first when picking one per role.
  */
 function candidateCombos(
   tops: SimonsProduct[],
   bottoms: SimonsProduct[],
   shoes: SimonsProduct[],
+  band: { min: number; max: number },
 ): { top: SimonsProduct; bottom: SimonsProduct; shoes: SimonsProduct; total: number }[] {
   const combos: {
     top: SimonsProduct;
@@ -84,7 +114,7 @@ function candidateCombos(
     for (const bottom of bottoms) {
       for (const shoe of shoes) {
         const total = round2(top.current_price + bottom.current_price + shoe.current_price);
-        if (total >= BASE_MIN && total <= BASE_MAX) {
+        if (total >= band.min && total <= band.max) {
           combos.push({ top, bottom, shoes: shoe, total });
         }
       }
@@ -119,11 +149,22 @@ function pickLayer(
  * can't support every role within the base-total band — this MVP catalog is
  * 50 items, so that's expected on the tighter combinations rather than a bug.
  */
-export function composeSimonsOutfits(occasion: Occasion): SimonsOutfit[] {
-  let tops = getSimonsProductsForOccasion("top", occasion);
-  let bottoms = getSimonsProductsForOccasion("bottom", occasion);
-  let shoes = getSimonsProductsForOccasion("shoes", occasion);
-  const layers = getSimonsProductsForOccasion("optional_layer", occasion);
+export function composeSimonsOutfits(
+  occasion: Occasion,
+  opts: { budgetMin?: number; budgetMax?: number; avoidText?: string } = {},
+): SimonsOutfit[] {
+  const band = {
+    min: Math.max(BASE_MIN, Math.min(opts.budgetMin ?? BASE_MIN, BASE_MAX)),
+    max: Math.min(BASE_MAX, Math.max(opts.budgetMax ?? BASE_MAX, BASE_MIN)),
+  };
+
+  const avoid = opts.avoidText?.trim() ?? "";
+  const notAvoided = (p: SimonsProduct) => !avoid || !isAvoided(p, avoid);
+
+  let tops = getSimonsProductsForOccasion("top", occasion).filter(notAvoided);
+  let bottoms = getSimonsProductsForOccasion("bottom", occasion).filter(notAvoided);
+  let shoes = getSimonsProductsForOccasion("shoes", occasion).filter(notAvoided);
+  const layers = getSimonsProductsForOccasion("optional_layer", occasion).filter(notAvoided);
 
   if (occasion === "company_dinner") {
     // The validator rule's literal text only formality-gates top and pants
@@ -138,7 +179,7 @@ export function composeSimonsOutfits(occasion: Occasion): SimonsOutfit[] {
     shoes = shoes.filter((p) => p.labels.formality >= 3);
   }
 
-  const combos = candidateCombos(tops, bottoms, shoes);
+  const combos = candidateCombos(tops, bottoms, shoes, band);
   const used = new Set<string>();
   const outfits: SimonsOutfit[] = [];
 

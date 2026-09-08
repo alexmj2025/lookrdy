@@ -24,24 +24,14 @@ import {
 
 import { useOnboarding } from "@/lib/onboarding/store";
 import { trackOnboarding } from "@/lib/onboarding/analytics";
+import { useAuth } from "@/lib/onboarding/auth";
 import {
   canGenerate,
-  getCreditBalance,
   markLimitReached,
-  spendCredit,
   syncFreeRemaining,
 } from "@/lib/onboarding/credits";
-import {
-  COUNTRIES,
-  desiredLookText,
-  isStepValid,
-  OCCASIONS,
-  occasionText,
-  STYLES,
-  TOTAL_STEPS,
-  type OccasionId,
-  type StyleId,
-} from "@/lib/onboarding/types";
+import { isStepValid, OCCASIONS, STYLES, TOTAL_STEPS } from "@/lib/onboarding/types";
+import type { LookRole, Occasion } from "@/lib/simons/types";
 import { clearPhoto, getPhoto, setPhoto, setRequest, setResult } from "@/lib/flowStore";
 import type { GenerationResult, StyleRequest } from "@/lib/types";
 
@@ -57,6 +47,7 @@ const PHOTO_TIPS = [
 export default function CreatePage() {
   const router = useRouter();
   const { state, update, ready } = useOnboarding();
+  const { user } = useAuth();
 
   const [preview, setPreviewUrl] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
@@ -90,7 +81,9 @@ export default function CreatePage() {
   const stepValid = step === 1 ? preview !== null : isStepValid(step, state);
 
   async function generate() {
-    if (!canGenerate()) {
+    // Signed-in users bypass the free cap entirely — the server enforces
+    // this too, but checking here avoids sending a doomed request.
+    if (!canGenerate(!!user)) {
       markLimitReached();
       setPaywall(true);
       return;
@@ -102,35 +95,30 @@ export default function CreatePage() {
       return;
     }
 
-    // A paid credit is only spent once the free allowance is gone. The server
-    // is still the authority on the free count; this is the client's mirror.
-    const usingCredit = getCreditBalance() > 0 && !canFreeGenerate();
-    if (usingCredit) spendCredit();
+    const occasionLabel =
+      OCCASIONS.find((o) => o.id === state.occasion)?.label ?? "";
 
     const req: StyleRequest = {
-      occasion: occasionText(state),
-      desiredLook: desiredLookText(state),
+      occasion: occasionLabel,
+      desiredLook: state.stylePreference ?? "",
       budget: state.budgetMax,
       currency: state.currency,
-      location: [state.cityOrPostalCode, countryName(state.country)]
-        .filter(Boolean)
-        .join(", "),
+      location: [state.cityOrPostalCode, "Canada"].filter(Boolean).join(", "),
       exclusions: state.avoidText,
     };
 
     setRequest(req);
     setGenerating(true);
     setError(null);
-    trackOnboarding("generation_started", { occasion: req.occasion });
+    trackOnboarding("generation_started", { occasion: state.occasion });
 
     try {
       const form = new FormData();
-      form.set("occasion", req.occasion);
-      form.set("desiredLook", req.desiredLook);
-      form.set("budget", String(req.budget));
-      form.set("currency", req.currency);
-      form.set("location", req.location);
-      form.set("exclusions", req.exclusions);
+      form.set("occasion", state.occasion as Occasion);
+      form.set("budgetMin", String(state.budgetMin));
+      form.set("budgetMax", String(state.budgetMax));
+      form.set("avoidText", state.avoidText);
+      if (state.stylePreference) form.set("stylePreference", state.stylePreference);
       form.set("photo", photo.file);
 
       const res = await fetch("/api/generate", { method: "POST", body: form });
@@ -231,7 +219,7 @@ export default function CreatePage() {
               <p className="onb-eyebrow">Step 2 of {TOTAL_STEPS}</p>
               <h1 className="onb-h1">What&rsquo;s the occasion?</h1>
               <p className="onb-lede">
-                Choose where you&rsquo;re going, or tell us your own.
+                We currently build looks for these three — more are coming.
               </p>
 
               <div className="onb-grid" style={{ marginTop: "1.75rem" }}>
@@ -242,28 +230,12 @@ export default function CreatePage() {
                     image={o.image}
                     selected={state.occasion === o.id}
                     onToggle={() => {
-                      update({ occasion: o.id as OccasionId });
+                      update({ occasion: o.id });
                       trackOnboarding("occasion_selected", { occasion: o.id });
                     }}
                   />
                 ))}
               </div>
-
-              {state.occasion === "other" && (
-                <div style={{ marginTop: "1.5rem", maxWidth: "30rem" }}>
-                  <label className="onb-label" htmlFor="onb-custom">
-                    Tell us what you&rsquo;re dressing for
-                  </label>
-                  <input
-                    id="onb-custom"
-                    className="onb-field"
-                    autoFocus
-                    value={state.customOccasion}
-                    placeholder="e.g. a gallery opening, a christening"
-                    onChange={(e) => update({ customOccasion: e.target.value })}
-                  />
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -274,7 +246,7 @@ export default function CreatePage() {
               <p className="onb-eyebrow">Step 3 of {TOTAL_STEPS}</p>
               <h1 className="onb-h1">Set your budget</h1>
               <p className="onb-lede">
-                We&rsquo;ll build complete looks within your budget.
+                Every look is a complete outfit priced between $200 and $450.
               </p>
               <div style={{ marginTop: "1.75rem" }}>
                 <BudgetRangeSlider
@@ -292,8 +264,9 @@ export default function CreatePage() {
             <aside className="onb-aside">
               <h2 className="onb-aside__title">A complete look, within budget</h2>
               <p className="onb-aside__body">
-                Every look is a full outfit — top, bottom, shoes and any layers
-                — priced together, so the number you set is the number you pay.
+                Every look is a full outfit — top, bottom and shoes — priced
+                together. Optional layers, like a blazer or coat, are shown
+                separately so this number never moves without you choosing it.
               </p>
               <ul className="onb-tips">
                 <li className="onb-tip">
@@ -303,7 +276,7 @@ export default function CreatePage() {
                   <span>
                     <span className="onb-tip__title">Real products</span>
                     <span className="onb-tip__body">
-                      From stores that ship to you
+                      Sourced from Simons.ca
                     </span>
                   </span>
                 </li>
@@ -333,12 +306,7 @@ export default function CreatePage() {
               </p>
               <div style={{ marginTop: "1.75rem" }}>
                 <CountrySelector
-                  country={state.country}
                   cityOrPostalCode={state.cityOrPostalCode}
-                  onCountry={(code) => {
-                    update({ country: code });
-                    trackOnboarding("country_selected", { country: code });
-                  }}
                   onCity={(v) => update({ cityOrPostalCode: v })}
                 />
               </div>
@@ -347,9 +315,9 @@ export default function CreatePage() {
             <aside className="onb-aside">
               <h2 className="onb-aside__title">Your city, your options</h2>
               <p className="onb-aside__body">
-                Availability, pricing and sizing vary by location, so we search
-                what&rsquo;s actually reachable from where you are. You can
-                change this any time.
+                Availability, pricing and sizing vary by location. As we add
+                retailers, we&rsquo;ll use this to prioritize what&rsquo;s
+                reachable from where you are.
               </p>
             </aside>
           </div>
@@ -360,29 +328,24 @@ export default function CreatePage() {
             <div>
               <p className="onb-eyebrow">Step 5 of {TOTAL_STEPS}</p>
               <h1 className="onb-h1">
-                Your style <span className="onb-optional">Optional</span>
+                Pick a direction <span className="onb-optional">Optional</span>
               </h1>
               <p className="onb-lede">
-                Help us understand what feels like you. Choose as many as you
-                like.
+                We&rsquo;ll always show a Safe, Polished and Bold option where
+                the catalog supports it — pick one to see it recommended first.
               </p>
 
               <div className="onb-grid" style={{ marginTop: "1.75rem" }}>
                 {STYLES.map((s) => (
                   <SelectCard
                     key={s.id}
-                    label={s.label}
+                    label={`${s.label} — ${s.blurb}`}
                     image={s.image}
-                    selected={state.stylePreferences.includes(s.id)}
+                    selected={state.stylePreference === s.id}
                     onToggle={() => {
-                      update((prev) => {
-                        const has = prev.stylePreferences.includes(s.id);
-                        const next = has
-                          ? prev.stylePreferences.filter((x) => x !== s.id)
-                          : [...prev.stylePreferences, s.id as StyleId];
-                        trackOnboarding("style_selected", { styles: next });
-                        return { stylePreferences: next };
-                      });
+                      const next = state.stylePreference === s.id ? null : s.id;
+                      update({ stylePreference: next });
+                      trackOnboarding("style_selected", { style: next });
                     }}
                   />
                 ))}
@@ -399,7 +362,7 @@ export default function CreatePage() {
                   id="onb-avoid"
                   className="onb-field"
                   value={state.avoidText}
-                  placeholder="e.g. no skinny jeans, no bright colours, no leather"
+                  placeholder="e.g. no bright colours, no stripes"
                   onChange={(e) => update({ avoidText: e.target.value })}
                 />
               </div>
@@ -446,26 +409,11 @@ export default function CreatePage() {
       <PaywallModal
         open={paywall}
         onClose={() => setPaywall(false)}
-        onPurchased={() => {
+        onSignedIn={() => {
           setPaywall(false);
           void generate();
         }}
       />
     </>
   );
-}
-
-function countryName(code: string): string {
-  return COUNTRIES.find((c) => c.code === code)?.name ?? "Canada";
-}
-
-/** Free allowance still available, per the client's mirror of the server count. */
-function canFreeGenerate(): boolean {
-  if (typeof window === "undefined") return false;
-  try {
-    const raw = window.localStorage.getItem("lookrdy:free_remaining");
-    return raw === null || Number(raw) > 0;
-  } catch {
-    return true;
-  }
 }

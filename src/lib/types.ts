@@ -34,6 +34,15 @@ export interface Product {
   /** ISO date the price/stock was last verified. */
   lastChecked: string;
   tier: Tier;
+  /**
+   * False when the outbound link goes to a retailer with no affiliate
+   * relationship — the UI adds `rel="nofollow"` in that case rather than
+   * implying an endorsement or earning attribution we haven't agreed to.
+   * Undefined is treated as true (the historical default for this field).
+   */
+  affiliateApproved?: boolean;
+  /** True when this item's price/availability label is due a fresh check. */
+  needsRecheck?: boolean;
 }
 
 /** Step 1 output: the free-text request parsed into machine constraints. */
@@ -75,6 +84,12 @@ export interface Bundle {
   recommended: boolean;
   items: Product[];
   total: number;
+  /**
+   * Optional layers (blazer/jacket/coat/knit), priced separately from
+   * `total` and never folded into it — a base outfit's price must always be
+   * exactly the sum of `items`, and this is where anything additional goes.
+   */
+  layers?: Product[];
 }
 
 /** Percentage-based hotspot box, relative to the rendered image. */

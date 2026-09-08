@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Free generations, accounts and credits.
+ * Free generations, and (dormant) paid credits.
  *
  * BACKEND BOUNDARY. The authoritative free-generation count already lives
  * server-side: /api/generate reads it from the `generations` table keyed by an
@@ -11,13 +11,17 @@
  * the client's most recent view of that, for rendering the counter without a
  * round trip.
  *
- * Never treat these numbers as a security boundary — the server decides.
- * Auth and credit balance are mocked here and marked below; wire them to
- * Supabase Auth and Stripe at those two points.
+ * Auth is real (src/lib/onboarding/auth.ts, Supabase Auth) — a signed-in user
+ * bypasses the free cap entirely (see /api/generate), so there is no
+ * "authenticated" state to mock here any more.
+ *
+ * Paid credits are NOT wired to anything yet — no payment tier exists.
+ * CREDIT_PACKS and the purchase helpers below stay in place, unused, for
+ * when Stripe checkout is actually built; a signed-in user today gets
+ * unlimited generations rather than a metered balance.
  */
 
 const REMAINING_KEY = "lookrdy:free_remaining";
-const AUTH_KEY = "lookrdy:auth";
 const CREDITS_KEY = "lookrdy:credits";
 
 export const DEFAULT_FREE_GENERATIONS = 3;
@@ -70,25 +74,7 @@ export function markLimitReached() {
   writeNumber(REMAINING_KEY, 0);
 }
 
-// --- Mocked until auth ships -----------------------------------------------
-// BACKEND BOUNDARY: replace with Supabase Auth session state.
-export function isAuthenticated(): boolean {
-  if (typeof window === "undefined") return false;
-  try {
-    return window.localStorage.getItem(AUTH_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
-
-export function mockSignIn() {
-  try {
-    window.localStorage.setItem(AUTH_KEY, "1");
-  } catch {
-    /* no-op */
-  }
-}
-
+// --- Dormant until payment ships --------------------------------------------
 // BACKEND BOUNDARY: replace with the credit balance from your ledger table,
 // credited by a Stripe webhook after checkout completes.
 export function getCreditBalance(): number {
@@ -106,7 +92,12 @@ export function spendCredit(): boolean {
   return true;
 }
 
-/** True when the user may start another generation right now. */
-export function canGenerate(): boolean {
-  return getFreeRemaining() > 0 || getCreditBalance() > 0;
+/**
+ * True when the user may start another generation right now. A signed-in
+ * user (pass `authenticated: true`, from useAuth()) is always allowed — the
+ * server applies the same rule independently, this is just the client-side
+ * check that avoids sending a request that would only bounce.
+ */
+export function canGenerate(authenticated = false): boolean {
+  return authenticated || getFreeRemaining() > 0 || getCreditBalance() > 0;
 }

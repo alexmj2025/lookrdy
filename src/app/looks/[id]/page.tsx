@@ -123,6 +123,30 @@ export default function LookDetailPage() {
                   <ProductMatchRow key={item.id} product={item} />
                 ))}
               </div>
+
+              {look.layers && look.layers.length > 0 && (
+                <>
+                  <h2
+                    className="onb-aside__title"
+                    style={{ marginTop: "1.75rem", marginBottom: "0.25rem" }}
+                  >
+                    Optional layer
+                  </h2>
+                  <p className="onb-help" style={{ margin: 0 }}>
+                    Priced separately — not included in the total above.
+                  </p>
+                  <div className="onb-rows">
+                    {look.layers.map((item) => (
+                      <ProductMatchRow key={item.id} product={item} />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              <p className="onb-help" style={{ marginTop: "1.5rem" }}>
+                Lookrdy is not officially affiliated with Simons. Confirm
+                price, size and availability on Simons.ca before you buy.
+              </p>
             </div>
           </div>
         </div>

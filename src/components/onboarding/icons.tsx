@@ -124,6 +124,13 @@ export const Sparkle = ({ size = 16, className }: IconProps) => (
   </svg>
 );
 
+export const Camera = ({ size = 18, className }: IconProps) => (
+  <svg {...base(size)} className={className}>
+    <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+    <circle cx="12" cy="13.5" r="3.5" />
+  </svg>
+);
+
 export const Close = ({ size = 16, className }: IconProps) => (
   <svg {...base(size)} className={className}>
     <path d="M6 6l12 12M18 6 6 18" />

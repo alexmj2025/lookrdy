@@ -36,6 +36,11 @@ export function ProductMatchRow({
           {product.color}
           {product.sizes.length > 0 && ` · ${product.sizes.length} sizes`}
         </span>
+        {product.needsRecheck && (
+          <span className="onb-row__meta">
+            Price and availability need a fresh check before you buy.
+          </span>
+        )}
       </span>
 
       <span className="onb-row__end">
@@ -56,7 +61,14 @@ export function ProductMatchRow({
             className="onb-mini"
             href={wrapOutboundUrl(product)}
             target="_blank"
-            rel="noopener noreferrer"
+            // affiliateApproved === false means no affiliate relationship
+            // exists with this retailer yet — nofollow so the link doesn't
+            // imply an endorsement or earn attribution we haven't agreed to.
+            rel={
+              product.affiliateApproved === false
+                ? "nofollow noopener noreferrer"
+                : "noopener noreferrer"
+            }
             onClick={() =>
               trackOnboarding("product_clicked", {
                 productId: product.id,

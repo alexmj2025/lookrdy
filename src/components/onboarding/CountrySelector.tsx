@@ -1,42 +1,37 @@
 "use client";
 
 import { Pin } from "./icons";
-import {
-  COUNTRIES,
-  RETAILERS_BY_COUNTRY,
-  type CountryCode,
-} from "@/lib/onboarding/types";
 
+/**
+ * Location step, simplified to a fixed-Canada confirmation.
+ *
+ * This used to be a 4-country picker with a "stores we search" strip naming
+ * seven retailers. Once the engine runs on the Simons pilot catalog — CAD
+ * only, ships within Canada only — that strip would be naming stores we no
+ * longer search, which is exactly the kind of false claim the Affiliate
+ * Disclosure commits not to make. The city/postal field stays: it isn't used
+ * by the composer yet, but it's harmless to collect and is the natural seed
+ * for a future proximity feature.
+ */
 export function CountrySelector({
-  country,
   cityOrPostalCode,
-  onCountry,
   onCity,
 }: {
-  country: CountryCode;
   cityOrPostalCode: string;
-  onCountry: (code: CountryCode) => void;
   onCity: (value: string) => void;
 }) {
-  const active = COUNTRIES.find((c) => c.code === country);
-
   return (
     <div>
-      <label className="onb-label" htmlFor="onb-country">
-        Country
-      </label>
-      <select
-        id="onb-country"
-        className="onb-field"
-        value={country}
-        onChange={(e) => onCountry(e.target.value as CountryCode)}
-      >
-        {COUNTRIES.map((c) => (
-          <option key={c.code} value={c.code}>
-            {c.flag}  {c.name}
-          </option>
-        ))}
-      </select>
+      <div className="onb-note" style={{ marginTop: 0 }}>
+        <Pin />
+        <span>
+          <strong>Canada · Simons.ca pilot</strong>
+          <span>
+            We&rsquo;re currently sourcing looks from Simons.ca. More
+            retailers and regions are on the way.
+          </span>
+        </span>
+      </div>
 
       <div style={{ marginTop: "1.5rem" }}>
         <label className="onb-label" htmlFor="onb-city">
@@ -51,43 +46,10 @@ export function CountrySelector({
           onChange={(e) => onCity(e.target.value)}
         />
         <p className="onb-help">
-          Helps us show what&rsquo;s actually available near you.
+          Helps us show what&rsquo;s available near you as we add more
+          retailers.
         </p>
       </div>
-
-      <RetailerStrip country={country} countryName={active?.name ?? "your region"} />
-    </div>
-  );
-}
-
-/**
- * Examples of where product matches are sourced. The copy is careful: these
- * are sources we search, NOT partners — the Affiliate Disclosure commits to
- * not implying a relationship that doesn't exist.
- */
-export function RetailerStrip({
-  country,
-  countryName,
-}: {
-  country: CountryCode;
-  countryName: string;
-}) {
-  return (
-    <div style={{ marginTop: "1.75rem" }}>
-      <p className="onb-label" style={{ marginBottom: "0.25rem" }}>
-        Stores we search in {countryName}
-      </p>
-      <div className="onb-retailers">
-        {RETAILERS_BY_COUNTRY[country].map((r) => (
-          <span className="onb-retailer" key={r}>
-            {r}
-          </span>
-        ))}
-      </div>
-      <p className="onb-help">
-        <Pin size={13} /> Examples only — Lookrdy isn&rsquo;t affiliated with
-        these retailers, and availability varies by location.
-      </p>
     </div>
   );
 }

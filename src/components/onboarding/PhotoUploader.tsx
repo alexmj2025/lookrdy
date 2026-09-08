@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { Lock, Upload } from "./icons";
+import { CameraCapture } from "@/components/CameraCapture";
+import { Camera, Lock, Upload } from "./icons";
 
 const MAX_BYTES = 10 * 1024 * 1024;
 const ACCEPTED = ["image/jpeg", "image/png", "image/heic", "image/heif", "image/webp"];
@@ -18,6 +19,7 @@ export function PhotoUploader({
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [cameraOpen, setCameraOpen] = useState(false);
 
   const accept = useCallback(
     (file: File | undefined) => {
@@ -60,6 +62,13 @@ export function PhotoUploader({
             >
               Replace
             </button>
+            <button
+              type="button"
+              className="onb-btn onb-btn--ghost"
+              onClick={() => setCameraOpen(true)}
+            >
+              <Camera size={15} /> Retake
+            </button>
             <button type="button" className="onb-btn onb-btn--quiet" onClick={onRemove}>
               Remove
             </button>
@@ -78,6 +87,16 @@ export function PhotoUploader({
           <Lock />
           <span>Your photo stays private and can be deleted anytime.</span>
         </p>
+
+        {cameraOpen && (
+          <CameraCapture
+            onCapture={(file, dataUrl) => {
+              setCameraOpen(false);
+              onSelect(file, dataUrl);
+            }}
+            onCancel={() => setCameraOpen(false)}
+          />
+        )}
       </div>
     );
   }
@@ -103,13 +122,22 @@ export function PhotoUploader({
         </span>
         <p style={{ margin: 0, fontSize: "0.9375rem" }}>Drop your photo here</p>
         <p className="onb-drop__hint">or</p>
-        <button
-          type="button"
-          className="onb-btn onb-btn--primary"
-          onClick={() => inputRef.current?.click()}
-        >
-          Choose photo
-        </button>
+        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <button
+            type="button"
+            className="onb-btn onb-btn--primary"
+            onClick={() => inputRef.current?.click()}
+          >
+            Choose photo
+          </button>
+          <button
+            type="button"
+            className="onb-btn onb-btn--ghost"
+            onClick={() => setCameraOpen(true)}
+          >
+            <Camera size={15} /> Take a photo
+          </button>
+        </div>
         <p className="onb-drop__hint">JPG, PNG or HEIC · max 10MB</p>
       </div>
 
@@ -127,6 +155,16 @@ export function PhotoUploader({
         <Lock />
         <span>Your photo stays private and can be deleted anytime.</span>
       </p>
+
+      {cameraOpen && (
+        <CameraCapture
+          onCapture={(file, dataUrl) => {
+            setCameraOpen(false);
+            onSelect(file, dataUrl);
+          }}
+          onCancel={() => setCameraOpen(false)}
+        />
+      )}
     </div>
   );
 }

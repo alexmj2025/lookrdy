@@ -67,6 +67,9 @@ export function LookCard({
           ))}
           {under >= 0 && <span className="onb-tag onb-tag--good">Within budget</span>}
           <span className="onb-tag">Ships to {country}</span>
+          {look.layers && look.layers.length > 0 && (
+            <span className="onb-tag">+ optional layer</span>
+          )}
         </div>
 
         <div className="onb-look__cta">
