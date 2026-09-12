@@ -76,7 +76,7 @@ export function ProductMatchRow({
               })
             }
           >
-            View item
+            Shop this item
           </a>
         </span>
       </span>

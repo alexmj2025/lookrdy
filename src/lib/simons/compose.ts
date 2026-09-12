@@ -1,37 +1,43 @@
 import "server-only";
-import { getSimonsProductsForOccasion, needsRevalidation } from "./catalog";
+import { getSimonsProductsForOccasion, needsRevalidation, needsVariantSelection } from "./catalog";
+import { bandFor, scoreSimilarity, targetForRole } from "./similarity";
+import type { SimilarityResult } from "./similarity";
 import { BASE_MAX, BASE_MIN } from "./types";
 import type { LookRole, Occasion, SimonsProduct } from "./types";
 
 // ============================================================================
-// Simons MVP outfit composer — deterministic, rule-driven, no LLM.
+// Outfit composer — deterministic, rule-driven, no LLM.
 //
-// Implements src/data/simons/labeling_rules.md exactly:
-//   - Base outfit = exactly one top + one bottom + one pair of shoes.
-//   - Base total must land in CAD 200-450 inclusive.
-//   - Optional layers (blazer/jacket/coat/knit) are priced and shown
-//     SEPARATELY — their price is never added to the base total.
-//   - Regular-price items are primary; sale items are backup only.
-//   - Company dinner requires formality >= 3 on the top and bottom, and
-//     recommends a blazer when one is available (rules doc §"Outfit
-//     validator" — this rule does not additionally formality-gate shoes, so
-//     neither does this implementation; see the note on RESULT_FALLBACK
-//     below if that turns out to need tightening).
-//   - Safe / Polished / Bold: an outfit's role is the intersection of its
-//     three base items' pre-labeled look_roles. Items were labeled per the
-//     rules' own colour/pattern/fit criteria, so re-deriving the judgement
-//     from raw labels here would just be a weaker copy of that work; this
-//     trusts the label and combines it at the outfit level instead.
+//   - Base outfit = exactly one top + one bottom + one footwear item.
+//   - Base total lands in CAD 200-450 (catalog_scope.base_outfit_budget_cad),
+//     optionally narrowed further by the user.
+//   - Optional layers are priced and returned SEPARATELY and never counted
+//     toward the base total.
+//   - Regular-price items are preferred; sale items are a backup.
+//   - Safe / Polished / Bold comes from the intersection of the three base
+//     items' own look_roles. Within a role, candidates are ordered by
+//     similarity to that role's look direction (see similarity.ts) rather
+//     than by price alone.
+//
+// Occasion eligibility is decided purely by the catalog's occasion_tags. v1
+// additionally hard-coded a formality >= 3 floor for company dinner; v2's
+// tags already encode that (every company-dinner top and bottom is
+// formality >= 3, and casual footwear is excluded), so the override is gone
+// — overriding curated data in code would now silently contradict it.
 // ============================================================================
 
-// BASE_MIN/BASE_MAX are re-exported here so existing importers of
-// simons/compose don't need to change.
 export { BASE_MIN, BASE_MAX };
 
 export interface SimonsOutfitItem {
   product: SimonsProduct;
-  /** True if this item's label is due (or overdue) for a fresh price/stock check. */
+  /** Label is due (or overdue) a fresh price/stock check. */
   needsRecheck: boolean;
+  /** Colour/size must still be chosen on the retailer's page. */
+  needsVariant: boolean;
+  /** Similarity to the look direction, 0-1, or null when unscoreable. */
+  matchScore: number | null;
+  /** Confidence band, already capped by how much was actually evaluable. */
+  matchBand: SimilarityResult["band"];
 }
 
 export interface SimonsOutfit {
@@ -39,38 +45,38 @@ export interface SimonsOutfit {
   occasion: Occasion;
   top: SimonsOutfitItem;
   bottom: SimonsOutfitItem;
-  shoes: SimonsOutfitItem;
-  /** top + bottom + shoes current_price. Always within [BASE_MIN, BASE_MAX]. */
+  footwear: SimonsOutfitItem;
+  /** top + bottom + footwear current_price. Always within the budget band. */
   baseTotal: number;
   usedSaleItem: boolean;
-  /** Optional layer suggestions, priced separately from baseTotal. */
+  /** Mean of the three base items' similarity scores, when scoreable. */
+  outfitScore: number | null;
+  /** Weakest band across the base items — an outfit is only as good as its worst piece. */
+  outfitBand: SimilarityResult["band"];
+  /** Optional layers, priced separately from baseTotal. */
   layers: SimonsOutfitItem[];
 }
 
-function withRecheck(product: SimonsProduct): SimonsOutfitItem {
-  return { product, needsRecheck: needsRevalidation(product) };
+function toItem(
+  product: SimonsProduct,
+  match: SimilarityResult | null,
+): SimonsOutfitItem {
+  return {
+    product,
+    needsRecheck: needsRevalidation(product),
+    needsVariant: needsVariantSelection(product),
+    matchScore: match?.score ?? null,
+    matchBand: match?.band ?? "unscored",
+  };
 }
 
-/** Regular-price items first, cheapest first within each tier — rule 13. */
-function bySaleThenPrice(a: SimonsProduct, b: SimonsProduct): number {
-  const aReg = a.sale_status !== "sale" ? 0 : 1;
-  const bReg = b.sale_status !== "sale" ? 0 : 1;
-  if (aReg !== bReg) return aReg - bReg;
-  return a.current_price - b.current_price;
-}
-
-function roleIntersection(items: SimonsProduct[]): LookRole[] {
-  return (["Safe", "Polished", "Bold"] as const).filter((role) =>
-    items.every((p) => p.labels.look_roles.includes(role)),
-  );
-}
+const price = (p: SimonsProduct) => p.commerce.current_price;
+const isSale = (p: SimonsProduct) => p.commerce.sale_status === "sale";
 
 /**
- * True if the product matches any comma/and-separated term in the user's
- * "anything to avoid" text — checked against title, pattern, colour family
- * and style tags. Same idea as the generic engine's isExcluded() in
- * catalog/retrieve.ts: a short substring match, not a semantic one, so it's
- * predictable rather than surprising when it does or doesn't catch something.
+ * True if any comma/newline-separated term in the user's "anything to avoid"
+ * text appears in the item's visible or descriptive attributes. A plain
+ * substring match, so it behaves predictably rather than surprisingly.
  */
 function isAvoided(product: SimonsProduct, avoidText: string): boolean {
   const terms = avoidText
@@ -79,76 +85,54 @@ function isAvoided(product: SimonsProduct, avoidText: string): boolean {
     .filter((t) => t.length > 2);
   if (terms.length === 0) return false;
 
+  const v = product.visual_attributes;
   const haystack = [
-    product.title,
-    product.labels.pattern,
-    product.labels.preferred_color_family,
-    product.listed_color ?? "",
-    ...(product.labels.style_tags ?? []),
+    product.identity.title,
+    product.identity.brand,
+    product.classification.subcategory,
+    v.color.primary_family,
+    v.color.primary_name,
+    v.pattern.type,
+    v.material.primary_family,
+    v.material.fabric_type,
+    v.silhouette.fit,
+    ...(product.matching_profile.style_tags ?? []),
   ]
+    .filter(Boolean)
     .join(" ")
     .toLowerCase();
 
   return terms.some((t) => haystack.includes(t));
 }
 
-/**
- * Every distinct (top, bottom, shoes) combination whose base total lands in
- * the given band (clamped to CAD 200-450), sorted so regular-price-heavy,
- * cheaper combinations are tried first when picking one per role.
- */
-function candidateCombos(
-  tops: SimonsProduct[],
-  bottoms: SimonsProduct[],
-  shoes: SimonsProduct[],
-  band: { min: number; max: number },
-): { top: SimonsProduct; bottom: SimonsProduct; shoes: SimonsProduct; total: number }[] {
-  const combos: {
-    top: SimonsProduct;
-    bottom: SimonsProduct;
-    shoes: SimonsProduct;
-    total: number;
-  }[] = [];
-
-  for (const top of tops) {
-    for (const bottom of bottoms) {
-      for (const shoe of shoes) {
-        const total = round2(top.current_price + bottom.current_price + shoe.current_price);
-        if (total >= band.min && total <= band.max) {
-          combos.push({ top, bottom, shoes: shoe, total });
-        }
-      }
-    }
-  }
-
-  combos.sort((a, b) => {
-    const aSale = [a.top, a.bottom, a.shoes].filter((p) => p.sale_status === "sale").length;
-    const bSale = [b.top, b.bottom, b.shoes].filter((p) => p.sale_status === "sale").length;
-    if (aSale !== bSale) return aSale - bSale;
-    return a.total - b.total;
-  });
-
-  return combos;
+/** Ranks a slot's candidates against the role's look direction, best first. */
+function rankForRole(
+  products: SimonsProduct[],
+  role: LookRole,
+  formality: number,
+): { product: SimonsProduct; match: SimilarityResult }[] {
+  const target = targetForRole(role, formality);
+  return products
+    .map((product) => ({ product, match: scoreSimilarity(product, target) }))
+    .sort((a, b) => {
+      // Regular price first (a business rule, not a preference), then
+      // similarity, then cheaper.
+      const saleDiff = Number(isSale(a.product)) - Number(isSale(b.product));
+      if (saleDiff !== 0) return saleDiff;
+      const sa = a.match.score ?? 0;
+      const sb = b.match.score ?? 0;
+      if (Math.abs(sa - sb) > 0.02) return sb - sa;
+      return price(a.product) - price(b.product);
+    });
 }
 
-/** One affordable optional layer recommendation, if any exists for the occasion. */
-function pickLayer(
-  layers: SimonsProduct[],
-  occasion: Occasion,
-): SimonsOutfitItem | undefined {
-  const eligible = layers
-    .filter((p) => p.labels.occasion_tags.includes(occasion))
-    .sort(bySaleThenPrice);
-  return eligible[0] ? withRecheck(eligible[0]) : undefined;
-}
+/** Typical formality for an occasion, used as the target's formality anchor. */
+const OCCASION_FORMALITY: Record<Occasion, number> = {
+  company_dinner: 4,
+  date_upscale_dinner: 4,
+  everyday_upgrade: 3,
+};
 
-/**
- * Generates up to one outfit per look role (Safe, Polished, Bold) for the
- * given occasion, using distinct top/bottom/shoes across the three so a user
- * never sees the same piece repeated. Returns fewer than 3 if the catalog
- * can't support every role within the base-total band — this MVP catalog is
- * 50 items, so that's expected on the tighter combinations rather than a bug.
- */
 export function composeSimonsOutfits(
   occasion: Occasion,
   opts: { budgetMin?: number; budgetMax?: number; avoidText?: string } = {},
@@ -159,57 +143,97 @@ export function composeSimonsOutfits(
   };
 
   const avoid = opts.avoidText?.trim() ?? "";
-  const notAvoided = (p: SimonsProduct) => !avoid || !isAvoided(p, avoid);
+  const keep = (p: SimonsProduct) => !avoid || !isAvoided(p, avoid);
 
-  let tops = getSimonsProductsForOccasion("top", occasion).filter(notAvoided);
-  let bottoms = getSimonsProductsForOccasion("bottom", occasion).filter(notAvoided);
-  let shoes = getSimonsProductsForOccasion("shoes", occasion).filter(notAvoided);
-  const layers = getSimonsProductsForOccasion("optional_layer", occasion).filter(notAvoided);
+  const tops = getSimonsProductsForOccasion("top", occasion).filter(keep);
+  const bottoms = getSimonsProductsForOccasion("bottom", occasion).filter(keep);
+  const footwear = getSimonsProductsForOccasion("footwear", occasion).filter(keep);
+  const layers = getSimonsProductsForOccasion("optional_layer", occasion).filter(keep);
 
-  if (occasion === "company_dinner") {
-    // The validator rule's literal text only formality-gates top and pants
-    // ("collared top and pants with formality >= 3"). Applied alone, that
-    // still let sneakers (formality 1-2) pair with a blazer, which
-    // contradicts the fixed business decision that company dinner IS
-    // business casual overall. Extending the >= 3 floor to shoes as well —
-    // this catalog's dress shoes all sit at formality 4, so this excludes
-    // exactly the sneakers/casual loafers and nothing else.
-    tops = tops.filter((p) => p.labels.formality >= 3);
-    bottoms = bottoms.filter((p) => p.labels.formality >= 3);
-    shoes = shoes.filter((p) => p.labels.formality >= 3);
-  }
-
-  const combos = candidateCombos(tops, bottoms, shoes, band);
+  const formality = OCCASION_FORMALITY[occasion];
   const used = new Set<string>();
   const outfits: SimonsOutfit[] = [];
 
   for (const role of ["Safe", "Polished", "Bold"] as const) {
-    const combo = combos.find((c) => {
-      const items = [c.top, c.bottom, c.shoes];
-      if (items.some((p) => used.has(p.product_id))) return false;
-      return roleIntersection(items).includes(role);
-    });
-    if (!combo) continue;
+    // Only items the catalog itself labels for this role are eligible; the
+    // similarity score orders them, it doesn't admit them.
+    const eligible = (list: SimonsProduct[]) =>
+      list.filter(
+        (p) => p.matching_profile.look_roles.includes(role) && !used.has(p.product_id),
+      );
 
-    for (const p of [combo.top, combo.bottom, combo.shoes]) used.add(p.product_id);
+    const rankedTops = rankForRole(eligible(tops), role, formality);
+    const rankedBottoms = rankForRole(eligible(bottoms), role, formality);
+    const rankedFootwear = rankForRole(eligible(footwear), role, formality);
+    if (!rankedTops.length || !rankedBottoms.length || !rankedFootwear.length) continue;
 
-    const layer = pickLayer(layers, occasion);
+    // Best-ranked combination that fits the budget band. The lists are
+    // already ordered, so the first fit is the best-ranked fit.
+    let chosen: {
+      top: (typeof rankedTops)[number];
+      bottom: (typeof rankedBottoms)[number];
+      footwear: (typeof rankedFootwear)[number];
+      total: number;
+    } | null = null;
+
+    outer: for (const top of rankedTops) {
+      for (const bottom of rankedBottoms) {
+        for (const shoe of rankedFootwear) {
+          const total = round2(
+            price(top.product) + price(bottom.product) + price(shoe.product),
+          );
+          if (total >= band.min && total <= band.max) {
+            chosen = { top, bottom, footwear: shoe, total };
+            break outer;
+          }
+        }
+      }
+    }
+    if (!chosen) continue;
+
+    for (const part of [chosen.top, chosen.bottom, chosen.footwear]) {
+      used.add(part.product.product_id);
+    }
+
+    const parts = [chosen.top, chosen.bottom, chosen.footwear];
+    const scores = parts
+      .map((p) => p.match.score)
+      .filter((s): s is number => s !== null);
+    const meanScore = scores.length
+      ? round2(scores.reduce((a, b) => a + b, 0) / scores.length)
+      : null;
+    // An outfit is only as confident as its least-evaluable piece.
+    const minCoverage = Math.min(...parts.map((p) => p.match.coverage));
+
+    const layer = pickLayer(layers, role);
 
     outfits.push({
       role,
       occasion,
-      top: withRecheck(combo.top),
-      bottom: withRecheck(combo.bottom),
-      shoes: withRecheck(combo.shoes),
-      baseTotal: combo.total,
-      usedSaleItem: [combo.top, combo.bottom, combo.shoes].some(
-        (p) => p.sale_status === "sale",
-      ),
+      top: toItem(chosen.top.product, chosen.top.match),
+      bottom: toItem(chosen.bottom.product, chosen.bottom.match),
+      footwear: toItem(chosen.footwear.product, chosen.footwear.match),
+      baseTotal: chosen.total,
+      usedSaleItem: parts.some((p) => isSale(p.product)),
+      outfitScore: meanScore,
+      outfitBand: bandFor(meanScore, minCoverage),
       layers: layer ? [layer] : [],
     });
   }
 
   return outfits;
+}
+
+/** The best-ranked optional layer for the role, if the occasion has one. */
+function pickLayer(
+  layers: SimonsProduct[],
+  role: LookRole,
+): SimonsOutfitItem | undefined {
+  const eligible = layers.filter((p) => p.matching_profile.look_roles.includes(role));
+  const pool = eligible.length ? eligible : layers;
+  const ranked = rankForRole(pool, role, 3);
+  const best = ranked[0];
+  return best ? toItem(best.product, best.match) : undefined;
 }
 
 const round2 = (n: number) => Math.round(n * 100) / 100;

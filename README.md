@@ -250,3 +250,37 @@ Two notes for anyone swapping photography:
   added back in that component.
 - Step 03 of "How it works" uses `steps/item-1..3.jpg`, which are a different
   set of products from the shopping list's `complete/item-1..4.jpg`.
+
+## Simons catalog (schema v2)
+
+The live product catalog is `src/data/simons/products.json`, validated against
+`src/data/simons/product.schema.json` (schema_version `2.0.0`).
+
+```bash
+node scripts/validate-simons-catalog.mjs                  # validate the bundled seed
+node scripts/validate-simons-catalog.mjs path/to/new.json # validate an update before importing
+```
+
+The validator checks the schema's own rules plus the business rules JSON Schema
+can't express: the rights gates (no authorized imagery, link-out only), and
+that every occasion can actually produce a base outfit inside the CAD 200–450
+band. It exits non-zero on error; freshness problems are warnings.
+
+**Matching.** `matching_contract.category_weights` drives similarity ranking in
+`src/lib/simons/similarity.ts`. Unknown attributes drop out of the weighting
+rather than scoring zero — most of this catalog's colour data is unknowable
+until a variant is selected, so treating absence as a bad match would rank
+sparse-but-suitable items below fully-specified but less appropriate ones.
+Confidence bands are capped by coverage, so an item can't claim a "strong"
+match on two known attributes out of eight.
+
+**Freshness.** Items past `next_review_at` are marked `review_overdue`. By
+default they're still shown, with a per-item revalidation warning, because
+every seeded product is currently overdue and blocking them would empty the
+catalog. Set `SIMONS_BLOCK_OVERDUE=1` to withhold them instead — the correct
+setting once a revalidation pipeline exists, and before any public launch.
+
+**Stale v1 artifacts.** `gold_examples.json`, `taxonomy.json` and
+`labeling_rules.md` in `src/data/simons/` are from schema v1 and use the old
+flat field names (`url`, `labels`, `required_slot: "shoes"`). Nothing imports
+them; they're kept for reference only and should be regenerated or removed.

@@ -1,63 +1,75 @@
 import "server-only";
 import type { Bundle, Category, Product } from "@/lib/types";
 import type { SimonsOutfit, SimonsOutfitItem } from "./compose";
-import type { CanonicalCategory, LookRole, RequiredSlot, SimonsProduct } from "./types";
+import type { BudgetRole, LookRole, RequiredSlot, SimonsProduct } from "./types";
 
 // ============================================================================
-// Bridges the Simons domain (SimonsProduct / SimonsOutfit) onto the generic
-// Bundle/Product shape the rest of the app — /looks, /looks/[id],
-// visualize() — already knows how to render. Kept as its own module rather
-// than folded into compose.ts so the "what does a Simons item look like to
-// the rest of the app" question lives in one place.
+// Bridges the Simons domain onto the generic Bundle/Product shape the rest of
+// the app renders (/looks, /looks/[id], visualize()). One place to answer
+// "what does a Simons item look like to everything downstream".
 // ============================================================================
 
 /** The generic Category enum has no separate blazer/coat/knit bucket. */
-function toCategory(slot: RequiredSlot, canonical: CanonicalCategory): Category {
+function toCategory(slot: RequiredSlot): Category {
   if (slot === "top") return "top";
   if (slot === "bottom") return "trousers";
-  if (slot === "shoes") return "shoes";
-  // optional_layer: blazer | jacket | coat | knit_layer all map to the one
-  // layer bucket the generic type has.
+  if (slot === "footwear") return "shoes";
+  // optional_layer: blazer | jacket | coat | knit_layer all collapse into the
+  // one layer bucket the generic type has.
   return "jacket";
+}
+
+function budgetRoleToTier(role: BudgetRole): Product["tier"] {
+  if (role === "value" || role === "backup_sale") return "value";
+  if (role === "stretch") return "premium";
+  return "mid";
+}
+
+/**
+ * Colour shown to the shopper. 42 of 50 items need a variant chosen before
+ * colour is knowable, so this says "several colours" rather than inventing
+ * one — asserting a colour we haven't confirmed would be exactly the claim
+ * the matching contract's negative_constraints forbid.
+ */
+function describeColor(p: SimonsProduct): string {
+  const v = p.visual_attributes.color;
+  if (v.primary_name) return v.primary_name;
+  if (p.variant.selected_color) return p.variant.selected_color;
+  if (p.variant.variant_selection_required) return "Several colours";
+  return v.primary_family ?? "";
 }
 
 function toProduct(item: SimonsOutfitItem): Product {
   const p = item.product;
+  const brand = p.identity.brand;
   return {
     id: p.product_id,
-    retailer: p.retailer,
-    // The generic Product type has no separate brand field, and ProductMatchRow
-    // renders `retailer` where a shopper expects to see the designer/brand
-    // (Le 31, Steve Madden, ...). Folding it into the name rather than
-    // dropping it — "Simons" alone, repeated on every row, would hide real
-    // information the label already carries.
-    name: p.brand && p.brand !== p.retailer ? `${p.brand} — ${p.title}` : p.title,
-    category: toCategory(p.required_slot, p.canonical_category),
-    color: p.listed_color ?? p.labels.preferred_color_family,
-    styleTags: p.labels.style_tags ?? [],
-    formality: p.labels.formality,
-    price: p.current_price,
-    currency: p.currency,
-    // The rights gate: no Simons product imagery is authorized for display.
-    // ProductMatchRow already renders nothing when this is empty.
+    retailer: p.identity.retailer,
+    // The generic Product type has no brand field, and the row renders
+    // `retailer` where a shopper expects the brand (Le 31, Steve Madden...).
+    // Folding it into the name rather than dropping it — "Simons" alone on
+    // every row hides information the catalog already carries.
+    name: brand && brand !== p.identity.retailer ? `${brand} — ${p.identity.title}` : p.identity.title,
+    category: toCategory(p.classification.required_slot),
+    color: describeColor(p),
+    styleTags: p.matching_profile.style_tags ?? [],
+    formality: p.matching_profile.formality_level_1_to_5,
+    price: p.commerce.current_price,
+    currency: p.commerce.currency,
+    // The rights gate: no Simons imagery is authorized for display, and
+    // media.product_image_url is null by design across the whole catalog.
     imageUrl: "",
-    productUrl: p.url,
-    countries: ["CA"],
-    // The schema doesn't carry a size list — leaving this empty is honest;
+    productUrl: p.commerce.product_url,
+    countries: [p.classification.market],
+    // The catalog carries no size list; leaving this empty is honest, and
     // inventing sizes would be a false availability claim.
     sizes: [],
-    lastChecked: p.source_checked_at,
-    tier: budgetRoleToTier(p.labels.budget_role),
-    // Not an affiliate relationship yet — the outbound link gets nofollow.
-    affiliateApproved: false,
+    lastChecked: p.commerce.source_checked_at,
+    tier: budgetRoleToTier(p.matching_profile.budget_role),
+    // No affiliate relationship yet — the outbound link gets rel="nofollow".
+    affiliateApproved: p.rights.affiliate_approved,
     needsRecheck: item.needsRecheck,
   };
-}
-
-function budgetRoleToTier(role: SimonsProduct["labels"]["budget_role"]): Product["tier"] {
-  if (role === "value" || role === "backup_sale") return "value";
-  if (role === "stretch") return "premium";
-  return "mid";
 }
 
 const ROLE_COPY: Record<LookRole, { name: string; rationale: string }> = {
@@ -77,9 +89,8 @@ const ROLE_COPY: Record<LookRole, { name: string; rationale: string }> = {
 
 /**
  * `outfit.role` decides the outfit's identity and copy. `preferredRole`, if
- * the user picked one in step 5, decides which single outfit is flagged
- * `recommended` — exactly one, always, matching the invariant the rest of
- * the app relies on (see the generic composer's same guarantee).
+ * the user picked one, decides which single outfit is flagged `recommended`
+ * — exactly one, always.
  */
 export function simonsOutfitToBundle(
   outfit: SimonsOutfit,
@@ -93,7 +104,7 @@ export function simonsOutfitToBundle(
     descriptors: [outfit.role],
     rationale: copy.rationale,
     recommended: preferredRole ? outfit.role === preferredRole : index === 0,
-    items: [outfit.top, outfit.bottom, outfit.shoes].map(toProduct),
+    items: [outfit.top, outfit.bottom, outfit.footwear].map(toProduct),
     total: outfit.baseTotal,
     layers: outfit.layers.length ? outfit.layers.map(toProduct) : undefined,
   };
@@ -105,7 +116,7 @@ export function simonsOutfitsToBundles(
 ): Bundle[] {
   const bundles = outfits.map((o, i) => simonsOutfitToBundle(o, i, preferredRole));
 
-  // Guarantee exactly one recommended, even if the preferred role wasn't
+  // Guarantee exactly one recommended, even when the preferred role isn't
   // among the outfits the catalog could actually produce this time.
   if (!bundles.some((b) => b.recommended) && bundles.length > 0) {
     bundles[0].recommended = true;

@@ -117,11 +117,12 @@ export default function LookDetailPage() {
                 className="onb-aside__title"
                 style={{ marginTop: "1.75rem", marginBottom: "0.25rem" }}
               >
-                The pieces
+                Shop this look
               </h2>
               <p className="onb-help" style={{ margin: 0 }}>
-                Real products matched to this look. Confirm price and
-                availability on the retailer&rsquo;s site.
+                Similar options that reproduce this look direction — not the
+                exact garments shown in the visualization. Confirm price,
+                colour, size and availability on the retailer&rsquo;s site.
               </p>
 
               <div className="onb-rows">
@@ -150,8 +151,9 @@ export default function LookDetailPage() {
               )}
 
               <p className="onb-help" style={{ marginTop: "1.5rem" }}>
-                Lookrdy is not officially affiliated with Simons. Confirm
-                price, size and availability on Simons.ca before you buy.
+                The image is an AI visualization of a style direction, not a
+                photograph of these products. Lookrdy is not officially
+                affiliated with Simons.
               </p>
             </div>
           </div>

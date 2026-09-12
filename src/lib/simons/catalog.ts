@@ -1,58 +1,116 @@
 import "server-only";
-import productsJson from "@/data/simons/products.json";
-import type { Occasion, RequiredSlot, SimonsProduct } from "./types";
+import catalogJson from "@/data/simons/products.json";
+import type {
+  Occasion,
+  RequiredSlot,
+  SimonsCatalogFile,
+  SimonsMatchingContract,
+  SimonsProduct,
+} from "./types";
 
 // ============================================================================
-// Simons MVP catalog — data access.
+// Simons catalog (schema v2) — data access.
 //
-// This is a static, bundled seed (src/data/simons/products.json), not a live
-// feed. Two things follow from that, both required by
-// src/data/simons/labeling_rules.md:
+// Static, bundled seed. Two rules from the matching contract are enforced
+// here rather than left to callers:
 //
-//   1. `active_for_pilot` items only — anything flagged unavailable or
-//      discontinued during labeling is excluded at the source.
-//   2. Nothing here is a stock/price guarantee. `availability_status` on
-//      these rows is "indexed_current" (the page was current when the label
-//      was written), not "live_verified". A real revalidation pass — hitting
-//      simons.ca at request or display time — is NOT implemented; that is a
-//      separate scraping/monitoring integration this module deliberately
-//      does not attempt. Every consumer of this catalog must treat price and
-//      availability as needing a final check on the retailer's own page
-//      before a user acts on it — see needsRevalidation() below, used by the
-//      UI to show that notice rather than silently presenting stale data as
-//      current.
+//   HARD FILTERS (matching_contract.hard_filters) — an item must have
+//   active_for_pilot, a valid Simons product_url, a required_slot, and the
+//   requested occasion in its occasion_tags. Nothing else is a hard filter.
+//
+//   NEVER HARD FILTER ON (matching_contract.never_hard_filter_on) — unknown
+//   attributes, un-selected variant colour, and missing material
+//   composition. This catalog is full of nulls by design (42 of 50 items
+//   need a variant chosen before colour is even knowable), so treating
+//   absent data as disqualifying would empty the shelf. Unknowns are handled
+//   in scoring instead: see similarity.ts, where they drop out of the
+//   weighting rather than scoring zero.
 // ============================================================================
 
-const ALL: SimonsProduct[] = (productsJson.products as SimonsProduct[]).filter(
-  (p) => p.active_for_pilot !== false,
-);
+const FILE = catalogJson as unknown as SimonsCatalogFile;
+
+export const MATCHING_CONTRACT: SimonsMatchingContract = FILE.matching_contract;
+export const CATALOG_VERSION = FILE.catalog_version;
+export const CATALOG_SCOPE = FILE.catalog_scope;
+
+/**
+ * Blocking overdue items is off by default.
+ *
+ * Every one of the 50 seeded products is currently `review_overdue` — the
+ * snapshot's next_review_at has passed and there is no revalidation pipeline
+ * yet. Enforcing "items marked review_overdue must be refreshed" as a hard
+ * filter today would empty the catalog and the app would compose nothing at
+ * all, so the default is to surface the staleness loudly at display time
+ * instead (see isStale / needsRevalidation, rendered as a per-item warning).
+ *
+ * Set SIMONS_BLOCK_OVERDUE=1 to switch to the strict reading — correct once
+ * a refresh pipeline exists and before any real public launch.
+ */
+function blockOverdue(): boolean {
+  return process.env.SIMONS_BLOCK_OVERDUE === "1";
+}
+
+const URL_OK = /^https:\/\/(www|m)\.simons\.ca\//;
+
+/** The hard filters named in matching_contract.hard_filters, and nothing more. */
+function passesHardFilters(p: SimonsProduct): boolean {
+  if (!p.commerce.active_for_pilot) return false;
+  if (!p.commerce.product_url || !URL_OK.test(p.commerce.product_url)) return false;
+  if (!p.classification.required_slot) return false;
+  if (blockOverdue() && p.commerce.freshness_status === "review_overdue") return false;
+  return true;
+}
+
+const ELIGIBLE: SimonsProduct[] = FILE.products.filter(passesHardFilters);
 
 export function getSimonsCatalog(): SimonsProduct[] {
-  return ALL;
+  return ELIGIBLE;
 }
 
 export function getSimonsProductsBySlot(slot: RequiredSlot): SimonsProduct[] {
-  return ALL.filter((p) => p.required_slot === slot);
+  return ELIGIBLE.filter((p) => p.classification.required_slot === slot);
 }
 
 export function getSimonsProductsForOccasion(
   slot: RequiredSlot,
   occasion: Occasion,
 ): SimonsProduct[] {
-  return ALL.filter(
-    (p) => p.required_slot === slot && p.labels.occasion_tags.includes(occasion),
+  return ELIGIBLE.filter(
+    (p) =>
+      p.classification.required_slot === slot &&
+      p.matching_profile.occasion_tags.includes(occasion),
   );
 }
 
 /**
- * True once a label is old enough that its price/availability should be
- * confirmed again before the item is trusted, per the labeling rules'
- * `next_review_at` field. Falls back to true (needs checking) if the date is
- * missing or unparseable — silence must never read as "confirmed current".
+ * True when this item's commercial snapshot is past its review date, or its
+ * review date is missing/unparseable. Silence never reads as "confirmed
+ * current" — the fallback is always "needs checking".
  */
 export function needsRevalidation(product: SimonsProduct): boolean {
-  if (!product.next_review_at) return true;
-  const due = Date.parse(product.next_review_at);
-  if (Number.isNaN(due)) return true;
-  return Date.now() >= due;
+  if (product.commerce.freshness_status === "review_overdue") return true;
+  const due = product.commerce.next_review_at;
+  if (!due) return true;
+  const ts = Date.parse(due);
+  if (Number.isNaN(ts)) return true;
+  return Date.now() >= ts;
+}
+
+/** True when the shopper must still pick a colour/size on the retailer's page. */
+export function needsVariantSelection(product: SimonsProduct): boolean {
+  return product.variant.variant_selection_required;
+}
+
+/** Counts for the validator and for surfacing catalog health. */
+export function catalogHealth() {
+  const overdue = FILE.products.filter(
+    (p) => p.commerce.freshness_status === "review_overdue",
+  ).length;
+  return {
+    catalogVersion: CATALOG_VERSION,
+    total: FILE.products.length,
+    eligible: ELIGIBLE.length,
+    overdue,
+    blockingOverdue: blockOverdue(),
+  };
 }

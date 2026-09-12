@@ -111,10 +111,12 @@ export default function LooksPage() {
               className="onb-help"
               style={{ marginTop: "1.75rem", maxWidth: "60ch" }}
             >
-              Images are AI visualizations, not photographs of the garments. Fit
-              isn&rsquo;t guaranteed. Lookrdy is not officially affiliated with
-              Simons — price, size and availability are confirmed on
-              Simons.ca before you buy.
+              Images are AI visualizations of a style direction, not
+              photographs of any product. Each look links to{" "}
+              <strong>similar options</strong> you can buy — not the exact
+              garments shown — and fit isn&rsquo;t guaranteed. Lookrdy is not
+              officially affiliated with Simons; confirm price, colour, size
+              and availability on Simons.ca before you buy.
             </p>
           </div>
         </div>

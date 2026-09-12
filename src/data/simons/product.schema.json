@@ -1,224 +1,199 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://lookrdy.example/schemas/product-v1.json",
-  "title": "Lookrdy Pilot Product",
+  "$id": "https://lookrdy.example/schemas/simons-products-v2.schema.json",
+  "title": "Lookrdy Simons Product Catalog V2",
   "type": "object",
   "required": [
-    "product_id",
-    "retailer",
-    "title",
-    "brand",
-    "url",
-    "current_price",
-    "currency",
-    "canonical_category",
-    "required_slot",
-    "source_checked_at",
-    "rights"
+    "catalog_id",
+    "schema_version",
+    "catalog_version",
+    "product_count",
+    "catalog_scope",
+    "matching_contract",
+    "products"
   ],
   "properties": {
-    "product_id": {
-      "type": "string",
-      "pattern": "^SIM-[0-9]{3}$"
-    },
-    "retailer": {
-      "const": "Simons"
-    },
-    "title": {
+    "catalog_id": {
       "type": "string"
     },
-    "brand": {
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "catalog_version": {
       "type": "string"
     },
-    "url": {
+    "generated_at": {
       "type": "string",
-      "format": "uri"
+      "format": "date-time"
     },
-    "regular_price": {
-      "type": "number",
-      "minimum": 0
-    },
-    "current_price": {
-      "type": "number",
-      "minimum": 0
-    },
-    "currency": {
-      "const": "CAD"
-    },
-    "sale_status": {
-      "enum": [
-        "regular",
-        "sale",
-        "unknown"
+    "source_catalog_version": {
+      "type": [
+        "string",
+        "number",
+        "null"
       ]
     },
-    "availability_status": {
-      "enum": [
-        "indexed_current",
-        "live_verified",
-        "unavailable",
-        "discontinued",
-        "unknown"
-      ]
+    "product_count": {
+      "type": "integer",
+      "minimum": 1
     },
-    "source_checked_at": {
-      "type": "string",
-      "format": "date"
+    "catalog_scope": {
+      "type": "object"
     },
-    "next_review_at": {
-      "type": "string",
-      "format": "date"
+    "matching_contract": {
+      "type": "object"
     },
-    "listed_color": {
-      "type": "string"
+    "migration_notes": {
+      "type": "object"
     },
-    "canonical_category": {
-      "enum": [
-        "shirt",
-        "pants",
-        "footwear",
-        "knit_layer",
-        "blazer",
-        "jacket",
-        "coat"
-      ]
-    },
-    "subcategory": {
-      "type": "string"
-    },
-    "required_slot": {
-      "enum": [
-        "top",
-        "bottom",
-        "shoes",
-        "optional_layer"
-      ]
-    },
-    "labels": {
-      "type": "object",
-      "required": [
-        "preferred_color_family",
-        "pattern",
-        "fit",
-        "formality",
-        "warmth",
-        "season_tags",
-        "occasion_tags",
-        "look_roles",
-        "budget_role"
-      ],
-      "properties": {
-        "preferred_color_family": {
-          "type": "string"
-        },
-        "pattern": {
-          "type": "string"
-        },
-        "fit": {
-          "type": "string"
-        },
-        "formality": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "warmth": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "season_tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "occasion_tags": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "company_dinner",
-              "date_upscale_dinner",
-              "everyday_upgrade"
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "product_id",
+          "schema_version",
+          "identity",
+          "commerce",
+          "classification",
+          "variant",
+          "media",
+          "visual_attributes",
+          "matching_profile",
+          "data_quality",
+          "rights"
+        ],
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "pattern": "^SIM-[0-9]{3}$"
+          },
+          "schema_version": {
+            "const": "2.0.0"
+          },
+          "identity": {
+            "type": "object",
+            "required": [
+              "retailer",
+              "brand",
+              "title"
+            ]
+          },
+          "commerce": {
+            "type": "object",
+            "required": [
+              "product_url",
+              "currency",
+              "regular_price",
+              "current_price",
+              "sale_status",
+              "availability_status",
+              "source_checked_at",
+              "next_review_at",
+              "freshness_status",
+              "active_for_pilot"
+            ],
+            "properties": {
+              "product_url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://(www|m)\\.simons\\.ca/"
+              },
+              "currency": {
+                "const": "CAD"
+              },
+              "regular_price": {
+                "type": "number",
+                "minimum": 0
+              },
+              "current_price": {
+                "type": "number",
+                "minimum": 0
+              },
+              "active_for_pilot": {
+                "type": "boolean"
+              }
+            }
+          },
+          "classification": {
+            "type": "object",
+            "required": [
+              "market",
+              "department",
+              "canonical_category",
+              "subcategory",
+              "required_slot"
+            ]
+          },
+          "variant": {
+            "type": "object",
+            "required": [
+              "listed_color",
+              "selected_color",
+              "selected_size",
+              "variant_selection_required",
+              "attribute_reference_color",
+              "color_attributes_are_variant_specific"
+            ]
+          },
+          "media": {
+            "type": "object",
+            "required": [
+              "product_image_url",
+              "image_required_for_generation",
+              "image_display_authorized",
+              "display_mode"
+            ]
+          },
+          "visual_attributes": {
+            "type": "object",
+            "required": [
+              "color",
+              "pattern",
+              "material",
+              "silhouette",
+              "construction",
+              "styling"
+            ]
+          },
+          "matching_profile": {
+            "type": "object",
+            "required": [
+              "formality_level_1_to_5",
+              "warmth_level_1_to_5",
+              "season_tags",
+              "occasion_tags",
+              "look_roles",
+              "style_tags",
+              "budget_role",
+              "match_priority_fields",
+              "negative_constraints"
+            ]
+          },
+          "data_quality": {
+            "type": "object",
+            "required": [
+              "commercial_data_confidence",
+              "visual_attribute_confidence",
+              "verified_fields",
+              "inferred_fields",
+              "unknown_or_variant_fields",
+              "needs_review",
+              "review_reasons"
+            ]
+          },
+          "rights": {
+            "type": "object",
+            "required": [
+              "image_use_authorized",
+              "affiliate_approved",
+              "public_display_allowed",
+              "link_out_only"
             ]
           }
-        },
-        "look_roles": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "Safe",
-              "Polished",
-              "Bold"
-            ]
-          }
-        },
-        "style_tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "budget_role": {
-          "enum": [
-            "value",
-            "core",
-            "stretch",
-            "optional",
-            "backup_sale"
-          ]
         }
       }
-    },
-    "quality": {
-      "type": "object",
-      "required": [
-        "confidence",
-        "needs_review",
-        "review_reasons"
-      ],
-      "properties": {
-        "confidence": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "needs_review": {
-          "type": "boolean"
-        },
-        "review_reasons": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "rights": {
-      "type": "object",
-      "required": [
-        "image_use_authorized",
-        "affiliate_approved",
-        "public_display_allowed",
-        "link_out_only"
-      ],
-      "properties": {
-        "image_use_authorized": {
-          "type": "boolean"
-        },
-        "affiliate_approved": {
-          "type": "boolean"
-        },
-        "public_display_allowed": {
-          "type": "boolean"
-        },
-        "link_out_only": {
-          "type": "boolean"
-        }
-      }
-    },
-    "active_for_pilot": {
-      "type": "boolean"
     }
   }
 }

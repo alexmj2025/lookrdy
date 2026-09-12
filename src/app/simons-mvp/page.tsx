@@ -3,13 +3,14 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/Wordmark";
 import { composeSimonsOutfits, BASE_MIN, BASE_MAX } from "@/lib/simons/compose";
 import type { SimonsOutfitItem } from "@/lib/simons/compose";
+import { catalogHealth } from "@/lib/simons/catalog";
 import { money } from "@/lib/format";
 import type { LookRole, Occasion } from "@/lib/simons/types";
 
 export const metadata: Metadata = {
-  title: "Simons MVP catalog — Lookrdy",
+  title: "Simons catalog — Lookrdy",
   description:
-    "Base outfits (top + pants + shoes, CAD 200-450) composed from the Simons pilot catalog.",
+    "Base outfits (top + bottom + footwear, CAD 200-450) composed from the Simons pilot catalog.",
 };
 
 const OCCASIONS: { id: Occasion; label: string }[] = [
@@ -22,6 +23,19 @@ const ROLE_COPY: Record<LookRole, string> = {
   Safe: "Safe — neutral, nothing to second-guess.",
   Polished: "Polished — a little more colour or texture.",
   Bold: "Bold — a statement piece, kept in check.",
+};
+
+/**
+ * Deliberately words rather than a percentage. A score can read 100% while
+ * most of the category's attributes are unknown, so a number would imply a
+ * precision the catalog doesn't have; these bands come from the matching
+ * contract's own score_interpretation and are already capped by coverage.
+ */
+const BAND_COPY: Record<string, string> = {
+  strong: "Strong match to this direction",
+  usable: "Good match to this direction",
+  fallback: "Loose match — limited attribute data",
+  reject: "Weak match to this direction",
 };
 
 function isValidOccasion(v: string | undefined): v is Occasion {
@@ -39,19 +53,20 @@ export default async function SimonsMvpPage({
     : "company_dinner";
 
   const outfits = composeSimonsOutfits(occasion);
+  const health = catalogHealth();
 
   return (
     <>
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-5 pb-24 pt-10 md:px-10 md:pt-14">
-        <p className="label">Simons MVP catalog · pilot</p>
+        <p className="label">Simons pilot catalog · {health.catalogVersion}</p>
         <h1 className="display mt-3 text-4xl md:text-5xl">
           Base outfits, {money(BASE_MIN, "CAD")}–{money(BASE_MAX, "CAD")}
         </h1>
         <p className="lede mt-6">
-          Every look is exactly one top, one pair of pants, and one pair of
-          shoes, priced within budget. Optional layers are shown separately
-          and never counted toward that total.
+          Every look is exactly one top, one bottom, and one pair of shoes,
+          priced within budget. Optional layers are shown separately and never
+          counted toward that total.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -69,11 +84,21 @@ export default async function SimonsMvpPage({
 
         <div className="mt-4 border-y hairline py-4">
           <p className="text-sm leading-relaxed text-[var(--color-meta)]">
-            Lookrdy is not officially affiliated with Simons. Products link
-            out to simons.ca; price, size, and availability must be confirmed
-            there before you buy — this pilot catalog is not a live stock
-            feed.
+            These are <strong>similar options</strong> that reproduce the look
+            direction — not the exact garment from any visualization. Lookrdy
+            is not officially affiliated with Simons. Confirm price, colour,
+            size and availability on simons.ca before you buy; this pilot
+            catalog is not a live stock feed.
           </p>
+          {health.overdue > 0 && (
+            <p className="mt-2 text-xs text-[var(--color-meta)]">
+              {health.overdue} of {health.total} items are past their review
+              date
+              {health.blockingOverdue
+                ? " and are being withheld (SIMONS_BLOCK_OVERDUE=1)."
+                : " and are shown with a revalidation warning."}
+            </p>
+          )}
         </div>
 
         {outfits.length === 0 && (
@@ -94,10 +119,16 @@ export default async function SimonsMvpPage({
                 </p>
               </div>
 
+              {outfit.outfitBand !== "unscored" && (
+                <p className="mt-1 text-xs text-[var(--color-meta)]">
+                  {BAND_COPY[outfit.outfitBand]}
+                </p>
+              )}
+
               <div className="mt-5 grid gap-3">
                 <ItemRow slot="Top" item={outfit.top} />
-                <ItemRow slot="Pants" item={outfit.bottom} />
-                <ItemRow slot="Shoes" item={outfit.shoes} />
+                <ItemRow slot="Bottom" item={outfit.bottom} />
+                <ItemRow slot="Shoes" item={outfit.footwear} />
               </div>
 
               {outfit.usedSaleItem && (
@@ -131,14 +162,19 @@ export default async function SimonsMvpPage({
 }
 
 function ItemRow({ slot, item }: { slot: string; item: SimonsOutfitItem }) {
-  const { product, needsRecheck } = item;
+  const { product, needsRecheck, needsVariant } = item;
   return (
     <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <div className="min-w-0">
         <p className="label">{slot}</p>
         <p className="mt-1 text-[0.9375rem]">
-          {product.brand} — {product.title}
+          {product.identity.brand} — {product.identity.title}
         </p>
+        {needsVariant && (
+          <p className="mt-1 text-xs text-[var(--color-meta)]">
+            Choose colour and size on the retailer&rsquo;s page.
+          </p>
+        )}
         {needsRecheck && (
           <p className="mt-1 text-xs text-[var(--color-meta)]">
             Price and availability need a fresh check before you buy.
@@ -147,15 +183,15 @@ function ItemRow({ slot, item }: { slot: string; item: SimonsOutfitItem }) {
       </div>
       <div className="flex items-center gap-4">
         <span className="text-[0.9375rem]">
-          {money(product.current_price, product.currency)}
+          {money(product.commerce.current_price, product.commerce.currency)}
         </span>
         <a
-          href={product.url}
+          href={product.commerce.product_url}
           target="_blank"
           rel="nofollow noopener noreferrer"
           className="btn-text"
         >
-          Shop at Simons.ca
+          Shop this type of item
         </a>
       </div>
     </div>
