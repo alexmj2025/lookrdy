@@ -121,17 +121,20 @@ for (const p of catalog.products) {
 
   // --- Business rules the JSON Schema can't express -------------------------
 
-  // Rights: until affiliate/image approval exists, nothing may be marked
-  // displayable. Getting this wrong would publish retailer imagery we have
-  // no licence for, so it's an error rather than a warning.
+  // Display and generation permissions are separate. Existing seed records
+  // remain link-out only; approved future records must satisfy both gates.
   const r = p.rights ?? {};
-  if (r.image_use_authorized === true) fail(id, "rights.image_use_authorized must be false");
-  if (r.public_display_allowed === true) fail(id, "rights.public_display_allowed must be false");
-  if (r.link_out_only !== true) fail(id, "rights.link_out_only must be true");
-  if (p.media?.product_image_url) fail(id, "media.product_image_url must be null (no stored retailer imagery)");
-  if (p.media?.image_display_authorized === true) {
-    fail(id, "media.image_display_authorized must be false");
-  }
+  const media = p.media ?? {};
+  if (media.product_image_url && !/^\/simons\/products\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)$/.test(media.product_image_url))
+    fail(id, "product photos must be approved local /simons/products/ assets");
+  if (r.link_out_only && (media.image_display_authorized || r.public_display_allowed))
+    fail(id, "link-out-only records cannot authorize public photo display");
+  if (media.image_display_authorized && (!r.public_display_allowed || !media.product_image_url))
+    fail(id, "photo display requires public display permission and a photo");
+  if (r.image_use_authorized && !media.product_image_url)
+    fail(id, "image generation authorization requires a reference photo");
+  if (media.product_image_url && !r.image_use_authorized && !media.image_display_authorized)
+    fail(id, "a stored photo requires explicit display or generation authorization");
 
   if (c.freshness_status === "review_overdue") {
     warn(id, "commercial snapshot is past next_review_at — needs revalidation before display");

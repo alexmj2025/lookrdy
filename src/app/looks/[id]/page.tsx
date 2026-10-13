@@ -39,6 +39,14 @@ export default function LookDetailPage() {
     };
   }, [id, router]);
 
+  useEffect(() => {
+    const refresh = () => { void getResult().then((r) => {
+      if (r) { setResult(r); setLook(r.looks.find((item) => item.id === id) ?? null); }
+    }); };
+    window.addEventListener("lookrdy:result", refresh);
+    return () => window.removeEventListener("lookrdy:result", refresh);
+  }, [id]);
+
   if (!result || !look) return <div className="onb" style={{ minHeight: "100dvh" }} />;
 
   const budget = result.request.budget;
@@ -71,7 +79,7 @@ export default function LookDetailPage() {
                   className="onb-card__ph"
                   style={{ position: "static", aspectRatio: "3 / 4" }}
                 >
-                  Visualization unavailable
+                  {look.previewStatus === "pending" ? "Creating your preview… You can browse the products now." : "Preview unavailable"}
                 </div>
               )}
             </div>
@@ -87,6 +95,7 @@ export default function LookDetailPage() {
               )}
 
               <h1 className="onb-h1">{look.name}</h1>
+              <p className="onb-help" role="status">{look.previewStatus === "pending" ? "Approximate preview generating. Keep this tab open." : look.previewNotice ?? "Approximate AI preview; garment details and fit may differ."}</p>
               <p className="onb-lede">{look.rationale}</p>
 
               <div className="onb-tags" style={{ marginTop: "1rem" }}>

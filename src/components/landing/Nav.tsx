@@ -17,6 +17,18 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 900px)");
+    const closeOnResize = () => { if (desktop.matches) setOpen(false); };
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    desktop.addEventListener("change", closeOnResize);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      desktop.removeEventListener("change", closeOnResize);
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

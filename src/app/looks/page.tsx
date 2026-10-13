@@ -40,6 +40,12 @@ export default function LooksPage() {
     };
   }, [router]);
 
+  useEffect(() => {
+    const refresh = () => { void getResult().then((r) => { if (r) setResultState(r); }); };
+    window.addEventListener("lookrdy:result", refresh);
+    return () => window.removeEventListener("lookrdy:result", refresh);
+  }, []);
+
   if (!result) return <div className="onb" style={{ minHeight: "100dvh" }} />;
 
   return (
@@ -72,10 +78,11 @@ export default function LooksPage() {
             <div className="onb-results__head">
               <div>
                 <p className="onb-eyebrow">Your looks are ready</p>
-                <h1 className="onb-h1">Three directions, made for you.</h1>
+                <h1 className="onb-h1">{result.looks.length} directions, made for you.</h1>
                 <p className="onb-lede">
                   Open any look to see the full outfit and the real products
                   behind it.
+                  {result.looks.some((look) => look.previewStatus === "pending") && " Your product lists are ready; previews will appear as they finish. Keep this tab open."}
                 </p>
               </div>
 

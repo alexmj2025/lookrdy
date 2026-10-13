@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { visualize } from "@/lib/ai/visualize";
 import { isMock } from "@/lib/ai/client";
+import { validateEditPhoto } from "@/lib/ai/protectedEdit";
 import { zonesFor } from "@/lib/hotspots";
 import { recordEvent } from "@/lib/analytics/record";
 import { getSupabaseSession } from "@/lib/supabase/server";
@@ -41,9 +42,9 @@ const OCCASION_LABEL: Record<Occasion, string> = {
  *
  *   1. COMPOSE   fixed rules (src/lib/simons/compose.ts) → up to 3 bundles,
  *                deterministic, no LLM, base total always CAD 200-450.
- *   2. VISUALIZE composed bundle + photo → image (unchanged from before —
- *                it only ever reads item category/color/name text, never a
- *                product image, so it was already source-agnostic).
+ *   2. VISUALIZE composed bundle + photo + clothing mask → protected edit,
+ *                using garment attributes and authorized local references.
+ *                Stream product lists first and previews as they finish.
  *
  * The free-generation cap is skipped entirely for a signed-in user — real
  * accounts (src/lib/supabase/browser.ts + auth.ts) are unlimited, no
@@ -91,6 +92,7 @@ export async function POST(request: Request) {
   const stylePreference = VALID_ROLES.includes(stylePreferenceRaw as LookRole)
     ? (stylePreferenceRaw as LookRole)
     : null;
+  const streaming = form.get("stream") === "1";
 
   // --- Free generation cap — skipped entirely for a signed-in user ---------
   const limit = freeGenerationLimit();
@@ -110,6 +112,7 @@ export async function POST(request: Request) {
 
   // --- Photo: memory only, never written anywhere --------------------------
   let photo: { data: Buffer; mimeType: string } | null = null;
+  let mask: Buffer | undefined;
   const file = form.get("photo");
   if (file instanceof File && file.size > 0) {
     if (file.size > 12 * 1024 * 1024) {
@@ -125,6 +128,17 @@ export async function POST(request: Request) {
       data: Buffer.from(await file.arrayBuffer()),
       mimeType: file.type || "image/jpeg",
     };
+  }
+
+  const maskFile = form.get("mask");
+  if (!photo || !(maskFile instanceof File) || !maskFile.size || maskFile.size > 4 * 1024 * 1024) {
+    return NextResponse.json({ error: "invalid_request", message: "Upload a photo and save the clothing area selection first." }, { status: 400 });
+  }
+  try {
+    mask = Buffer.from(await maskFile.arrayBuffer());
+    await validateEditPhoto(photo.data, mask);
+  } catch (error) {
+    return NextResponse.json({ error: "invalid_request", message: error instanceof Error ? error.message : "Unable to read photo." }, { status: 400 });
   }
 
   try {
@@ -149,17 +163,12 @@ export async function POST(request: Request) {
     const bundles = simonsOutfitsToBundles(outfits, stylePreference);
 
     // --- VISUALIZE -----------------------------------------------------------
-    const looks: Look[] = await Promise.all(
-      bundles.map(async (bundle) => ({
+    const looks: Look[] = bundles.map((bundle) => ({
         ...bundle,
-        imageUrl: await visualize({
-          bundle,
-          photo,
-          occasion: OCCASION_PROMPT[occasion],
-        }),
+        imageUrl: "",
+        previewStatus: "pending",
         hotspots: zonesFor(bundle),
-      })),
-    );
+    }));
 
     const engine = isMock() ? ("mock" as const) : ("openai" as const);
 
@@ -171,12 +180,6 @@ export async function POST(request: Request) {
         engine,
       });
     }
-    await recordEvent(sessionId, "generation_completed", {
-      outcome: "ok",
-      engine,
-      looks: looks.length,
-      authenticated: Boolean(user),
-    });
 
     const req: StyleRequest = {
       occasion: OCCASION_LABEL[occasion],
@@ -213,7 +216,44 @@ export async function POST(request: Request) {
       generationsUsed: user ? 0 : used + 1,
       generationsAllowed: user ? Number.MAX_SAFE_INTEGER : limit,
     };
-    return NextResponse.json(result);
+    // Capture photo before the handler's finally clears its reference.
+    const reference = photo;
+    const selection = mask;
+    const renderLooks = async (emit?: (event: unknown) => void) => {
+      await Promise.all(looks.map(async (look, index) => {
+        const preview = await visualize({ bundle: look, photo: reference, mask: selection,
+          occasion: OCCASION_PROMPT[occasion] });
+        result.looks[index] = { ...look, ...preview };
+        emit?.({ type: "look", look: result.looks[index] });
+      }));
+      await recordEvent(sessionId, "generation_completed", {
+        outcome: "ok", engine, looks: looks.length,
+        previewsReady: result.looks.filter((look) => look.previewStatus === "ready").length,
+        authenticated: Boolean(user),
+      });
+    };
+    if (!streaming) {
+      await renderLooks();
+      return NextResponse.json(result);
+    }
+    const encoder = new TextEncoder();
+    let connected = true;
+    const body = new ReadableStream({
+      async start(controller) {
+        const emit = (event: unknown) => {
+          if (connected) controller.enqueue(encoder.encode(`${JSON.stringify(event)}\n`));
+        };
+        try {
+          emit({ type: "result", result });
+          await renderLooks(emit);
+          emit({ type: "done" });
+        } catch {
+          emit({ type: "error", message: "Some previews could not finish. Your products are still available." });
+        } finally { if (connected) controller.close(); }
+      },
+      cancel() { connected = false; },
+    });
+    return new Response(body, { headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store", "X-Accel-Buffering": "no" } });
   } catch (err) {
     console.error("[generate] pipeline failed", err);
     return NextResponse.json(

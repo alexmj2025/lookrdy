@@ -165,7 +165,7 @@ export function CameraCapture({
       >
         <DialogTitle className="sr-only">Take a photo</DialogTitle>
 
-        <div className="flex items-center justify-between px-5 py-4">
+        <div className="flex shrink-0 items-center justify-between px-5 py-4" style={{ paddingTop: "max(1rem, env(safe-area-inset-top))" }}>
         <span className="label" style={{ color: "#bdbbb6" }}>
           {status === "live" ? "Camera ready" : "Camera"}
         </span>
@@ -181,7 +181,7 @@ export function CameraCapture({
         </button>
       </div>
 
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+      <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden">
         <video
           ref={videoRef}
           playsInline
@@ -252,8 +252,8 @@ export function CameraCapture({
         </div>
 
         <p
-          className="px-8 pb-8 text-center text-[0.8125rem] leading-relaxed"
-          style={{ color: "#bdbbb6" }}
+          className="shrink-0 px-8 pb-8 text-center text-[0.8125rem] leading-relaxed"
+          style={{ color: "#bdbbb6", paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
         >
           Stand back so your whole body fits inside the frame.
         </p>

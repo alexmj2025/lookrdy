@@ -31,7 +31,7 @@ export function LookCard({
           <img src={look.imageUrl} alt={`${look.name} shown on your photo`} />
         ) : (
           <span className="onb-card__ph" aria-hidden="true">
-            Visualization unavailable
+            {look.previewStatus === "pending" ? "Creating your preview…" : "Preview unavailable"}
           </span>
         )}
 
@@ -59,6 +59,7 @@ export function LookCard({
       </div>
 
       <div className="onb-look__foot">
+        <p className="onb-help" role="status">{look.previewNotice ?? "Approximate AI preview; garment details and fit may differ."}</p>
         <div className="onb-tags">
           {look.descriptors.slice(0, 1).map((d) => (
             <span className="onb-tag" key={d}>

@@ -20,11 +20,13 @@ export function useAuth(): AuthState {
 
   useEffect(() => {
     let mounted = true;
-    const supabase = getSupabaseBrowser();
+    let supabase;
+    try { supabase = getSupabaseBrowser(); }
+    catch { setState({ user: null, loading: false }); return; }
 
     supabase.auth.getUser().then(({ data }) => {
       if (mounted) setState({ user: data.user, loading: false });
-    });
+    }).catch(() => { if (mounted) setState({ user: null, loading: false }); });
 
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       if (mounted) setState({ user: session?.user ?? null, loading: false });

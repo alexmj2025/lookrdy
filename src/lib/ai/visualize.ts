@@ -1,6 +1,9 @@
 import "server-only";
 import { getOpenAI, IMAGE_MODEL, isMock } from "./client";
 import type { Bundle } from "@/lib/types";
+import { preserveProtectedPixels } from "./protectedEdit";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 // ============================================================================
 // PIPELINE STEP 4 — VISUALIZE.
@@ -21,24 +24,26 @@ export interface VisualizeInput {
   /** Raw user photo bytes, or null to render a neutral figure. */
   photo: { data: Buffer; mimeType: string } | null;
   occasion: string;
+  mask?: Buffer;
 }
 
 function describeOutfit(bundle: Bundle): string {
   return bundle.items
-    .map((i) => `${i.category}: ${i.color} ${i.name.toLowerCase()}`)
+    .map((i) => `${i.category}: ${i.name}; ${i.variantSelectionRequired ? "colour variant not confirmed; this is a style approximation" : i.color}; ${(i.visualDetails ?? []).join("; ")}`)
     .join("; ");
 }
 
 function buildPrompt(bundle: Bundle, occasion: string): string {
-  return `Full-body editorial fashion photograph of this person wearing this exact outfit, dressed for ${occasion}.
+  return `Edit only the selected clothing areas in the FIRST reference photo for ${occasion}. It is the identity and scene reference, not inspiration for a new photograph.
 
 Outfit — ${describeOutfit(bundle)}.
 
-Keep the person's face, hair, skin tone, and body proportions faithful to the reference photo. Standing, front-facing, full body visible from head to shoes. Plain light grey studio backdrop, soft even lighting, natural pose. Photorealistic, sharp, magazine quality. No text, no logos, no watermarks.`;
+Preserve the original face, expression, hair, skin, body shape, pose, hands, camera angle, framing, background and lighting. Do not beautify, restyle, reposition or change the person. Fit the garments to their existing body and pose. Only replace the masked clothing. Preserve known fabric, pattern, cut and construction details. Additional reference images, when present, show the garments in outfit order; reproduce those garments. Unknown attributes are not verified product details. Do not add extra garments, accessories, text or watermarks.`;
 }
 
-export async function visualize(input: VisualizeInput): Promise<string> {
-  if (isMock()) return placeholderImage(input.bundle);
+export async function visualize(input: VisualizeInput): Promise<{ imageUrl: string; previewStatus: "ready" | "unavailable" | "demo"; previewNotice: string }> {
+  const notice = "Approximate AI preview. Garment details and fit may differ; verify the selected variant on Simons.ca.";
+  if (isMock()) return { imageUrl: placeholderImage(input.bundle), previewStatus: "demo", previewNotice: "Demo preview — live image generation is disabled." };
 
   const client = getOpenAI();
   const prompt = buildPrompt(input.bundle, input.occasion);
@@ -48,14 +53,26 @@ export async function visualize(input: VisualizeInput): Promise<string> {
       // Image edit: the user's photo is the reference the outfit is rendered
       // onto. Bytes are held in memory only for this call.
       const file = await toFile(input.photo);
+      // Only approved, repository-owned assets are read. No arbitrary URL fetches.
+      const references = await Promise.all(input.bundle.items.map(async (item) => {
+        const path = item.generationImageUrl;
+        if (!path || !/^\/simons\/products\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)$/.test(path)) return null;
+        return toFile({ data: await readFile(join(process.cwd(), "public", path)), mimeType: path.endsWith("png") ? "image/png" : path.endsWith("webp") ? "image/webp" : "image/jpeg" });
+      }));
       const result = await client.images.edit({
         model: IMAGE_MODEL,
-        image: file,
+        image: [file, ...references.filter((r): r is NonNullable<typeof r> => r !== null)],
+        ...(input.mask ? { mask: await toFile({ data: input.mask, mimeType: "image/png" }) } : {}),
+        ...(/^gpt-image-1(?:\.5)?$/.test(IMAGE_MODEL) ? { input_fidelity: "high" as const } : {}),
+        quality: "medium",
         prompt,
         size: "1024x1536",
-      });
+      }, { timeout: 180_000, maxRetries: 0 });
       const b64 = result.data?.[0]?.b64_json;
-      if (b64) return `data:image/png;base64,${b64}`;
+      if (b64) {
+        const output = input.mask ? await preserveProtectedPixels(input.photo.data, Buffer.from(b64, "base64"), input.mask) : Buffer.from(b64, "base64");
+        return { imageUrl: `data:image/png;base64,${output.toString("base64")}`, previewStatus: "ready", previewNotice: notice };
+      }
     } else {
       const result = await client.images.generate({
         model: IMAGE_MODEL,
@@ -63,19 +80,19 @@ export async function visualize(input: VisualizeInput): Promise<string> {
         size: "1024x1536",
       });
       const b64 = result.data?.[0]?.b64_json;
-      if (b64) return `data:image/png;base64,${b64}`;
+      if (b64) return { imageUrl: `data:image/png;base64,${b64}`, previewStatus: "ready", previewNotice: notice };
     }
   } catch (err) {
     // A failed visualization must not lose the composed outfit — the products
-    // are the real value. Fall back to the placeholder and keep going.
+    // are the real value. Keep the product list and report a preview failure.
     console.warn(
-      `[visualize] generation failed, using placeholder: ${
+      `[visualize] generation failed: ${
         err instanceof Error ? err.message : String(err)
       }`,
     );
   }
 
-  return placeholderImage(input.bundle);
+  return { imageUrl: "", previewStatus: "unavailable", previewNotice: "Preview could not be generated. Your selected products are still available below; please try again." };
 }
 
 async function toFile(photo: { data: Buffer; mimeType: string }) {

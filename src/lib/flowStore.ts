@@ -28,21 +28,29 @@ const RESULT_KEY = "current";
 
 let photoFile: File | null = null;
 let photoPreview: string | null = null;
+let clothingMask: File | null = null;
 
 export function setPhoto(file: File, preview: string) {
   photoFile = file;
   photoPreview = preview;
+  clothingMask = null;
 }
 
-export function getPhoto(): { file: File; preview: string } | null {
+export function setClothingMask(photo: File, mask: File) {
+  photoFile = photo;
+  clothingMask = mask;
+}
+
+export function getPhoto(): { file: File; preview: string; mask: File | null } | null {
   return photoFile && photoPreview
-    ? { file: photoFile, preview: photoPreview }
+    ? { file: photoFile, preview: photoPreview, mask: clothingMask }
     : null;
 }
 
 export function clearPhoto() {
   photoFile = null;
   photoPreview = null;
+  clothingMask = null;
 }
 
 export function hasPhoto(): boolean {
@@ -86,6 +94,7 @@ let memoResult: GenerationResult | null = null;
 
 export async function setResult(result: GenerationResult): Promise<void> {
   memoResult = result;
+  window.dispatchEvent(new Event("lookrdy:result"));
   try {
     const db = await openDb();
     await new Promise<void>((resolve, reject) => {
@@ -111,8 +120,9 @@ export async function getResult(): Promise<GenerationResult | null> {
       req.onsuccess = () => resolve((req.result as GenerationResult) ?? null);
       req.onerror = () => reject(req.error);
     });
-    memoResult = result;
-    return result;
+    memoResult = result ? { ...result, looks: result.looks.map((look) => look.previewStatus === "pending"
+      ? { ...look, previewStatus: "unavailable", previewNotice: "Generation was interrupted by a reload. Your selected products are still available." } : look) } : null;
+    return memoResult;
   } catch {
     return null;
   }

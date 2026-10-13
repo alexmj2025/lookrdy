@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import "../onboarding.css";
 
 import { OnboardingShell } from "@/components/onboarding/OnboardingShell";
 import { PhotoUploader } from "@/components/onboarding/PhotoUploader";
+import { ClothingMaskEditor } from "@/components/onboarding/ClothingMaskEditor";
+import { consumeGeneration } from "@/lib/onboarding/generationStream";
 import { SelectCard } from "@/components/onboarding/SelectCard";
 import { BudgetRangeSlider } from "@/components/onboarding/BudgetRangeSlider";
 import { CountrySelector } from "@/components/onboarding/CountrySelector";
@@ -54,6 +56,8 @@ export default function CreatePage() {
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [paywall, setPaywall] = useState(false);
+  const [maskReady, setMaskReady] = useState(false);
+  const submitting = useRef(false);
 
   const step = state.currentStep;
 
@@ -78,9 +82,10 @@ export default function CreatePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const stepValid = step === 1 ? preview !== null : isStepValid(step, state);
+  const stepValid = step === 1 ? preview !== null && maskReady : isStepValid(step, state);
 
   async function generate() {
+    if (submitting.current) return;
     // Signed-in users bypass the free cap entirely — the server enforces
     // this too, but checking here avoids sending a doomed request.
     if (!canGenerate(!!user)) {
@@ -90,7 +95,7 @@ export default function CreatePage() {
     }
 
     const photo = getPhoto();
-    if (!photo) {
+    if (!photo || !photo.mask) {
       goTo(1);
       return;
     }
@@ -108,6 +113,7 @@ export default function CreatePage() {
     };
 
     setRequest(req);
+    submitting.current = true;
     setGenerating(true);
     setError(null);
     trackOnboarding("generation_started", { occasion: state.occasion });
@@ -120,8 +126,17 @@ export default function CreatePage() {
       form.set("avoidText", state.avoidText);
       if (state.stylePreference) form.set("stylePreference", state.stylePreference);
       form.set("photo", photo.file);
+      form.set("mask", photo.mask);
+      form.set("stream", "1");
 
       const res = await fetch("/api/generate", { method: "POST", body: form });
+      if (res.ok && res.headers.get("content-type")?.includes("application/x-ndjson")) {
+        await consumeGeneration(res, (result) => {
+          syncFreeRemaining(result.generationsUsed, result.generationsAllowed);
+          router.push("/looks");
+        });
+        return;
+      }
       const data = (await res.json()) as GenerationResult | { error: string; message: string };
 
       if ("error" in data) {
@@ -144,12 +159,11 @@ export default function CreatePage() {
 
       await setResult(data);
       setDone(true);
-      // Let the ring land on 100% before the route changes.
-      setTimeout(() => router.push("/looks"), 700);
+      router.push("/looks");
     } catch {
       setGenerating(false);
       setError("Something went wrong while building your looks. Please try again.");
-    }
+    } finally { submitting.current = false; }
   }
 
   if (generating) {
@@ -193,6 +207,7 @@ export default function CreatePage() {
                     setPreviewUrl(null);
                   }}
                 />
+                {preview && <ClothingMaskEditor preview={preview} onReady={setMaskReady} />}
               </div>
             </div>
 

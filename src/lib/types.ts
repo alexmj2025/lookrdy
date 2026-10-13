@@ -43,6 +43,9 @@ export interface Product {
   affiliateApproved?: boolean;
   /** True when this item's price/availability label is due a fresh check. */
   needsRecheck?: boolean;
+  visualDetails?: string[];
+  generationImageUrl?: string;
+  variantSelectionRequired?: boolean;
 }
 
 /** Step 1 output: the free-text request parsed into machine constraints. */
@@ -111,6 +114,8 @@ export interface Look extends Bundle {
   /** Data URL or hosted URL of the AI visualization. */
   imageUrl: string;
   hotspots: Hotspot[];
+  previewStatus?: "pending" | "ready" | "unavailable" | "demo";
+  previewNotice?: string;
 }
 
 export interface GenerationResult {

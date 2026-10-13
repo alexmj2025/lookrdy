@@ -4,6 +4,7 @@ import { money } from "@/lib/format";
 import { wrapOutboundUrl } from "@/lib/affiliate";
 import { trackOnboarding } from "@/lib/onboarding/analytics";
 import type { Product } from "@/lib/types";
+import { useState } from "react";
 
 /**
  * One product inside a look.
@@ -20,13 +21,14 @@ export function ProductMatchRow({
   product: Product;
   onChange?: (product: Product) => void;
 }) {
+  const [imageFailed, setImageFailed] = useState(false);
   return (
     <div className="onb-row">
       <span className="onb-row__media">
-        {product.imageUrl ? (
+        {product.imageUrl && !imageFailed ? (
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={product.imageUrl} alt="" loading="lazy" />
-        ) : null}
+          <img src={product.imageUrl} alt={product.name} loading="lazy" onError={() => setImageFailed(true)} />
+        ) : <span style={{ fontSize: 10, textAlign: "center", padding: 4 }}>Photo on Simons.ca</span>}
       </span>
 
       <span>
@@ -35,6 +37,7 @@ export function ProductMatchRow({
         <span className="onb-row__meta">
           {product.color}
           {product.sizes.length > 0 && ` · ${product.sizes.length} sizes`}
+          {product.variantSelectionRequired && " · Choose colour and size on Simons.ca"}
         </span>
         {product.needsRecheck && (
           <span className="onb-row__meta">

@@ -5,7 +5,7 @@ import { CameraCapture } from "@/components/CameraCapture";
 import { Camera, Lock, Upload } from "./icons";
 
 const MAX_BYTES = 10 * 1024 * 1024;
-const ACCEPTED = ["image/jpeg", "image/png", "image/heic", "image/heif", "image/webp"];
+const ACCEPTED = ["image/jpeg", "image/png", "image/webp"];
 
 export function PhotoUploader({
   preview,
@@ -29,10 +29,10 @@ export function PhotoUploader({
       // the extension rather than rejecting a valid photo.
       const looksImage =
         ACCEPTED.includes(file.type) ||
-        /\.(jpe?g|png|heic|heif|webp)$/i.test(file.name);
+        /\.(jpe?g|png|webp)$/i.test(file.name);
 
       if (!looksImage) {
-        setError("That file type isn't supported. Use a JPG, PNG or HEIC.");
+        setError("Use a JPG, PNG or WebP photo. Export HEIC photos as JPG first.");
         return;
       }
       if (file.size > MAX_BYTES) {
@@ -138,7 +138,7 @@ export function PhotoUploader({
             <Camera size={15} /> Take a photo
           </button>
         </div>
-        <p className="onb-drop__hint">JPG, PNG or HEIC · max 10MB</p>
+        <p className="onb-drop__hint">JPG, PNG or WebP · max 10MB</p>
       </div>
 
       <input

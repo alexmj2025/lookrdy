@@ -78,7 +78,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   padding: 0 1.125rem;
   border-radius: 999px;
   border: 1px solid transparent;
@@ -149,6 +149,12 @@
 }
 
 .ck-dialog {
+  --ck-paper: #ffffff;
+  --ck-ink: #111111;
+  --ck-muted: #6b6a66;
+  --ck-hair: #e6e3de;
+  --ck-wash: #f5f3ef;
+  --ck-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ck-paper: #ffffff;
   --ck-ink: #111111;
   --ck-muted: #6b6a66;
@@ -313,6 +319,7 @@
 @media (max-width: 767px) {
   .ck {
     padding: 0.75rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
   }
   .ck__bar {
     flex-direction: column;
@@ -331,6 +338,9 @@
   .ck-dialog {
     padding: 1.25rem;
   }
+  .ck__bar { max-height: calc(100dvh - 1.5rem); overflow-y: auto; }
+  .ck-dialog { max-height: calc(100dvh - 2rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); }
+  .ck-dialog__foot { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

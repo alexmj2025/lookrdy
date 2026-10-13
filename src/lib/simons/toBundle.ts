@@ -58,7 +58,18 @@ function toProduct(item: SimonsOutfitItem): Product {
     currency: p.commerce.currency,
     // The rights gate: no Simons imagery is authorized for display, and
     // media.product_image_url is null by design across the whole catalog.
-    imageUrl: "",
+    imageUrl: p.rights.public_display_allowed && p.media.image_display_authorized
+      && !p.rights.link_out_only ? p.media.product_image_url ?? "" : "",
+    generationImageUrl: p.rights.image_use_authorized && !p.variant.variant_selection_required
+      ? p.media.product_image_url ?? undefined : undefined,
+    variantSelectionRequired: p.variant.variant_selection_required,
+    visualDetails: Object.entries(p.visual_attributes).flatMap(([group, attributes]) =>
+      Object.entries(attributes).flatMap(([key, value]) => {
+        if (group === "color" && p.variant.variant_selection_required) return [];
+        const text = Array.isArray(value) ? value.join(", ") : value;
+        return text ? [`${group}.${key}: ${text}`] : [];
+      }),
+    ),
     productUrl: p.commerce.product_url,
     countries: [p.classification.market],
     // The catalog carries no size list; leaving this empty is honest, and
