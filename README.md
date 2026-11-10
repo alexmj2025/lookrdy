@@ -41,7 +41,6 @@ reaches the browser.
 | `NEXT_PUBLIC_SUPABASE_URL` | For persistence | Supabase project URL (Project Settings → API). |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | For persistence | Public anon key. |
 | `SUPABASE_SERVICE_ROLE_KEY` | For persistence | Service-role key. **Server-side only** — it bypasses row-level security. |
-| `FREE_GENERATION_LIMIT` | No | Free generations per session before the cap message. Defaults to `3`. |
 
 ### Current status of this checkout
 
@@ -164,7 +163,7 @@ Three integration boundaries are marked with comments in the code:
 |---|---|---|
 | **Live product feed** | `src/lib/catalog/source.ts` | Replace `fetchAll()` with a Rakuten / Awin / Skimlinks loader that maps feed entries onto `Product`. Nothing downstream changes. |
 | **Refined hotspot detection** | `src/lib/hotspots.ts` | Zones are currently declarative body regions. Swap `zonesFor()` for a segmentation model returning boxes in the same percentage format. |
-| **Affiliate links + payment** | `src/lib/affiliate.ts` | `wrapOutboundUrl()` is the single choke point for every outbound link. Payment slots in where `/api/generate` returns `limit_reached`. |
+| **Affiliate links** | `src/lib/affiliate.ts` | `wrapOutboundUrl()` is the single choke point for every outbound link. |
 
 Organic ranking (in `retrieve.ts`) must stay independent of affiliate
 consideration — it scores on style fit, colour, and formality only. Keep

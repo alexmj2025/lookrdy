@@ -16,8 +16,7 @@ export function CtaBanner() {
           <p className="lnd-eyebrow">Ready when you are</p>
           <h2 className="lnd-h2">Your next outfit is one photo away.</h2>
           <p className="lnd-body">
-            Upload a photo, pick the occasion, and get three complete looks you
-            can actually buy &mdash; in about 90 seconds.
+            Build a look from Simons or style the clothes you already own.
           </p>
           <div className="lnd-cta__actions">
             <Link
@@ -32,8 +31,7 @@ export function CtaBanner() {
             </a>
           </div>
           <p className="lnd-fine">
-            Free to try &middot; No account required &middot; Your photo is
-            never stored
+            Try once as a guest &middot; Sign in to save and revisit looks
           </p>
         </Reveal>
       </div>

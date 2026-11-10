@@ -10,6 +10,8 @@ const LINKS = [
   { href: "/#looks", label: "Looks" },
   { href: "/#contact", label: "Contact Us" },
   { href: "/about", label: "About" },
+  { href: "/wardrobe", label: "Wardrobe" },
+  { href: "/saved", label: "My looks" },
 ];
 
 export function Nav() {

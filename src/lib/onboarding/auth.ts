@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { getSupabaseBrowser } from "@/lib/supabase/browser";
+import { clearPhoto, clearResult, setWardrobeDraft } from "@/lib/flowStore";
 
 export interface AuthState {
   user: User | null;
@@ -53,5 +54,10 @@ export async function signInWithEmail(email: string, password: string) {
 
 export async function signOut() {
   const supabase = getSupabaseBrowser();
-  return supabase.auth.signOut();
+  const response = await supabase.auth.signOut();
+  if (!response.error) {
+    clearPhoto();
+    await Promise.all([clearResult(), setWardrobeDraft([])]);
+  }
+  return response;
 }

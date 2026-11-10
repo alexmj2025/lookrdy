@@ -1,10 +1,10 @@
 # MVP preview improvements
 
-Create now asks the visitor to paint the clothing areas to replace. A portrait PNG and alpha mask are prepared in browser memory. Original proportions are preserved with padding, not stretching. The server validates the mask and uses high-fidelity image editing for GPT Image 1/1.5. After generation it restores source pixels everywhere outside the selection. An unpainted face, hair, hands and background are protected even if the model changes them. Body shape within the painted area and garment fit remain approximate. Painting over a face makes it editable; the UI explains what to exclude.
+Create has three steps: photo, occasion, and budget. The first try is available to guests; sign-in is required to continue after that. For Simons try-on, the server prepares the photo in memory, preserving its proportions with padding. The model is instructed to change only clothes and shoes and preserve the face, pose, and background. No drawing is required, and unchanged pixels are not guaranteed. The separate wardrobe board keeps the original photo untouched.
 
-Product lists stream first, then three previews generate concurrently and update independently. This improves time to useful results; model latency is not guaranteed. Medium image quality is explicit, with a 180-second timeout and no automatic image retries. Failures show an unavailable preview rather than a demo image. Reloading interrupts the stream; unfinished stored cards display that clearly.
+Product lists return without calling an image provider. A visitor can request one preview from the selected outfit's detail page, with the estimated cost shown for fal. Previews are never retried automatically. If a preview request fails or its connection is interrupted, the shopping list remains available and visitors are advised to check provider usage before requesting another image.
 
-Photos and masks remain in memory on the server. Generated previews include source pixels and are stored in the browser's IndexedDB, as before. Do not describe generated images as never stored. They are replaced on the next generation; photos and previews are not saved to server disk or Supabase.
+Original Simons try-on uploads remain in memory on the server. Generated previews are stored in the browser's IndexedDB and may appear in private account history or saved looks. Wardrobe boards may include the original selfie next to the suggested pieces. See [workspace setup](WORKSPACE-SETUP.md) for account storage configuration.
 
 ## What the owner needs to supply
 
@@ -26,4 +26,4 @@ Run `npx tsc --noEmit`, `npx tsx --test src/lib/ai/protectedEdit.test.ts`, `node
 
 The dependency installation also reported 20 audit findings, including 2 critical findings. They have not been remediated in this change; review the dependency audit before public MVP launch.
 
-These changes do not establish exact product replication, current stock, a Simons license, or automatic deployment. Keep previews labelled approximate until acceptance tests support stronger claims. Automated clothing segmentation could remove the painting step later, but needs separate quality evaluation.
+These changes do not establish exact product replication, current stock, a Simons license, or automatic deployment. Keep previews labelled approximate until acceptance tests support stronger claims.

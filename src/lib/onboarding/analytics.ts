@@ -16,16 +16,10 @@ export type OnboardingEvent =
   | "photo_uploaded"
   | "occasion_selected"
   | "budget_selected"
-  | "country_selected"
-  | "style_selected"
   | "generation_started"
   | "generation_completed"
   | "look_selected"
-  | "product_clicked"
-  | "free_generation_used"
-  | "paywall_viewed"
-  | "signup_started"
-  | "credits_selected";
+  | "product_clicked";
 
 export function trackOnboarding(
   event: OnboardingEvent,

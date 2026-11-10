@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { isMock, TEXT_MODEL, IMAGE_MODEL } from "@/lib/ai/client";
+import { TEXT_MODEL } from "@/lib/ai/client";
+import { imageSettings } from "@/lib/ai/imageSettings";
 import { getAllProducts, getCatalogStatus } from "@/lib/catalog/source";
 import { getSupabase } from "@/lib/supabase/server";
-import { freeGenerationLimit } from "@/lib/session";
 import { catalogHealth, getSimonsCatalog } from "@/lib/simons/catalog";
 
 export const runtime = "nodejs";
@@ -37,6 +37,7 @@ export async function GET() {
     }
   }
 
+  const images = imageSettings();
   return NextResponse.json({
     status: "ok",
     catalog: {
@@ -51,10 +52,13 @@ export async function GET() {
       tables,
     },
     ai: {
-      engine: isMock() ? "mock" : "openai",
-      apiKeyPresent: Boolean(process.env.OPENAI_API_KEY),
+      engine: images.engine,
+      provider: images.provider,
+      apiKeyPresent: images.apiKeyPresent,
+      configurationError: images.configurationError,
       textModel: TEXT_MODEL,
-      imageModel: IMAGE_MODEL,
+      imageModel: images.model,
+      previewMode: "on-demand",
     },
     simons: {
       ...catalogHealth(),
@@ -62,7 +66,6 @@ export async function GET() {
       generationReferences: getSimonsCatalog().filter((p) => p.media.product_image_url && p.rights.image_use_authorized && !p.variant.variant_selection_required).length,
       variantsNotSelected: getSimonsCatalog().filter((p) => p.variant.variant_selection_required).length,
     },
-    freeGenerationLimit: freeGenerationLimit(),
     checkedAt: new Date().toISOString(),
   });
 }

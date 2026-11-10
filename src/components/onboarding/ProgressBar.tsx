@@ -2,7 +2,7 @@
 
 import { Check } from "./icons";
 
-const LABELS = ["Photo", "Occasion", "Budget", "Location", "Style"];
+const LABELS = ["Photo", "Occasion", "Budget"];
 
 /**
  * Segmented step indicator. The dots and connectors are decorative — the plain

@@ -7,22 +7,15 @@ import "../onboarding.css";
 
 import { Logo } from "@/components/Logo";
 import { LookCard } from "@/components/onboarding/LookCard";
-import {
-  CreditCounter,
-  PaywallModal,
-} from "@/components/onboarding/PaywallModal";
 import { ArrowRight } from "@/components/onboarding/icons";
 import { getResult } from "@/lib/flowStore";
 import { useAuth, signOut } from "@/lib/onboarding/auth";
-import { canGenerate, getFreeRemaining } from "@/lib/onboarding/credits";
 import type { GenerationResult } from "@/lib/types";
 
 export default function LooksPage() {
   const router = useRouter();
   const { user } = useAuth();
   const [result, setResultState] = useState<GenerationResult | null>(null);
-  const [freeRemaining, setFreeRemaining] = useState(0);
-  const [paywall, setPaywall] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -33,7 +26,6 @@ export default function LooksPage() {
         return;
       }
       setResultState(r);
-      setFreeRemaining(getFreeRemaining());
     });
     return () => {
       cancelled = true;
@@ -49,7 +41,6 @@ export default function LooksPage() {
   if (!result) return <div className="onb" style={{ minHeight: "100dvh" }} />;
 
   return (
-    <>
       <div className="onb">
         <div className="onb-shell">
           <header className="onb-topbar">
@@ -61,7 +52,7 @@ export default function LooksPage() {
               className="onb-topbar__end"
               style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}
             >
-              <CreditCounter authenticated={!!user} freeRemaining={freeRemaining} />
+              <Link className="onb-btn onb-btn--quiet" href="/saved">My looks</Link>
               {user && (
                 <button
                   type="button"
@@ -80,24 +71,16 @@ export default function LooksPage() {
                 <p className="onb-eyebrow">Your looks are ready</p>
                 <h1 className="onb-h1">{result.looks.length} directions, made for you.</h1>
                 <p className="onb-lede">
-                  Open any look to see the full outfit and the real products
-                  behind it.
-                  {result.looks.some((look) => look.previewStatus === "pending") && " Your product lists are ready; previews will appear as they finish. Keep this tab open."}
+                  Open any look to shop the selected items or request a preview on your photo. Browsing the lists uses no image credits.
                 </p>
               </div>
 
               <button
                 type="button"
                 className="onb-btn onb-btn--ghost"
-                onClick={() => {
-                  if (!canGenerate(!!user)) {
-                    setPaywall(true);
-                    return;
-                  }
-                  router.push("/create");
-                }}
+                onClick={() => router.push("/create")}
               >
-                Generate new looks <ArrowRight size={15} />
+                Find new outfits <ArrowRight size={15} />
               </button>
             </div>
 
@@ -113,6 +96,14 @@ export default function LooksPage() {
                 />
               ))}
             </div>
+            {!user && !result.example && <div className="onb-work-section">
+              <h2 className="onb-aside__title">Keep your favourite looks</h2>
+              <p className="onb-help">Create an account to save outfits and continue after your first try.</p>
+              <div className="onb-work-actions">
+                <Link className="onb-btn onb-btn--primary" href="/account?next=/looks">Create account or sign in</Link>
+                <Link className="onb-btn onb-btn--ghost" href="/wardrobe">Try my wardrobe</Link>
+              </div>
+            </div>}
 
             <p
               className="onb-help"
@@ -129,14 +120,5 @@ export default function LooksPage() {
         </div>
       </div>
 
-      <PaywallModal
-        open={paywall}
-        onClose={() => setPaywall(false)}
-        onSignedIn={() => {
-          setPaywall(false);
-          router.push("/create");
-        }}
-      />
-    </>
   );
 }

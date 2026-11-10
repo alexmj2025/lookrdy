@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { DEFAULT_STATE, type OnboardingState } from "./types";
+import { DEFAULT_STATE, TOTAL_STEPS, type OnboardingState } from "./types";
 
 /**
  * Onboarding state, persisted to sessionStorage so a refresh mid-flow doesn't
@@ -24,7 +24,11 @@ export function readOnboarding(): OnboardingState {
     if (!raw) return DEFAULT_STATE;
     // Merge over defaults so a shape change in a later release can't leave a
     // half-populated object behind.
-    return { ...DEFAULT_STATE, ...(JSON.parse(raw) as Partial<OnboardingState>) };
+    const state = { ...DEFAULT_STATE, ...(JSON.parse(raw) as Partial<OnboardingState>) };
+    const currentStep = Number.isInteger(state.currentStep)
+      ? Math.max(1, Math.min(TOTAL_STEPS, state.currentStep))
+      : DEFAULT_STATE.currentStep;
+    return { ...state, currentStep };
   } catch {
     return DEFAULT_STATE;
   }

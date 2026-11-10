@@ -11,7 +11,6 @@ import OpenAI from "openai";
  */
 
 export const TEXT_MODEL = process.env.OPENAI_TEXT_MODEL ?? "gpt-4o";
-export const IMAGE_MODEL = process.env.OPENAI_IMAGE_MODEL ?? "gpt-image-1";
 
 export function isMock(): boolean {
   return process.env.MOCK_AI === "1" || !process.env.OPENAI_API_KEY;

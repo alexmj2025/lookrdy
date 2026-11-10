@@ -286,6 +286,10 @@
   align-items: center;
   gap: 1.75rem;
 }
+
+@media (min-width: 900px) and (max-width: 1099px) {
+  .lnd-nav__links { gap: 0.875rem; }
+}
 .lnd-nav__links a {
   position: relative;
   font-size: 0.8125rem;

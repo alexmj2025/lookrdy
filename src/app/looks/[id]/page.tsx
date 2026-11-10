@@ -8,13 +8,19 @@ import "../../onboarding.css";
 import { Logo } from "@/components/Logo";
 import { ProductMatchRow } from "@/components/onboarding/ProductMatchRow";
 import { ArrowLeft, Star } from "@/components/onboarding/icons";
-import { getResult } from "@/lib/flowStore";
+import { getResult, hasPhoto } from "@/lib/flowStore";
+import { requestPreview } from "@/lib/onboarding/requestPreview";
+import { catalogSnapshot } from "@/lib/onboarding/library";
+import { useAuth } from "@/lib/onboarding/auth";
+import { LookActions } from "@/components/onboarding/LookActions";
+import { ExampleArt } from "@/components/onboarding/ExampleLooks";
 import { money } from "@/lib/format";
 import type { GenerationResult, Look } from "@/lib/types";
 
 export default function LookDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
+  const { user } = useAuth();
   const [result, setResult] = useState<GenerationResult | null>(null);
   const [look, setLook] = useState<Look | null>(null);
 
@@ -52,6 +58,9 @@ export default function LookDetailPage() {
   const budget = result.request.budget;
   const currency = result.request.currency;
   const diff = budget - look.total;
+  const previewPending = result.looks.some((item) => item.previewStatus === "pending");
+  const canRequestPreview = Boolean(result.previewRequest && hasPhoto());
+  const entry = catalogSnapshot(result, look);
 
   return (
     <div className="onb">
@@ -74,12 +83,14 @@ export default function LookDetailPage() {
               {look.imageUrl ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img src={look.imageUrl} alt={`${look.name} shown on your photo`} />
+              ) : result.example ? (
+                <ExampleArt look={look} index={result.looks.findIndex((item) => item.id === look.id)} />
               ) : (
                 <div
                   className="onb-card__ph"
                   style={{ position: "static", aspectRatio: "3 / 4" }}
                 >
-                  {look.previewStatus === "pending" ? "Creating your preview… You can browse the products now." : "Preview unavailable"}
+                  {look.previewStatus === "pending" ? "Creating your preview… You can browse the products now." : look.previewStatus === "products-only" ? "Shopping list" : "Preview unavailable"}
                 </div>
               )}
             </div>
@@ -96,7 +107,25 @@ export default function LookDetailPage() {
 
               <h1 className="onb-h1">{look.name}</h1>
               <p className="onb-help" role="status">{look.previewStatus === "pending" ? "Approximate preview generating. Keep this tab open." : look.previewNotice ?? "Approximate AI preview; garment details and fit may differ."}</p>
+              {!look.imageUrl && (look.previewNeedsAccount && !user ? (
+                <Link className="onb-btn onb-btn--primary" href={`/account?next=/looks/${look.id}`}>Sign in to keep styling</Link>
+              ) : canRequestPreview ? (
+                <button
+                  type="button"
+                  className="onb-btn onb-btn--primary"
+                  style={{ marginTop: "0.75rem" }}
+                  disabled={previewPending}
+                  onClick={() => void requestPreview(result, look)}
+                >
+                  {look.previewStatus === "pending" ? "Creating preview…" : result.engine === "fal" ? "Preview on me · about US$0.04" : result.engine === "mock" ? "Preview on me · demo" : "Preview on me · uses image credits"}
+                </button>
+              ) : (
+                <Link className="onb-btn onb-btn--ghost" style={{ marginTop: "0.75rem" }} href="/create">
+                  {result.example ? "Try a look with your photo" : "Start a new search to preview"}
+                </Link>
+              ))}
               <p className="onb-lede">{look.rationale}</p>
+              <LookActions entryKey={entry.key} source="simons" snapshot={entry.snapshot} returnTo={`/looks/${look.id}`} />
 
               <div className="onb-tags" style={{ marginTop: "1rem" }}>
                 {look.descriptors.map((d) => (

@@ -1,6 +1,7 @@
 "use client";
 
 import type { GenerationResult, StyleRequest } from "./types";
+import type { LookSnapshot } from "./onboarding/library";
 
 /**
  * Session-scoped client state.
@@ -25,32 +26,27 @@ const REQUEST_KEY = "lookrdy:request";
 const DB_NAME = "lookrdy";
 const STORE = "result";
 const RESULT_KEY = "current";
+const WARDROBE_KEY = "wardrobe-boards";
 
 let photoFile: File | null = null;
 let photoPreview: string | null = null;
-let clothingMask: File | null = null;
 
 export function setPhoto(file: File, preview: string) {
+  if (photoPreview?.startsWith("blob:") && photoPreview !== preview) URL.revokeObjectURL(photoPreview);
   photoFile = file;
   photoPreview = preview;
-  clothingMask = null;
 }
 
-export function setClothingMask(photo: File, mask: File) {
-  photoFile = photo;
-  clothingMask = mask;
-}
-
-export function getPhoto(): { file: File; preview: string; mask: File | null } | null {
+export function getPhoto(): { file: File; preview: string } | null {
   return photoFile && photoPreview
-    ? { file: photoFile, preview: photoPreview, mask: clothingMask }
+    ? { file: photoFile, preview: photoPreview }
     : null;
 }
 
 export function clearPhoto() {
+  if (photoPreview?.startsWith("blob:")) URL.revokeObjectURL(photoPreview);
   photoFile = null;
   photoPreview = null;
-  clothingMask = null;
 }
 
 export function hasPhoto(): boolean {
@@ -91,6 +87,34 @@ function openDb(): Promise<IDBDatabase> {
 
 /** In-memory mirror so a same-tab read right after a write never round-trips. */
 let memoResult: GenerationResult | null = null;
+export type WardrobeBoard = { key: string; snapshot: LookSnapshot };
+export type WardrobeExchange = { prompt: string; boards: WardrobeBoard[] };
+let wardrobeDraft: WardrobeExchange[] | null = null;
+
+export async function setWardrobeDraft(value: WardrobeExchange[]) {
+  wardrobeDraft = value;
+  try {
+    const db = await openDb();
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, "readwrite");
+      tx.objectStore(STORE).put(value, WARDROBE_KEY);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  } catch { /* The current page still has the boards in memory. */ }
+}
+
+export async function getWardrobeDraft(): Promise<WardrobeExchange[]> {
+  if (wardrobeDraft) return wardrobeDraft;
+  try {
+    const db = await openDb();
+    return await new Promise((resolve, reject) => {
+      const req = db.transaction(STORE, "readonly").objectStore(STORE).get(WARDROBE_KEY);
+      req.onsuccess = () => resolve((req.result as WardrobeExchange[] | undefined) ?? []);
+      req.onerror = () => reject(req.error);
+    });
+  } catch { return []; }
+}
 
 export async function setResult(result: GenerationResult): Promise<void> {
   memoResult = result;

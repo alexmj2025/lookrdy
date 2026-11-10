@@ -1,5 +1,7 @@
 # Responsive review
 
+This records the earlier viewport review. The current Create flow now uses three steps and no drawing or generation paywall.
+
 Reviewed the local app at 320, 398, 768, 1024 and 1440 CSS pixels. Main page layout bounds were measured in the browser; intentionally scrolling landing photo rails stay within their own containers.
 
 - Landing: mobile menu, menu CTA contrast, hero actions, photo rails, example shopping rows, footer and cookie settings.

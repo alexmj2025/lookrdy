@@ -81,7 +81,7 @@ export function Hero() {
             </div>
 
             <p className="lnd-fine">
-              First style session free. No account required.
+              No account required for your first try.
             </p>
           </Reveal>
 

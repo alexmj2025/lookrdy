@@ -8,18 +8,15 @@ import { ProgressBar } from "./ProgressBar";
 /**
  * One persistent frame around every onboarding step. Steps swap their content
  * inside it, so the header, progress and panel never remount — the flow reads
- * as one continuous surface rather than five separate pages.
+ * as one continuous surface rather than separate pages.
  */
 export function OnboardingShell({
   step,
   totalSteps,
-  onSkip,
   children,
 }: {
   step: number;
   totalSteps: number;
-  /** Rendered top-right. Only steps that can genuinely be skipped pass this. */
-  onSkip?: () => void;
   children: ReactNode;
 }) {
   return (
@@ -32,13 +29,7 @@ export function OnboardingShell({
 
           <ProgressBar step={step} totalSteps={totalSteps} />
 
-          <div className="onb-topbar__end">
-            {onSkip && (
-              <button type="button" className="onb-btn onb-btn--quiet" onClick={onSkip}>
-                Skip for now
-              </button>
-            )}
-          </div>
+          <div className="onb-topbar__end" />
         </header>
 
         <div className="onb-panel">{children}</div>

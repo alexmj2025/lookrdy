@@ -45,13 +45,13 @@ export function isSupabaseConfigured(): boolean {
  * respects row-level security rather than bypassing it. Use this — never
  * getSupabase() — anywhere you need to know who is actually signed in.
  */
-export async function getSupabaseSession() {
+export async function getSupabaseUserClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) return null;
 
   const jar = await cookies();
-  const client = createServerClient(url, key, {
+  return createServerClient(url, key, {
     cookies: {
       getAll: () => jar.getAll(),
       setAll: (list) => {
@@ -67,7 +67,11 @@ export async function getSupabaseSession() {
       },
     },
   });
+}
 
+export async function getSupabaseSession() {
+  const client = await getSupabaseUserClient();
+  if (!client) return null;
   const {
     data: { user },
   } = await client.auth.getUser();

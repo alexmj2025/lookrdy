@@ -114,23 +114,31 @@ export interface Look extends Bundle {
   /** Data URL or hosted URL of the AI visualization. */
   imageUrl: string;
   hotspots: Hotspot[];
-  previewStatus?: "pending" | "ready" | "unavailable" | "demo";
+  previewStatus?: "pending" | "ready" | "unavailable" | "demo" | "products-only";
   previewNotice?: string;
+  previewNeedsAccount?: boolean;
 }
 
 export interface GenerationResult {
+  searchId?: string;
+  example?: boolean;
   looks: Look[];
   constraints: Constraints;
   request: StyleRequest;
-  engine: "openai" | "mock";
-  generationsUsed: number;
-  generationsAllowed: number;
+  engine: "openai" | "mock" | "fal";
+  /** Rebuild the same catalog picks for an explicit preview request. */
+  previewRequest?: {
+    occasion: string;
+    budgetMin: number;
+    budgetMax: number;
+    avoidText: string;
+    trialId?: string | null;
+  };
 }
 
 export type GenerationError =
   | { error: "invalid_request"; message: string }
   | { error: "insufficient_catalog"; message: string }
-  | { error: "limit_reached"; message: string }
   | { error: "engine_failure"; message: string };
 
 export type FunnelEvent =

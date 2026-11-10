@@ -2,17 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import "../onboarding.css";
 
 import { OnboardingShell } from "@/components/onboarding/OnboardingShell";
 import { PhotoUploader } from "@/components/onboarding/PhotoUploader";
-import { ClothingMaskEditor } from "@/components/onboarding/ClothingMaskEditor";
-import { consumeGeneration } from "@/lib/onboarding/generationStream";
 import { SelectCard } from "@/components/onboarding/SelectCard";
 import { BudgetRangeSlider } from "@/components/onboarding/BudgetRangeSlider";
-import { CountrySelector } from "@/components/onboarding/CountrySelector";
 import { LoadingGenerator } from "@/components/onboarding/LoadingGenerator";
-import { PaywallModal } from "@/components/onboarding/PaywallModal";
+import { ExampleLooks } from "@/components/onboarding/ExampleLooks";
 import {
   ArrowLeft,
   ArrowRight,
@@ -26,14 +24,7 @@ import {
 
 import { useOnboarding } from "@/lib/onboarding/store";
 import { trackOnboarding } from "@/lib/onboarding/analytics";
-import { useAuth } from "@/lib/onboarding/auth";
-import {
-  canGenerate,
-  markLimitReached,
-  syncFreeRemaining,
-} from "@/lib/onboarding/credits";
-import { isStepValid, OCCASIONS, STYLES, TOTAL_STEPS } from "@/lib/onboarding/types";
-import type { LookRole, Occasion } from "@/lib/simons/types";
+import { isStepValid, OCCASIONS, TOTAL_STEPS } from "@/lib/onboarding/types";
 import { clearPhoto, getPhoto, setPhoto, setRequest, setResult } from "@/lib/flowStore";
 import type { GenerationResult, StyleRequest } from "@/lib/types";
 
@@ -49,14 +40,12 @@ const PHOTO_TIPS = [
 export default function CreatePage() {
   const router = useRouter();
   const { state, update, ready } = useOnboarding();
-  const { user } = useAuth();
 
   const [preview, setPreviewUrl] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [paywall, setPaywall] = useState(false);
-  const [maskReady, setMaskReady] = useState(false);
+  const [needsAccount, setNeedsAccount] = useState(false);
   const submitting = useRef(false);
 
   const step = state.currentStep;
@@ -82,33 +71,30 @@ export default function CreatePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const stepValid = step === 1 ? preview !== null && maskReady : isStepValid(step, state);
+  const stepValid = step === 1 ? preview !== null : isStepValid(step, state);
 
   async function generate() {
     if (submitting.current) return;
-    // Signed-in users bypass the free cap entirely — the server enforces
-    // this too, but checking here avoids sending a doomed request.
-    if (!canGenerate(!!user)) {
-      markLimitReached();
-      setPaywall(true);
-      return;
-    }
-
     const photo = getPhoto();
-    if (!photo || !photo.mask) {
+    if (!photo) {
       goTo(1);
       return;
     }
+    if (!state.occasion) {
+      goTo(2);
+      return;
+    }
+    if (!isStepValid(TOTAL_STEPS, state)) return;
 
     const occasionLabel =
       OCCASIONS.find((o) => o.id === state.occasion)?.label ?? "";
 
     const req: StyleRequest = {
       occasion: occasionLabel,
-      desiredLook: state.stylePreference ?? "",
+      desiredLook: "",
       budget: state.budgetMax,
       currency: state.currency,
-      location: [state.cityOrPostalCode, "Canada"].filter(Boolean).join(", "),
+      location: "Canada",
       exclusions: state.avoidText,
     };
 
@@ -116,45 +102,26 @@ export default function CreatePage() {
     submitting.current = true;
     setGenerating(true);
     setError(null);
+    setNeedsAccount(false);
     trackOnboarding("generation_started", { occasion: state.occasion });
 
     try {
       const form = new FormData();
-      form.set("occasion", state.occasion as Occasion);
+      form.set("occasion", state.occasion);
       form.set("budgetMin", String(state.budgetMin));
       form.set("budgetMax", String(state.budgetMax));
       form.set("avoidText", state.avoidText);
-      if (state.stylePreference) form.set("stylePreference", state.stylePreference);
-      form.set("photo", photo.file);
-      form.set("mask", photo.mask);
-      form.set("stream", "1");
 
       const res = await fetch("/api/generate", { method: "POST", body: form });
-      if (res.ok && res.headers.get("content-type")?.includes("application/x-ndjson")) {
-        await consumeGeneration(res, (result) => {
-          syncFreeRemaining(result.generationsUsed, result.generationsAllowed);
-          router.push("/looks");
-        });
-        return;
-      }
       const data = (await res.json()) as GenerationResult | { error: string; message: string };
 
       if ("error" in data) {
-        if (data.error === "limit_reached") {
-          markLimitReached();
-          setGenerating(false);
-          setPaywall(true);
-          return;
-        }
         setGenerating(false);
+        setNeedsAccount(data.error === "account_required");
         setError(data.message);
         return;
       }
 
-      syncFreeRemaining(data.generationsUsed, data.generationsAllowed);
-      trackOnboarding("free_generation_used", {
-        remaining: data.generationsAllowed - data.generationsUsed,
-      });
       trackOnboarding("generation_completed", { looks: data.looks.length });
 
       await setResult(data);
@@ -179,12 +146,16 @@ export default function CreatePage() {
   }
 
   return (
-    <>
       <OnboardingShell
         step={step}
         totalSteps={TOTAL_STEPS}
-        onSkip={step === 5 ? () => void generate() : undefined}
       >
+        {step === 1 && <div className="onb-work-actions onb-source-switch" aria-label="Choose where to find clothes">
+          <span className="onb-tag onb-tag--good">Shop Simons</span>
+          <Link className="onb-btn onb-btn--ghost" href="/wardrobe">Style clothes I own</Link>
+          <Link className="onb-btn onb-btn--quiet" href="/saved">My looks</Link>
+        </div>}
+        {step === 1 && <ExampleLooks />}
         {step === 1 && (
           <div className="onb-step">
             <div>
@@ -207,7 +178,6 @@ export default function CreatePage() {
                     setPreviewUrl(null);
                   }}
                 />
-                {preview && <ClothingMaskEditor preview={preview} onReady={setMaskReady} />}
               </div>
             </div>
 
@@ -274,6 +244,17 @@ export default function CreatePage() {
                   }}
                 />
               </div>
+              <details style={{ marginTop: "1.25rem" }}>
+                <summary className="onb-label" style={{ cursor: "pointer" }}>Anything to avoid? (optional)</summary>
+                <label htmlFor="onb-avoid" className="onb-sr">Clothing preferences to avoid</label>
+                <input
+                  id="onb-avoid"
+                  className="onb-field"
+                  value={state.avoidText}
+                  placeholder="e.g. no bright colours, no stripes"
+                  onChange={(e) => update({ avoidText: e.target.value })}
+                />
+              </details>
             </div>
 
             <aside className="onb-aside">
@@ -311,81 +292,10 @@ export default function CreatePage() {
           </div>
         )}
 
-        {step === 4 && (
-          <div className="onb-step">
-            <div>
-              <p className="onb-eyebrow">Step 4 of {TOTAL_STEPS}</p>
-              <h1 className="onb-h1">Where are you shopping?</h1>
-              <p className="onb-lede">
-                We&rsquo;ll prioritize products available in your region.
-              </p>
-              <div style={{ marginTop: "1.75rem" }}>
-                <CountrySelector
-                  cityOrPostalCode={state.cityOrPostalCode}
-                  onCity={(v) => update({ cityOrPostalCode: v })}
-                />
-              </div>
-            </div>
-
-            <aside className="onb-aside">
-              <h2 className="onb-aside__title">Your city, your options</h2>
-              <p className="onb-aside__body">
-                Availability, pricing and sizing vary by location. As we add
-                retailers, we&rsquo;ll use this to prioritize what&rsquo;s
-                reachable from where you are.
-              </p>
-            </aside>
-          </div>
-        )}
-
-        {step === 5 && (
-          <div className="onb-step onb-step--wide">
-            <div>
-              <p className="onb-eyebrow">Step 5 of {TOTAL_STEPS}</p>
-              <h1 className="onb-h1">
-                Pick a direction <span className="onb-optional">Optional</span>
-              </h1>
-              <p className="onb-lede">
-                We&rsquo;ll always show a Safe, Polished and Bold option where
-                the catalog supports it — pick one to see it recommended first.
-              </p>
-
-              <div className="onb-grid" style={{ marginTop: "1.75rem" }}>
-                {STYLES.map((s) => (
-                  <SelectCard
-                    key={s.id}
-                    label={`${s.label} — ${s.blurb}`}
-                    image={s.image}
-                    selected={state.stylePreference === s.id}
-                    onToggle={() => {
-                      const next = state.stylePreference === s.id ? null : s.id;
-                      update({ stylePreference: next });
-                      trackOnboarding("style_selected", { style: next });
-                    }}
-                  />
-                ))}
-              </div>
-
-              <div style={{ marginTop: "1.75rem", maxWidth: "34rem" }}>
-                <label className="onb-label" htmlFor="onb-avoid">
-                  Anything to avoid?{" "}
-                  <span style={{ fontWeight: 400, color: "var(--muted)" }}>
-                    (optional)
-                  </span>
-                </label>
-                <input
-                  id="onb-avoid"
-                  className="onb-field"
-                  value={state.avoidText}
-                  placeholder="e.g. no bright colours, no stripes"
-                  onChange={(e) => update({ avoidText: e.target.value })}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {error && <p className="onb-error">{error}</p>}
+        {error && <p className="onb-error" role="alert">{error}</p>}
+        {needsAccount && <div className="onb-work-actions">
+          <Link className="onb-btn onb-btn--primary" href="/account?next=/create">Create account or sign in</Link>
+        </div>}
 
         <div className="onb-footer">
           {step > 1 ? (
@@ -413,22 +323,14 @@ export default function CreatePage() {
             <button
               type="button"
               className="onb-btn onb-btn--primary"
+              disabled={!stepValid}
               onClick={() => void generate()}
             >
-              Generate my looks <ArrowRight size={15} />
+              Find my outfits <ArrowRight size={15} />
             </button>
           )}
         </div>
       </OnboardingShell>
 
-      <PaywallModal
-        open={paywall}
-        onClose={() => setPaywall(false)}
-        onSignedIn={() => {
-          setPaywall(false);
-          void generate();
-        }}
-      />
-    </>
   );
 }

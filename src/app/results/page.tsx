@@ -31,8 +31,7 @@ export default function ResultsPage() {
 
   if (!result) return null;
 
-  const { request, looks, generationsUsed, generationsAllowed } = result;
-  const remaining = Math.max(0, generationsAllowed - generationsUsed);
+  const { request, looks } = result;
   const unknownCountry = result.constraints.country === null;
 
   return (
@@ -115,12 +114,6 @@ export default function ResultsPage() {
 
         <div className="mt-16 border-t hairline pt-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-[0.9375rem] text-[var(--color-meta)]">
-              {remaining > 0
-                ? `${remaining} of ${generationsAllowed} free looks left in this session.`
-                : `You've used all ${generationsAllowed} free looks in this session.`}
-            </p>
-            {remaining > 0 && (
               <Link
                 href="/request"
                 className="btn-outline"
@@ -128,7 +121,6 @@ export default function ResultsPage() {
               >
                 Try a different brief
               </Link>
-            )}
           </div>
           <div className="mt-8">
             <Disclaimer />

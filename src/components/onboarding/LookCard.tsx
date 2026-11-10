@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { money } from "@/lib/format";
 import { trackOnboarding } from "@/lib/onboarding/analytics";
-import { ArrowRight, Heart, Star } from "./icons";
+import { ArrowRight, Star } from "./icons";
 import type { Look } from "@/lib/types";
 
 export function LookCard({
@@ -20,7 +19,6 @@ export function LookCard({
   currency: string;
   country: string;
 }) {
-  const [saved, setSaved] = useState(false);
   const under = budgetMax - look.total;
 
   return (
@@ -31,7 +29,7 @@ export function LookCard({
           <img src={look.imageUrl} alt={`${look.name} shown on your photo`} />
         ) : (
           <span className="onb-card__ph" aria-hidden="true">
-            {look.previewStatus === "pending" ? "Creating your preview…" : "Preview unavailable"}
+            {look.previewStatus === "pending" ? "Creating your preview…" : look.previewStatus === "products-only" ? "Shopping list" : "Preview unavailable"}
           </span>
         )}
 
@@ -40,16 +38,6 @@ export function LookCard({
             <Star /> Recommended
           </span>
         )}
-
-        <button
-          type="button"
-          className="onb-save"
-          aria-pressed={saved}
-          aria-label={saved ? "Remove from saved" : "Save this look"}
-          onClick={() => setSaved((v) => !v)}
-        >
-          <Heart />
-        </button>
 
         <div className="onb-look__overlay">
           <p className="onb-look__index">Look {index + 1}</p>

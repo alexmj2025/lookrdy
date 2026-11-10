@@ -58,7 +58,6 @@ export default function GeneratingPage() {
         if ("error" in data) {
           const titles: Record<string, string> = {
             insufficient_catalog: "We couldn't fill this one",
-            limit_reached: "That's all three free looks",
             invalid_request: "Something's missing",
             engine_failure: "That didn't work",
           };
