@@ -5,7 +5,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import "../onboarding.css";
 import { WorkspacePage } from "@/components/onboarding/WorkspacePage";
-import { accountReturnPath } from "@/lib/onboarding/accountPaths";
+import { accountReturnPath, passwordResetPath } from "@/lib/onboarding/accountPaths";
 import { useAuth, signOut } from "@/lib/onboarding/auth";
 import { getSupabaseBrowser } from "@/lib/supabase/browser";
 
@@ -21,8 +21,10 @@ export default function AccountPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setNext(accountReturnPath(params.get("next")));
-    if (params.get("confirmation") === "failed") {
+    if (params.get("mode") === "signin" || params.get("confirmation") === "failed") {
       setMode("signin");
+    }
+    if (params.get("confirmation") === "failed") {
       setError("The confirmation link couldn’t finish in this browser. Confirm your email, then try signing in.");
     }
   }, []);
@@ -65,6 +67,7 @@ export default function AccountPage() {
         <div className="onb-work-actions">
           <button className="onb-btn onb-btn--primary" type="submit" disabled={busy}>{busy ? "Please wait…" : mode === "signup" ? "Create account" : "Sign in"}</button>
           <button className="onb-btn onb-btn--ghost" type="button" disabled={busy} onClick={() => { setMode(mode === "signup" ? "signin" : "signup"); setError(""); setNotice(""); }}>{mode === "signup" ? "I already have an account" : "Create an account"}</button>
+          <Link className="onb-btn onb-btn--ghost" href={passwordResetPath}>Forgot password?</Link>
         </div>
       </form>
     )}
