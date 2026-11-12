@@ -28,6 +28,14 @@ export interface VisualizeInput {
   occasion: string;
 }
 
+export async function encodePreview(edited: Buffer) {
+  const preview = await sharp(edited, { limitInputPixels: 24_000_000 })
+    .resize(1024, 1536, { fit: "inside", withoutEnlargement: true })
+    .jpeg({ quality: 86 })
+    .toBuffer();
+  return `data:image/jpeg;base64,${preview.toString("base64")}`;
+}
+
 function describeOutfit(bundle: Bundle): string {
   return bundle.items
     .map((i) => `${i.category}: ${i.name}; ${i.variantSelectionRequired ? "colour variant not confirmed; this is a style approximation" : i.color}; ${(i.visualDetails ?? []).join("; ")}`)
@@ -80,11 +88,7 @@ export async function visualize(input: VisualizeInput): Promise<{ imageUrl: stri
         if (b64) edited = Buffer.from(b64, "base64");
       }
       if (edited) {
-        const preview = await sharp(edited, { limitInputPixels: 24_000_000 })
-          .resize(1024, 1536, { fit: "inside", withoutEnlargement: true })
-          .jpeg({ quality: 90 })
-          .toBuffer();
-        return { imageUrl: `data:image/jpeg;base64,${preview.toString("base64")}`, previewStatus: "ready", previewNotice: notice };
+        return { imageUrl: await encodePreview(edited), previewStatus: "ready", previewNotice: notice };
       }
     } else if (settings.engine === "openai") {
       const result = await getOpenAI().images.generate({

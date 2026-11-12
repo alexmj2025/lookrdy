@@ -48,6 +48,7 @@ export default function SavedPage() {
       <div className="onb-work-actions">
         <button type="button" className={`onb-btn onb-btn--${filter === "saved" ? "primary" : "ghost"}`} aria-pressed={filter === "saved"} onClick={() => setFilter("saved")}>Saved looks</button>
         <button type="button" className={`onb-btn onb-btn--${filter === "history" ? "primary" : "ghost"}`} aria-pressed={filter === "history"} onClick={() => setFilter("history")}>History</button>
+        <Link href="/collections" className="onb-btn onb-btn--ghost">Organize collections</Link>
         <button type="button" className="onb-btn onb-btn--quiet" onClick={() => void signOut()}>Sign out</button>
       </div>
       {!entries && !error && <p role="status">Loading looks…</p>}

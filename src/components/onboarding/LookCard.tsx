@@ -12,12 +12,16 @@ export function LookCard({
   budgetMax,
   currency,
   country,
+  onPreview,
+  previewBusy = false,
 }: {
   look: Look;
   index: number;
   budgetMax: number;
   currency: string;
   country: string;
+  onPreview?: () => void;
+  previewBusy?: boolean;
 }) {
   const under = budgetMax - look.total;
 
@@ -48,6 +52,9 @@ export function LookCard({
 
       <div className="onb-look__foot">
         <p className="onb-help" role="status">{look.previewNotice ?? "Approximate AI preview; garment details and fit may differ."}</p>
+        {onPreview && <button className="onb-btn onb-btn--ghost" type="button" onClick={onPreview} disabled={previewBusy}>
+          {look.previewStatus === "pending" ? "Generating preview…" : "Generate preview on my photo"}
+        </button>}
         <div className="onb-tags">
           {look.descriptors.slice(0, 1).map((d) => (
             <span className="onb-tag" key={d}>

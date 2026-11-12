@@ -1513,6 +1513,29 @@
 .onb-work-form { display: grid; gap: 0.75rem; margin-top: 1rem; }
 .onb-work-form textarea { min-height: 6rem; resize: vertical; }
 .onb-auth-box { max-width: 35rem; margin-inline: auto; }
+.onb-auth-layout { max-width: 44rem; }
+.onb-workspace { min-height: 100dvh; display: grid; grid-template-columns: 14rem minmax(0, 1fr); }
+.onb-sidebar { position: sticky; top: 0; align-self: start; min-height: 100dvh; padding: 1.5rem 1rem; background: var(--paper); border-right: 1px solid var(--hair); }
+.onb-sidebar > a { margin: 0 0.75rem 1.5rem; }
+.onb-sidebar nav { display: grid; gap: 0.25rem; }
+.onb-sidebar nav a { display: flex; align-items: center; gap: 0.65rem; min-height: 44px; padding: 0.6rem 0.75rem; border-radius: 0.75rem; text-decoration: none; color: inherit; font-size: 0.9rem; white-space: nowrap; }
+.onb-sidebar nav a:hover, .onb-sidebar nav a[aria-current] { background: #eeeae5; color: #171614; }
+.onb-sidebar nav a[aria-current] { font-weight: 650; }
+.onb-workspace-main { width: min(100%, 75rem); padding: clamp(1rem, 4vw, 3.5rem); margin-inline: auto; min-width: 0; }
+.onb-palette { display: flex; gap: 0.35rem; margin-block: 0.75rem; }
+.onb-palette:empty { display: none; }
+.onb-palette span { width: 1.5rem; height: 1.5rem; border: 1px solid #0003; border-radius: 50%; }
+.onb-collection-create { max-width: 30rem; }
+.onb-auth-tabs { display: flex; gap: 0.5rem; margin-block: 1.25rem; }
+.onb-auth-tabs .onb-btn { flex: 1; }
+@media (max-width: 720px) {
+  .onb-workspace { display: block; }
+  .onb-sidebar { position: static; min-height: 0; padding: 0.75rem 1rem 0.5rem; border-right: 0; border-bottom: 1px solid var(--hair); }
+  .onb-sidebar > a { margin: 0 0 0.5rem; }
+  .onb-sidebar nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .onb-sidebar nav a { justify-content: center; font-size: 0.78rem; gap: 0.3rem; padding-inline: 0.2rem; white-space: normal; }
+  .onb-sidebar nav svg { flex: 0 0 1rem; }
+}
 .onb-work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; margin-top: 1rem; }
 .onb-work-card { min-width: 0; overflow: hidden; border: 1px solid var(--hair); border-radius: var(--r-card); background: var(--paper); }
 .onb-work-card-body { padding: 1rem; }

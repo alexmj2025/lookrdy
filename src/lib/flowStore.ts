@@ -88,7 +88,7 @@ function openDb(): Promise<IDBDatabase> {
 /** In-memory mirror so a same-tab read right after a write never round-trips. */
 let memoResult: GenerationResult | null = null;
 export type WardrobeBoard = { key: string; snapshot: LookSnapshot };
-export type WardrobeExchange = { prompt: string; boards: WardrobeBoard[] };
+export type WardrobeExchange = { prompt: string; boards: (WardrobeBoard & { garmentIds?: string[]; rendered?: boolean })[] };
 let wardrobeDraft: WardrobeExchange[] | null = null;
 
 export async function setWardrobeDraft(value: WardrobeExchange[]) {

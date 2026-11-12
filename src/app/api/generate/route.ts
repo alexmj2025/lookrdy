@@ -102,18 +102,21 @@ export async function POST(request: Request) {
     }
 
     const bundles = simonsOutfitsToBundles(outfits, null);
-    const { engine } = imageSettings();
+    const { engine, configurationError } = imageSettings();
 
     // --- VISUALIZE -----------------------------------------------------------
     const looks: Look[] = bundles.map((bundle) => ({
         ...bundle,
         imageUrl: "",
         previewStatus: "products-only",
-        previewNotice: "No image generated. Open this look to request a preview.",
+        previewNotice: "Generate a preview to see this outfit on your photo.",
         hotspots: zonesFor(bundle),
     }));
 
     if (previewLookId !== null) {
+      if (configurationError) {
+        return NextResponse.json({ message: "Live previews are temporarily unavailable. Your shopping list is ready." }, { status: 503 });
+      }
       const look = looks.find((item) => item.id === previewLookId);
       const itemIds = form.getAll("previewItemId");
       if (!look || itemIds.length !== look.items.length || look.items.some((item, index) => item.id !== itemIds[index])) {

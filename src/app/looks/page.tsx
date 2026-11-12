@@ -8,7 +8,8 @@ import "../onboarding.css";
 import { Logo } from "@/components/Logo";
 import { LookCard } from "@/components/onboarding/LookCard";
 import { ArrowRight } from "@/components/onboarding/icons";
-import { getResult } from "@/lib/flowStore";
+import { getResult, hasPhoto } from "@/lib/flowStore";
+import { requestPreview } from "@/lib/onboarding/requestPreview";
 import { useAuth, signOut } from "@/lib/onboarding/auth";
 import type { GenerationResult } from "@/lib/types";
 
@@ -93,6 +94,9 @@ export default function LooksPage() {
                   budgetMax={result.request.budget}
                   currency={result.request.currency}
                   country="Canada"
+                  onPreview={!look.imageUrl && (!look.previewNeedsAccount || user) && result.previewRequest && hasPhoto()
+                    ? () => void requestPreview(result, look) : undefined}
+                  previewBusy={result.looks.some((item) => item.previewStatus === "pending")}
                 />
               ))}
             </div>

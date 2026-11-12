@@ -10,8 +10,11 @@ async function load(src: string) {
 }
 
 /** The selfie is drawn as-is, without generative edits, stretching, or cropping. */
-export async function buildWardrobeBoard(selfie: string, outfit: WardrobePick): Promise<string> {
-  const [portrait, ...garments] = await Promise.all([selfie, ...outfit.items.map((item) => item.image)].map(load));
+export async function buildWardrobeBoard(selfie: string | null, outfit: WardrobePick): Promise<string> {
+  const [portrait, garments] = await Promise.all([
+    selfie ? load(selfie) : null,
+    Promise.all(outfit.items.map((item) => load(item.image))),
+  ]);
   const canvas = document.createElement("canvas");
   canvas.width = 960; canvas.height = 1200;
   const ctx = canvas.getContext("2d");
@@ -24,17 +27,21 @@ export async function buildWardrobeBoard(selfie: string, outfit: WardrobePick): 
   ctx.fillStyle = "#f6f3ee"; ctx.fillRect(0, 0, 960, 1200);
   ctx.fillStyle = "#24211f"; ctx.font = "600 26px sans-serif"; ctx.fillText("LOOKRDY  /  MY WARDROBE", 36, 54);
   ctx.font = "600 40px sans-serif"; ctx.fillText(outfit.title, 36, 110, 880);
-  ctx.fillStyle = "#e8e2d9"; ctx.fillRect(36, 150, 546, 970);
-  contain(portrait, 36, 150, 546, 970);
+  if (portrait) {
+    ctx.fillStyle = "#e8e2d9"; ctx.fillRect(36, 150, 546, 970);
+    contain(portrait, 36, 150, 546, 970);
+  }
   const rowHeight = 970 / garments.length;
+  const left = portrait ? 608 : 36;
+  const width = portrait ? 316 : 888;
   garments.forEach((image, index) => {
     const top = 150 + rowHeight * index;
-    ctx.fillStyle = "#fff"; ctx.fillRect(608, top, 316, rowHeight - 10);
-    contain(image, 620, top + 8, 292, rowHeight - 58);
+    ctx.fillStyle = "#fff"; ctx.fillRect(left, top, width, rowHeight - 10);
+    contain(image, left + 12, top + 8, width - 24, rowHeight - 58);
     ctx.fillStyle = "#24211f"; ctx.font = "500 22px sans-serif";
-    ctx.fillText(outfit.items[index].name, 622, top + rowHeight - 24, 286);
+    ctx.fillText(outfit.items[index].name, left + 14, top + rowHeight - 24, width - 30);
   });
   ctx.fillStyle = "#5d5752"; ctx.font = "22px sans-serif";
-  ctx.fillText("Original photo  ·  Outfit plan", 36, 1160);
+  ctx.fillText(portrait ? "Original photo  ·  Outfit plan" : "Outfit plan", 36, 1160);
   return canvas.toDataURL("image/jpeg", 0.87);
 }

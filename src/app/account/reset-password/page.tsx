@@ -64,7 +64,7 @@ export default function ResetPasswordPage() {
     }
   }
 
-  return <WorkspacePage><div className="onb-auth-box">
+  return <WorkspacePage auth><div className="onb-auth-box">
     <p className="onb-eyebrow">Your Lookrdy account</p>
     <h1 className="onb-h1">{complete ? "Password updated" : canUpdate ? "Choose a new password" : "Reset your password"}</h1>
     {complete ? (

@@ -27,6 +27,19 @@ test("wardrobe suggestions respect exclusions and refuse incomplete base looks",
 test("account returns are limited to local workspace routes", () => {
   assert.equal(accountReturnPath("/looks/look-2"), "/looks/look-2");
   assert.equal(accountReturnPath("/wardrobe"), "/wardrobe");
+  assert.equal(accountReturnPath("/collections"), "/collections");
+  assert.equal(accountReturnPath("/settings"), "/settings");
   assert.equal(accountReturnPath("//example.com"), "/saved");
   assert.equal(accountReturnPath("https://example.com"), "/saved");
+});
+
+test("wardrobe color requests rank outfits using the garment swatches", () => {
+  const pieces: WardrobeItem[] = [
+    { id: "1", slot: "top", name: "Shirt", image: "local:shirt", swatch: "#ca2832" },
+    { id: "2", slot: "bottom", name: "Jeans", image: "local:jeans", swatch: "#2460ac" },
+    { id: "3", slot: "bottom", name: "Trousers", image: "local:trousers", swatch: "#424242" },
+  ];
+  const [match] = styleWardrobe(pieces, "Which colors work together?");
+  assert.deepEqual(match.items.map(({ id }) => id), ["1", "3"]);
+  assert.match(match.description, /neutral pieces anchor/);
 });
